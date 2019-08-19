@@ -5,7 +5,7 @@ pub enum Endpoint {
     Achievements,
 }
 
-pub(crate) fn get_endpoint_url(endpoint: Endpoint) -> String {
+pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
     match endpoint {
         Endpoint::Games => games(),
         Endpoint::Achievements => achievements(),

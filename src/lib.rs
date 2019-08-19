@@ -2,4 +2,8 @@
 #[macro_use]
 extern crate serde_derive;
 
-pub mod v3;
+mod endpoints;
+mod endpoint_client;
+pub mod client;
+pub mod model;
+pub mod request_builder;

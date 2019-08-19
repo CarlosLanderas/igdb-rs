@@ -1,4 +1,4 @@
-use crate::v3::model::Category;
+use crate::model::category::Category;
 
 #[derive(Deserialize)]
 pub enum Rating {

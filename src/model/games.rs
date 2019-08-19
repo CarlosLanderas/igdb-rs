@@ -1,6 +1,6 @@
-use crate::v3::model::rating::AgeRating;
-use crate::v3::model::{Category, Status};
-use crate::v3::request_builder::RequestBuilder;
+use crate::model::{category::Category, rating::AgeRating, status::Status};
+
+use crate::request_builder::RequestBuilder;
 use std::collections::HashMap;
 use std::vec::Vec;
 
