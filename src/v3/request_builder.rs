@@ -112,6 +112,7 @@ impl RequestBuilder {
                     if i != 0 {
                         acc.push_str(" & ")
                     };
+
                     acc.push_str(&format!("{} {} {}", k, v.0.to_string(), v.1));
 
                     if i == (self.where_clauses.len() - 1) {
@@ -120,12 +121,20 @@ impl RequestBuilder {
                     acc
                 });
 
+        self.format_body_parts(fields, where_clause)
+            .as_bytes()
+            .to_vec()
+
+    }
+
+    fn format_body_parts(&self, fields: String, where_clauses : String) -> String {
+
         let mut order = String::new();
 
         let mut body = format!("fields {}", fields);
 
         if self.where_clauses.len() > 0 {
-            body = format!("{} {}", body, where_clause);
+            body = format!("{} {}", body, where_clauses);
         }
 
         if !str::is_empty(&self.sort.0) {
@@ -133,7 +142,7 @@ impl RequestBuilder {
             body = format!("{} {}", body, order);
         }
 
-        body.as_bytes().to_vec()
+        body
     }
 }
 

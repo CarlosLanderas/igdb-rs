@@ -6,6 +6,7 @@ pub mod request_builder;
 
 pub struct IGDBClient {
     api_key: String,
+
 }
 
 impl IGDBClient {
