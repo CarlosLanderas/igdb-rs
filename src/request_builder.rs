@@ -13,6 +13,8 @@ pub struct RequestBuilder {
     fields: Vec<String>,
     where_clauses: BTreeMap<String, (Equality, String)>,
     sort: (String, String),
+    limit: usize,
+    search: String,
 }
 
 pub enum OrderBy {
@@ -55,6 +57,8 @@ impl RequestBuilder {
             fields: Vec::new(),
             where_clauses: BTreeMap::new(),
             sort: (String::new(), String::new()),
+            limit: 50,
+            search: String::new()
         }
     }
     pub fn all_fields(mut self) -> Self {
@@ -86,6 +90,16 @@ impl RequestBuilder {
     ) -> Self {
         self.where_clauses
             .insert(field.into(), (equality, clause.into()));
+        self
+    }
+
+    pub fn limit(mut self, limit: usize) -> Self {
+        self.limit = limit;
+        self
+    }
+
+    pub fn search<S : Into<String>>(mut self, search: S) -> Self {
+        self.search = search.into();
         self
     }
 
@@ -152,6 +166,10 @@ impl RequestBuilder {
 
         let mut body = format!("fields {}", fields);
 
+        if !str::is_empty(&self.search) {
+            body = format!("{} search \"{}\";", body, self.search);
+        }
+
         if self.where_clauses.len() > 0 {
             body = format!("{} {}", body, where_clauses);
         }
@@ -161,6 +179,8 @@ impl RequestBuilder {
             body = format!("{} {}", body, order);
         }
 
+        body = format!("{} limit {};", body, self.limit);
+        println!("{}", body);
         body
     }
 }
