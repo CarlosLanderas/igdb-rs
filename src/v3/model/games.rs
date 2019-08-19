@@ -4,55 +4,105 @@ use crate::v3::request_builder::RequestBuilder;
 use std::collections::HashMap;
 use std::vec::Vec;
 
-struct GameResponse {
-    age_ratings: AgeRating,
-    aggregated_rating: f32,
-    aggregated_rating_count: usize,
-    alternative_names: Vec<usize>,
-    artworks: Vec<usize>,
-    bundles: usize,
-    category: Category,
-    collection: usize,
-    cover: usize,
-    created_at: u64,
-    dlcs: usize,
-    external_games: Vec<usize>,
-    first_release_date: u64,
-    follows: usize,
-    franchise: usize,
-    franchises: Vec<usize>,
-    game_engines: Vec<usize>,
-    game_modes: Vec<usize>,
-    genres: Vec<usize>,
-    hypes: usize,
-    involved_companies: Vec<usize>,
-    keywords: Vec<usize>,
-    multiplayer_modes: Vec<usize>,
-    name: String,
-    parent_game: usize,
-    platforms: Vec<usize>,
-    player_perspectives: Vec<usize>,
-    popularity: f32,
-    pulse_count: usize,
-    rating: f32,
-    rating_count: usize,
-    release_dates: Vec<usize>,
-    screenshots: Vec<usize>,
-    similar_games: usize,
-    slug: String,
-    standalone_expansions: usize,
-    status: Status,
-    storyline: String,
-    summary: String,
-    tags: Vec<usize>,
-    themes: Vec<usize>,
-    time_to_beat: Vec<usize>,
-    total_rating: f32,
-    total_rating_count: usize,
-    updated_at: u64,
-    url: String,
-    version_parent: usize,
-    version_title: String,
-    videos: usize,
-    websites: usize,
+#[derive(Deserialize)]
+pub struct GameResponse {
+    // pub age_ratings: AgeRating,
+    #[serde(default)]
+    pub aggregated_rating: f32,
+    #[serde(default)]
+    pub aggregated_rating_count: usize,
+    #[serde(default)]
+    pub alternative_names: Vec<usize>,
+    #[serde(default)]
+    pub artworks: Vec<usize>,
+    #[serde(default)]
+    pub bundles: Vec<usize>,
+    #[serde(default)]
+    pub category: Category,
+    #[serde(default)]
+    pub collection: u32,
+    #[serde(default)]
+    pub cover: u32,
+    #[serde(default)]
+    pub created_at: u64,
+    #[serde(default)]
+    pub dlcs: u32,
+    #[serde(default)]
+    pub external_games: Vec<u32>,
+    #[serde(default)]
+    pub first_release_date: u64,
+    #[serde(default)]
+    pub follows: u32,
+    #[serde(default)]
+    pub franchise: u32,
+    #[serde(default)]
+    pub franchises: Vec<u32>,
+    #[serde(default)]
+    pub game_engines: Vec<u32>,
+    #[serde(default)]
+    pub game_modes: Vec<u32>,
+    #[serde(default)]
+    pub genres: Vec<u32>,
+    #[serde(default)]
+    pub hypes: u32,
+    #[serde(default)]
+    pub involved_companies: Vec<u32>,
+    #[serde(default)]
+    pub keywords: Vec<u32>,
+    #[serde(default)]
+    pub multiplayer_modes: Vec<u32>,
+    #[serde(default)]
+    pub name: String,
+    #[serde(default)]
+    pub parent_game: u32,
+    #[serde(default)]
+    pub platforms: Vec<u32>,
+    #[serde(default)]
+    pub player_perspectives: Vec<u32>,
+    #[serde(default)]
+    pub popularity: f32,
+    #[serde(default)]
+    pub pulse_count: u32,
+    #[serde(default)]
+    pub rating: f32,
+    #[serde(default)]
+    pub rating_count: u32,
+    #[serde(default)]
+    pub release_dates: Vec<u32>,
+    #[serde(default)]
+    pub screenshots: Vec<u32>,
+    #[serde(default)]
+    pub similar_games: u32,
+    #[serde(default)]
+    pub slug: String,
+    #[serde(default)]
+    pub standalone_expansions: u32,
+    #[serde(default)]
+    pub status: Status,
+    #[serde(default)]
+    pub storyline: String,
+    #[serde(default)]
+    pub summary: String,
+    #[serde(default)]
+    pub tags: Vec<u32>,
+    #[serde(default)]
+    pub themes: Vec<u32>,
+    #[serde(default)]
+    pub time_to_beat: usize,
+    #[serde(default)]
+    pub total_rating: f32,
+    #[serde(default)]
+    pub total_rating_count: u32,
+    #[serde(default)]
+    pub updated_at: u64,
+    #[serde(default)]
+    pub url: String,
+    #[serde(default)]
+    pub version_parent: u32,
+    #[serde(default)]
+    pub version_title: String,
+    #[serde(default)]
+    pub videos: u32,
+    #[serde(default)]
+    pub websites: u32,
 }

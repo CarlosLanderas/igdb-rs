@@ -1,16 +1,17 @@
-use crate::v3::endpoints::games;
-use std::borrow::BorrowMut;
 use std::collections::BTreeMap;
-use std::str::{FromStr};
-use std::string::{ToString};
+use std::str::FromStr;
+use std::string::ToString;
 use surf::middleware::HttpClient;
 use url::Url;
 
 const ALL_FIELDS: &'static str = "*";
+const HEADER_KEY_NAME: &'static str = "user-key";
 
 pub struct RequestBuilder {
-    pub(crate) fields: Vec<String>,
-    pub(crate) where_clauses: BTreeMap<String, (Equality, String)>,
+    url: String,
+    api_key: String,
+    fields: Vec<String>,
+    where_clauses: BTreeMap<String, (Equality, String)>,
     sort: (String, String),
 }
 
@@ -23,15 +24,16 @@ impl ToString for OrderBy {
     fn to_string(&self) -> String {
         match self {
             OrderBy::Ascending => "asc",
-            OrderBy::Descending => "desc"
-        }.into()
+            OrderBy::Descending => "desc",
+        }
+        .into()
     }
 }
 
 pub enum Equality {
     Lower,
     Greater,
-    Equal
+    Equal,
 }
 
 impl ToString for Equality {
@@ -39,38 +41,51 @@ impl ToString for Equality {
         match self {
             Equality::Equal => "=",
             Equality::Greater => ">",
-            Equality::Lower => "<"
-        }.into()
+            Equality::Lower => "<",
+        }
+        .into()
     }
 }
 
-
 impl RequestBuilder {
-    pub fn new() -> RequestBuilder {
+    pub fn new<S: Into<String>>(api_key: S, url: S) -> RequestBuilder {
         RequestBuilder {
+            api_key: api_key.into(),
+            url: url.into(),
             fields: Vec::new(),
             where_clauses: BTreeMap::new(),
             sort: (String::new(), String::new()),
         }
     }
-    pub fn all_fields(&mut self) -> &Self {
+    pub fn all_fields(mut self) -> Self {
         self.fields.clear();
         self.fields.push(ALL_FIELDS.into());
         self
     }
 
-    pub fn add_field<S: Into<String>>(&mut self, field: S) -> &mut Self {
+    pub fn add_field<S: Into<String>>(mut self, field: S) -> Self {
         self.fields.push(field.into());
         self
     }
 
+    pub fn add_fields<I, T>(mut self, iter: I) -> Self
+    where
+        I: IntoIterator<Item = T>,
+        T: Into<String>,
+    {
+        let str_fields: Vec<String> = iter.into_iter().map(Into::into).collect();
+        self.fields.extend(str_fields);
+        self
+    }
+
     pub fn add_where<L: Into<String>, R: Into<String>>(
-        &mut self,
+        mut self,
         field: L,
         equality: Equality,
         clause: R,
-    ) -> &mut Self {
-        self.where_clauses.insert(field.into(), (equality, clause.into()));
+    ) -> Self {
+        self.where_clauses
+            .insert(field.into(), (equality, clause.into()));
         self
     }
 
@@ -78,14 +93,21 @@ impl RequestBuilder {
         self.sort = (field.into(), order.to_string());
     }
 
-    fn build(&self) -> surf::Request<impl HttpClient> {
-        let mut req = surf::Request::new(http::Method::GET, Url::from_str(&games()).unwrap());
-        let mut_req = req.borrow_mut();
+    pub(crate) fn build(&self) -> surf::Request<impl HttpClient> {
+        let body = &self.build_body();
+
+        let mut req = surf::Request::new(http::Method::GET, Url::from_str(&self.url).unwrap())
+            .body_bytes(body);
+
+        req.headers().insert(HEADER_KEY_NAME, &self.api_key);
+        req.headers().insert("content-type", "application/text");
+        println!("{:?}", String::from_utf8_lossy(&body).to_owned());
+        println!("{:?}", req);
         req
     }
 
-    pub(crate) fn build_body(self) -> Vec<u8> {
-        let mut bytes: Vec<u8> = vec![];
+    pub(crate) fn build_body(&self) -> Vec<u8> {
+        let bytes: Vec<u8> = vec![];
 
         let fields = self
             .fields
@@ -124,11 +146,9 @@ impl RequestBuilder {
         self.format_body_parts(fields, where_clause)
             .as_bytes()
             .to_vec()
-
     }
 
-    fn format_body_parts(&self, fields: String, where_clauses : String) -> String {
-
+    fn format_body_parts(&self, fields: String, where_clauses: String) -> String {
         let mut order = String::new();
 
         let mut body = format!("fields {}", fields);
@@ -148,21 +168,18 @@ impl RequestBuilder {
 
 #[test]
 fn request_builder_with_all_fields() {
-    let mut builder = RequestBuilder::new();
+    let mut builder = RequestBuilder::new("", "");
 
     builder.all_fields();
 
     let body = builder.build_body();
 
-    assert_eq!(
-        "fields *;",
-        String::from_utf8_lossy(&body).to_owned()
-    );
+    assert_eq!("fields *;", String::from_utf8_lossy(&body).to_owned());
 }
 
 #[test]
 fn request_builder_with_fields_and_where_clause_body_build() {
-    let mut builder = RequestBuilder::new();
+    let mut builder = RequestBuilder::new("", "");
 
     builder
         .add_field("name")
@@ -178,10 +195,9 @@ fn request_builder_with_fields_and_where_clause_body_build() {
     );
 }
 
-
 #[test]
 fn request_builder_with_fields__where_clause_and_sort_asc_body_build() {
-    let mut builder = RequestBuilder::new();
+    let mut builder = RequestBuilder::new("", "");
 
     builder
         .add_field("name")
