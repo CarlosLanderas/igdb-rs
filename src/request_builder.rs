@@ -101,8 +101,7 @@ impl RequestBuilder {
 
         req.headers().insert(HEADER_KEY_NAME, &self.api_key);
         req.headers().insert("content-type", "application/text");
-        println!("{:?}", String::from_utf8_lossy(&body).to_owned());
-        println!("{:?}", req);
+
         req
     }
 

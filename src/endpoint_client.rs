@@ -15,11 +15,8 @@ impl EndpointClient {
     pub async fn get<T: DeserializeOwned>(&self, request_builder: &RequestBuilder) -> Vec<T> {
         let request = request_builder.build();
         let url = request.url().clone().into_string();
-
         let response_str = request.recv_string().await.unwrap();
-        for (i, l) in response_str.lines().enumerate() {
-            println!("{}:{}", i, l);
-        }
+
         serde_json::from_str::<Vec<T>>(&response_str).unwrap()
     }
 }

@@ -10,12 +10,16 @@ fn main() {
 
         let request = games_client
             .request()
-            .add_fields(vec!["name", "summary", "time_to_beat", "status"])
+            .add_fields(vec!["name", "summary", "time_to_beat", "status", "url", "total_rating"])
             .add_where("id", Equality::Equal, "1942");
 
         let result = games_client.get(&request).await;
 
-        println!("{}", result.first().unwrap().name);
-        println!("{}", result.first().unwrap().summary);
+        let first = result.first().unwrap();
+        println!("Name: {}", first.name);
+        println!("Summary: {}", first.summary);
+        println!("Time to beat: {}", first.time_to_beat);
+        println!("Url: {}", first.url);
+        println!("Total rating: {}", first.total_rating);
     })
 }
