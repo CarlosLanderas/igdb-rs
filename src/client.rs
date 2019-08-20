@@ -17,7 +17,6 @@ create_client!(ReleaseDateClient, ReleaseDate, release_dates);
 create_client!(ScreenshotsClient, Screenshot, screenshots);
 create_client!(WebsitesClient, Website, websites);
 
-
 pub struct IGDBClient {
     api_key: String,
 }

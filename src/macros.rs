@@ -42,9 +42,9 @@ macro_rules! use_client_imports {
             model::game_mode::GameMode,
             model::games::Game,
             model::multiplayer_mode::MultiplayerMode,
+            model::release_date::ReleaseDate,
             model::screenshot::Screenshot,
             model::website::Website,
-            model::release_date::ReleaseDate,
             request_builder::RequestBuilder,
         };
     };

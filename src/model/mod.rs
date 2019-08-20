@@ -6,6 +6,6 @@ pub mod enums;
 pub mod game_mode;
 pub mod games;
 pub mod multiplayer_mode;
+pub mod release_date;
 pub mod screenshot;
 pub mod website;
-pub mod release_date;

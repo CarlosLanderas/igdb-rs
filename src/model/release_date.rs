@@ -21,6 +21,5 @@ pub struct ReleaseDate {
     #[serde(default)]
     pub updated_at: u64,
     #[serde(default)]
-    pub y: usize
-    
+    pub y: usize,
 }

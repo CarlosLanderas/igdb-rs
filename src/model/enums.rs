@@ -97,8 +97,6 @@ impl Default for Status {
     }
 }
 
-
-
 #[derive(Deserialize_repr, Debug)]
 #[repr(u8)]
 pub enum Region {

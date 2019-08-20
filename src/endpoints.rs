@@ -11,7 +11,7 @@ pub enum Endpoint {
     multiplayer_modes,
     covers,
     screenshots,
-    release_dates
+    release_dates,
 }
 
 pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
