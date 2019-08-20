@@ -1,7 +1,7 @@
 #[derive(Deserialize, Debug)]
 pub struct Company {
     #[serde(default)]
-    pub id : usize,
+    pub id: usize,
     #[serde(default)]
     pub name: String,
     #[serde(default)]
@@ -9,9 +9,9 @@ pub struct Company {
     #[serde(default)]
     pub published: usize,
     #[serde(default)]
-    pub created_at : u64,
+    pub created_at: u64,
     #[serde(default)]
-    pub slug : String,
+    pub slug: String,
     #[serde(default)]
-    pub url : String,
+    pub url: String,
 }

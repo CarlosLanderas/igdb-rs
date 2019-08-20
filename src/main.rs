@@ -1,8 +1,8 @@
 #![feature(async_await)]
 
 use igdb_client::client::IGDBClient;
-use igdb_client::model::games::Game;
 use igdb_client::model::company::Company;
+use igdb_client::model::games::Game;
 use igdb_client::request_builder::Equality;
 
 fn main() {
@@ -18,7 +18,7 @@ fn main() {
                 "status",
                 "url",
                 "total_rating",
-                "involved_companies"
+                "involved_companies",
             ])
             .search("Witcher")
             .limit(3);
@@ -34,15 +34,15 @@ fn main() {
         println!("Company: {:?}", witcher);
         println!("Company: {}", company_id);
 
-        let company_request = company_client
-            .request()
-            .all_fields()
-            .add_where("id", Equality::Equal,   company_id);
+        let company_request =
+            company_client
+                .request()
+                .all_fields()
+                .add_where("id", Equality::Equal, company_id);
 
         let companies = company_client.get(&company_request).await.unwrap();
         let company = companies.first().unwrap();
         println!("{:?}", company);
-
     })
 }
 
