@@ -5,6 +5,7 @@ use crate::{
     model::company::Company,
     model::games::Game,
     model::website::Website,
+    model::character::Character,
     request_builder::RequestBuilder,
 };
 
@@ -19,6 +20,7 @@ create_client!(GameClient, Game, games);
 create_client!(CompanyClient, Company, companies);
 create_client!(WebsitesClient, Website, websites);
 create_client!(ArtworksClient, Artwork, artworks);
+create_client!(CharacterClient, Character, characters);
 
 pub struct IGDBClient {
     api_key: String,
