@@ -2,20 +2,12 @@ const BASE_URL: &str = "https://api-v3.igdb.com";
 
 pub enum Endpoint {
     Games,
-    Achievements,
+    Companies,
 }
 
 pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
     match endpoint {
-        Endpoint::Games => games(),
-        Endpoint::Achievements => achievements(),
+        Endpoint::Games => format!("{}/games", BASE_URL),
+        Endpoint::Companies => format!("{}/companies", BASE_URL),
     }
-}
-
-fn games() -> String {
-    format!("{}/games", BASE_URL)
-}
-
-fn achievements() -> String {
-    format!("{}/achievements", BASE_URL)
 }

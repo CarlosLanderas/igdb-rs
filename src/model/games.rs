@@ -5,8 +5,9 @@ use std::collections::HashMap;
 use std::vec::Vec;
 
 #[derive(Deserialize)]
-pub struct GameResponse {
-    // pub age_ratings: AgeRating,
+pub struct Game {
+    #[serde(default)]
+    pub age_ratings: Vec<usize>,
     #[serde(default)]
     pub aggregated_rating: f32,
     #[serde(default)]
@@ -45,6 +46,8 @@ pub struct GameResponse {
     pub genres: Vec<u32>,
     #[serde(default)]
     pub hypes: u32,
+    #[serde(default)]
+    pub id: usize,
     #[serde(default)]
     pub involved_companies: Vec<u32>,
     #[serde(default)]

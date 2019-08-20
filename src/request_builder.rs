@@ -58,7 +58,7 @@ impl RequestBuilder {
             where_clauses: BTreeMap::new(),
             sort: (String::new(), String::new()),
             limit: 50,
-            search: String::new()
+            search: String::new(),
         }
     }
     pub fn all_fields(mut self) -> Self {
@@ -98,7 +98,7 @@ impl RequestBuilder {
         self
     }
 
-    pub fn search<S : Into<String>>(mut self, search: S) -> Self {
+    pub fn search<S: Into<String>>(mut self, search: S) -> Self {
         self.search = search.into();
         self
     }
