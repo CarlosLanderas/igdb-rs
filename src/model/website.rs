@@ -1,7 +1,11 @@
 #[derive(Deserialize, Debug)]
 pub struct Website {
+    #[serde(default)]
     pub category: usize,
+    #[serde(default)]
     pub game: usize,
+    #[serde(default)]
     pub trusted: bool,
-    pub url: String
+    #[serde(default)]
+    pub url: String,
 }

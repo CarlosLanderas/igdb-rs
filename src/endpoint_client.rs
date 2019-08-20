@@ -17,13 +17,12 @@ impl EndpointClient {
         &self,
         request_builder: &RequestBuilder,
     ) -> Result<Vec<T>, Exception> {
+        
         let request = request_builder.build();
-        let url = request.url().clone().into_string();
-
         let mut response = request.await;
         let result = match response {
             Ok(ref mut resp) => {
-                let mut response_str: String = resp.body_string().await.unwrap();
+                let response_str: String = resp.body_string().await.unwrap();
                 Ok(serde_json::from_str::<Vec<T>>(&response_str).unwrap())
             }
             Err(e) => {

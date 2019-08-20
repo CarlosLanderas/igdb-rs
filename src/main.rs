@@ -1,7 +1,6 @@
 #![feature(async_await)]
 
 use igdb_client::client::IGDBClient;
-use igdb_client::model::company::Company;
 use igdb_client::model::games::Game;
 use igdb_client::request_builder::Equality;
 
@@ -47,17 +46,19 @@ fn main() {
         println!("{:?}", company);
 
         let website_client = igdb_client.websites();
-        let website_req = website_client.request()
-                          .all_fields()
-                          .add_where("game", Equality::Equal, witcher.id.to_string());
+        let website_req = website_client.request().all_fields().add_where(
+            "game",
+            Equality::Equal,
+            witcher.id.to_string(),
+        );
 
         let websites = website_client.get(&website_req).await.unwrap();
 
         println!("Website for witcher is: {:?}", websites.first().unwrap());
-
     })
 }
 
+#[allow(dead_code)]
 fn show_games(games: &Vec<Game>) {
     for game in games {
         println!("Name: {}", game.name);

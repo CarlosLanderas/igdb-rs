@@ -25,7 +25,7 @@ macro_rules! create_client {
                 $i {
                     endpoint_client: EndpointClient::new(self.api_key.clone(), Endpoint::$k),
                 }
-           }
+            }
         }
     };
 }

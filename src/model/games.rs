@@ -1,7 +1,4 @@
-use crate::model::{category::Category, rating::AgeRating, status::Status};
-
-use crate::request_builder::RequestBuilder;
-use std::collections::HashMap;
+use crate::model::{category::Category, status::Status};
 use std::vec::Vec;
 
 #[derive(Deserialize, Debug)]

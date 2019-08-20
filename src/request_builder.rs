@@ -120,8 +120,7 @@ impl RequestBuilder {
     }
 
     pub(crate) fn build_body(&self) -> Vec<u8> {
-        let bytes: Vec<u8> = vec![];
-
+        
         let fields = self
             .fields
             .iter()
@@ -129,7 +128,7 @@ impl RequestBuilder {
             .fold(String::new(), |mut acc, (i, v)| {
                 acc.push_str(v);
                 let separator = match i {
-                    v if i == (self.fields.len() - 1) => ";",
+                    _ if i == (self.fields.len() - 1) => ";",
                     _ => ",",
                 };
                 acc.push_str(separator);
