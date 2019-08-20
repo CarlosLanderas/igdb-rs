@@ -24,17 +24,20 @@ fn main() {
             .limit(3);
 
         let result = games_client.get(&witcher_request).await.unwrap();
-        show_games(&result);
+        //show_games(&result);
 
         let witcher = result.first().unwrap();
 
         let company_client = igdb_client.companies();
         let company_id = witcher.involved_companies.first().unwrap().to_string();
 
+        println!("Company: {:?}", witcher);
+        println!("Company: {}", company_id);
+
         let company_request = company_client
             .request()
             .all_fields()
-            .add_where("published", Equality::Equal,  company_id);
+            .add_where("id", Equality::Equal,   company_id);
 
         let companies = company_client.get(&company_request).await.unwrap();
         let company = companies.first().unwrap();

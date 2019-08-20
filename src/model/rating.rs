@@ -1,6 +1,6 @@
 use crate::model::category::Category;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub enum Rating {
     Three = 1,
     Seven = 2,
@@ -16,7 +16,7 @@ pub enum Rating {
     AO = 12,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct AgeRating {
     category: Category,
     content_descriptions: usize,

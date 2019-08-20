@@ -1,4 +1,4 @@
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub enum Status {
     Released = 0,
     Alpha = 2,

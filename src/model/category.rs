@@ -1,4 +1,4 @@
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub enum Category {
     MainGame = 0,
     DlcAddon = 1,

@@ -4,7 +4,7 @@ use crate::request_builder::RequestBuilder;
 use std::collections::HashMap;
 use std::vec::Vec;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub struct Game {
     #[serde(default)]
     pub age_ratings: Vec<usize>,
