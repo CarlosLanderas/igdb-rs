@@ -32,6 +32,23 @@ impl Default for Gender {
 
 #[derive(Deserialize_repr, Debug)]
 #[repr(u8)]
+pub enum Platform {
+    Console = 1,
+    Arcade = 2,
+    Platform = 3,
+    OperativeSystem = 4,
+    PortableConsole = 5,
+    Computer = 6,
+}
+
+impl Default for Platform {
+    fn default() -> Self {
+        Platform::Console
+    }
+}
+
+#[derive(Deserialize_repr, Debug)]
+#[repr(u8)]
 pub enum Rating {
     Three = 1,
     Seven = 2,
@@ -77,5 +94,26 @@ pub enum Status {
 impl Default for Status {
     fn default() -> Self {
         Status::Released
+    }
+}
+
+
+
+#[derive(Deserialize_repr, Debug)]
+#[repr(u8)]
+pub enum Region {
+    Europe = 1,
+    NorthAmerica = 2,
+    Australia = 3,
+    NewZealand = 4,
+    Japan = 5,
+    China = 6,
+    Asia = 7,
+    WorldWide = 8,
+}
+
+impl Default for Region {
+    fn default() -> Self {
+        Region::Europe
     }
 }

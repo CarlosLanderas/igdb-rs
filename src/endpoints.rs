@@ -11,6 +11,7 @@ pub enum Endpoint {
     multiplayer_modes,
     covers,
     screenshots,
+    release_dates
 }
 
 pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
@@ -24,5 +25,6 @@ pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
         Endpoint::multiplayer_modes => format!("{}/multiplayer_modes", BASE_URL),
         Endpoint::covers => format!("{}/covers", BASE_URL),
         Endpoint::screenshots => format!("{}/screenshots", BASE_URL),
+        Endpoint::release_dates => format!("{}/release_dates", BASE_URL),
     }
 }

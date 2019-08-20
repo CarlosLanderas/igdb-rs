@@ -8,3 +8,4 @@ pub mod games;
 pub mod multiplayer_mode;
 pub mod screenshot;
 pub mod website;
+pub mod release_date;

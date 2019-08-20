@@ -44,6 +44,7 @@ macro_rules! use_client_imports {
             model::multiplayer_mode::MultiplayerMode,
             model::screenshot::Screenshot,
             model::website::Website,
+            model::release_date::ReleaseDate,
             request_builder::RequestBuilder,
         };
     };
