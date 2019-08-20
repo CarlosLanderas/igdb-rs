@@ -10,7 +10,8 @@ use surf::Exception;
 
 //create_client! macro automatically generates clients 
 //for different endpoints and extends IGDBClient struct
-//Params (client name, entity type, IGDB client function)
+
+//params: (ClientName, EntityResult, IGDB client impl method)
 
 create_client!(GameClient, Game, games);
 create_client!(CompanyClient, Company, companies);
