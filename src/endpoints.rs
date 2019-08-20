@@ -7,7 +7,8 @@ pub enum Endpoint {
     websites,
     artworks,
     characters,
-    game_modes
+    game_modes,
+    multiplayer_modes,
 }
 
 pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
@@ -18,5 +19,6 @@ pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
         Endpoint::artworks => format!("{}/artworks", BASE_URL),
         Endpoint::characters => format!("{}/characters", BASE_URL),
         Endpoint::game_modes => format!("{}/game_modes", BASE_URL),
+        Endpoint::multiplayer_modes => format!("{}/multiplayer_modes", BASE_URL),
     }
 }

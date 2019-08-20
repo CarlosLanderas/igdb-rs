@@ -21,16 +21,14 @@ impl Default for Category {
 pub enum Gender {
     Male = 1,
     Female = 2,
-    Other = 3
+    Other = 3,
 }
-
 
 impl Default for Gender {
     fn default() -> Self {
         Gender::Male
     }
 }
-
 
 #[derive(Deserialize_repr, Debug)]
 #[repr(u8)]
@@ -49,8 +47,6 @@ pub enum Rating {
     AO = 12,
 }
 
-
-
 #[derive(Deserialize_repr, Debug)]
 #[repr(u8)]
 pub enum Species {
@@ -58,7 +54,7 @@ pub enum Species {
     Alien = 2,
     Animal = 3,
     Android = 4,
-    Unknown = 5
+    Unknown = 5,
 }
 
 impl Default for Species {
@@ -66,7 +62,6 @@ impl Default for Species {
         Species::Human
     }
 }
-
 
 #[derive(Deserialize_repr, Debug)]
 #[repr(u8)]
@@ -84,5 +79,3 @@ impl Default for Status {
         Status::Released
     }
 }
-
-
