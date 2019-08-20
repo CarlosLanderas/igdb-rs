@@ -1,17 +1,4 @@
-use crate::{
-    endpoint_client::EndpointClient,
-    endpoints::{get_endpoint_url, Endpoint},
-    model::artwork::Artwork,
-    model::character::Character,
-    model::company::Company,
-    model::game_mode::GameMode,
-    model::games::Game,
-    model::multiplayer_mode::MultiplayerMode,
-    model::website::Website,
-    model::cover::Cover,
-    request_builder::RequestBuilder,
-};
-
+use_client_imports!();
 use surf::Exception;
 
 //create_client! macro automatically generates clients
@@ -27,6 +14,7 @@ create_client!(CharacterClient, Character, characters);
 create_client!(GameModesClient, GameMode, game_modes);
 create_client!(MultiPlayerModeClient, MultiplayerMode, multiplayer_modes);
 create_client!(CoversClient, Cover, covers);
+create_client!(ScreenshotsClient, Screenshot, screenshots);
 
 pub struct IGDBClient {
     api_key: String,

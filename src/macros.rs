@@ -29,3 +29,22 @@ macro_rules! create_client {
         }
     };
 }
+
+macro_rules! use_client_imports {
+    () => {
+        use crate::{
+            endpoint_client::EndpointClient,
+            endpoints::{get_endpoint_url, Endpoint},
+            model::artwork::Artwork,
+            model::character::Character,
+            model::company::Company,
+            model::cover::Cover,
+            model::game_mode::GameMode,
+            model::games::Game,
+            model::multiplayer_mode::MultiplayerMode,
+            model::screenshot::Screenshot,
+            model::website::Website,
+            request_builder::RequestBuilder,
+        };
+    };
+}
