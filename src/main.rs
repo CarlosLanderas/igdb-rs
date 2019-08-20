@@ -6,9 +6,8 @@ use igdb_client::request_builder::Equality;
 
 fn main() {
     async_std::task::block_on(async {
-        
         let igdb_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1");
-        
+
         let games_client = igdb_client.games();
 
         let witcher_request = games_client
@@ -16,6 +15,7 @@ fn main() {
             .add_fields(vec![
                 "name",
                 "summary",
+                "category",
                 "status",
                 "url",
                 "total_rating",

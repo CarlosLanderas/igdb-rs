@@ -120,7 +120,6 @@ impl RequestBuilder {
     }
 
     pub(crate) fn build_body(&self) -> Vec<u8> {
-        
         let fields = self
             .fields
             .iter()

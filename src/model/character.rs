@@ -1,9 +1,11 @@
+use crate::model::enums::{Gender, Species};
+
 #[derive(Deserialize, Debug)]
 pub struct Character {
     #[serde(default)]
     pub akas: Vec<String>,
     #[serde(default)]
-    pub country_name : String,
+    pub country_name: String,
     #[serde(default)]
     pub created_at: u64,
     #[serde(default)]
@@ -11,7 +13,7 @@ pub struct Character {
     #[serde(default)]
     pub games: Vec<usize>,
     #[serde(default)]
-    pub gender: usize,
+    pub gender: Gender,
     #[serde(default)]
     pub mug_shot: usize,
     #[serde(default)]
@@ -21,11 +23,9 @@ pub struct Character {
     #[serde(default)]
     pub slug: String,
     #[serde(default)]
-    pub species: usize,
+    pub species: Species,
     #[serde(default)]
     pub updated_at: u64,
     #[serde(default)]
-    pub url: String
-
-
+    pub url: String,
 }

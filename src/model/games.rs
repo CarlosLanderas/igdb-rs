@@ -1,4 +1,4 @@
-use crate::model::{category::Category, status::Status};
+use crate::model::enums::{Category, Status};
 use std::vec::Vec;
 
 #[derive(Deserialize, Debug)]

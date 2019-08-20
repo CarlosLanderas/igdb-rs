@@ -17,7 +17,6 @@ impl EndpointClient {
         &self,
         request_builder: &RequestBuilder,
     ) -> Result<Vec<T>, Exception> {
-        
         let request = request_builder.build();
         let mut response = request.await;
         let result = match response {

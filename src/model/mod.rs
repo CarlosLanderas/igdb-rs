@@ -1,8 +1,7 @@
 pub mod artwork;
-pub mod category;
 pub mod character;
 pub mod company;
+pub mod enums;
+pub mod game_mode;
 pub mod games;
-pub mod rating;
-pub mod status;
 pub mod website;
