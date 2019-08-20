@@ -107,5 +107,5 @@ pub struct Game {
     #[serde(default)]
     pub videos: u32,
     #[serde(default)]
-    pub websites: u32,
+    pub websites: Vec<u32>,
 }

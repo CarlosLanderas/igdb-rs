@@ -3,6 +3,7 @@ use crate::{
     endpoints::{get_endpoint_url, Endpoint},
     model::company::Company,
     model::games::Game,
+    model::website::Website,
     request_builder::RequestBuilder,
 };
 
@@ -15,6 +16,7 @@ use surf::Exception;
 
 create_client!(GameClient, Game, games);
 create_client!(CompanyClient, Company, companies);
+create_client!(WebsitesClient, Website, websites);
 
 pub struct IGDBClient {
     api_key: String,
