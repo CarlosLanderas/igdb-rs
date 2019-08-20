@@ -1,5 +1,5 @@
 macro_rules! create_client {
-    ($i: ident, $j: ident) => {
+    ($i: ident, $j: ident, $k: ident) => {
         pub struct $i {
             endpoint_client: EndpointClient,
         }
@@ -18,6 +18,14 @@ macro_rules! create_client {
             ) -> Result<Vec<$j>, Exception> {
                 self.endpoint_client.get::<$j>(&request_builder).await
             }
+        }
+
+        impl IGDBClient {
+            pub fn $k(&self) -> $i {
+                $i {
+                    endpoint_client: EndpointClient::new(self.api_key.clone(), Endpoint::$k),
+                }
+           }
         }
     };
 }

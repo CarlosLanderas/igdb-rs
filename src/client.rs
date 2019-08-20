@@ -8,8 +8,12 @@ use crate::{
 
 use surf::Exception;
 
-create_client!(GameClient, Game);
-create_client!(CompanyClient, Company);
+//create_client! macro automatically generates clients 
+//for different endpoints and extends IGDBClient struct
+//Params (client name, entity type, IGDB client function)
+
+create_client!(GameClient, Game, games);
+create_client!(CompanyClient, Company, companies);
 
 pub struct IGDBClient {
     api_key: String,
@@ -19,18 +23,6 @@ impl IGDBClient {
     pub fn new<S: Into<String>>(api_key: S) -> IGDBClient {
         IGDBClient {
             api_key: api_key.into(),
-        }
-    }
-
-    pub fn games(&self) -> GameClient {
-        GameClient {
-            endpoint_client: EndpointClient::new(self.api_key.clone(), Endpoint::Games),
-        }
-    }
-
-    pub fn companies(&self) -> CompanyClient {
-        CompanyClient {
-            endpoint_client: EndpointClient::new(self.api_key.clone(), Endpoint::Companies),
         }
     }
 }
