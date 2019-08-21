@@ -4,19 +4,14 @@ use igdb_client::client::IGDBClient;
 use igdb_client::model::games::Game;
 use igdb_client::request_builder::Equality;
 
-async fn hello() -> Result<String, Box<dyn std::error::Error>> {
-    Ok("Carlangas".to_owned())
-}
-
 fn main() {
     async_std::task::block_on(async {
-        println!("{:?}",hello().await);
-        return;
+
         let igdb_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1");
 
         let games_client = igdb_client.games();
 
-        let witcher_request = igdb_client
+        let witcher_request = games_client
             .request()
             .add_fields(vec![
                 "name",
@@ -44,7 +39,7 @@ fn main() {
         println!("Company: {}", company_id);
 
         let company_request =
-            igdb_client
+            company_client
                 .request()
                 .all_fields()
                 .add_where("id", Equality::Equal, company_id);
@@ -54,7 +49,7 @@ fn main() {
         println!("{:?}", company);
 
         let website_client = igdb_client.websites();
-        let website_req = igdb_client.request().all_fields().add_where(
+        let website_req = website_client.request().all_fields().add_where(
             "game",
             Equality::Equal,
             witcher.id.to_string(),

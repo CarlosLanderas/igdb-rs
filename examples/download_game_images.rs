@@ -7,13 +7,9 @@ use std::path::PathBuf;
 use futures::AsyncWriteExt;
 use http::Uri;
 
-#[macro_use]
-extern crate futures;
-
-
 async fn download_resource(path: &str, url: &str) {
 
-    let mut parsed_url = match url {
+    let parsed_url = match url {
         _ if !url.starts_with("http") => {
             format!("{}{}","http://", url)
         },
