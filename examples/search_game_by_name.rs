@@ -16,5 +16,9 @@ fn main() {
 
         println!("Name: {}", game.name);
         println!("Summary: {} ...", &game.summary[..100]);
+
+        //Prints
+        //Name: The Witcher 3: Wild Hunt
+        //Summary: The Witcher: Wild Hunt is a story-driven, next-generation open world role-playing game set in a visu ..
     })
 }

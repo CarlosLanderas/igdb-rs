@@ -37,5 +37,9 @@ fn main() {
             println!("{} has online coop: {}", names[i], m.onlinecoop);
             println!("{} has local coop: {}", names[i], m.lancoop);
         }
+
+        //Prints:
+        //Borderlands 2 has online coop: true
+        //Borderlands 2 has local coop: false
     })
 }
