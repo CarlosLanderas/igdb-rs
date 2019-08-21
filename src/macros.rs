@@ -23,6 +23,12 @@ macro_rules! create_client {
     };
 }
 
+macro_rules! request {
+    () => {
+        IGDBClient::create_request()
+    }
+}
+
 macro_rules! use_client_imports {
     () => {
         use crate::{
