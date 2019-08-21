@@ -3,7 +3,7 @@ use async_std::task;
 use igdb_client::client::IGDBClient;
 fn main() {
     task::block_on(async {
-        let games_client = IGDBClient::new("user-key").games();
+        let games_client = IGDBClient::new("AnneFrank.Web.Application/Infrastructure/Converters/SearchDateTimeConverter.cs").games();
 
         let game_request = games_client
             .request()
