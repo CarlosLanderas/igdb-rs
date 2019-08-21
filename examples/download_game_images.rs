@@ -7,10 +7,12 @@ use igdb_client::client::IGDBClient;
 use igdb_client::request_builder::Equality;
 
 async fn download_resource(path: &str, url: &str) {
-    let parsed_url = match url {
+    let mut parsed_url = match url {
         _ if !url.starts_with("http") => format!("{}{}", "http://", url),
         _ => url.to_owned(),
     };
+
+    parsed_url = parsed_url.replace("thumb", "screenshot_med");
 
     let content = surf::get(parsed_url).recv_bytes().await.unwrap();
     let mut file = File::create(path).await.unwrap();
@@ -23,7 +25,7 @@ fn main() {
         let games_client = igdb_client.games();
 
         let mut game_req = IGDBClient::create_request();
-        game_req.add_field("id").search("Modern Warfare 2");
+        game_req.add_field("id").search("Heavy Rain");
 
         let game = games_client.get(&game_req).await.unwrap();
 
