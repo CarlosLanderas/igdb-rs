@@ -27,4 +27,7 @@ impl IGDBClient {
             api_key: api_key.into(),
         }
     }
+    pub fn create_request() -> RequestBuilder {
+        RequestBuilder::new()
+    }
 }

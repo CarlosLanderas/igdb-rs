@@ -1,4 +1,4 @@
-use crate::endpoints::Endpoint;
+use crate::endpoints::{get_endpoint_url, Endpoint};
 use crate::request_builder::RequestBuilder;
 use serde::de::DeserializeOwned;
 use surf::Exception;
@@ -17,7 +17,7 @@ impl EndpointClient {
         &self,
         request_builder: &RequestBuilder,
     ) -> Result<Vec<T>, Exception> {
-        let request = request_builder.build();
+        let request = request_builder.build(&self.api_key, &get_endpoint_url(&self.endpoint));
         let mut response = request.await;
         let result = match response {
             Ok(ref mut resp) => {

@@ -6,13 +6,12 @@ use igdb_client::request_builder::Equality;
 
 fn main() {
     async_std::task::block_on(async {
-
         let igdb_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1");
 
         let games_client = igdb_client.games();
 
-        let witcher_request = games_client
-            .request()
+        let mut witcher_request = IGDBClient::create_request();
+        witcher_request
             .add_fields(vec![
                 "name",
                 "summary",
@@ -31,29 +30,27 @@ fn main() {
 
         let witcher = result.first().unwrap();
 
-
         let company_client = igdb_client.companies();
         let company_id = witcher.involved_companies.first().unwrap().to_string();
 
         println!("Company: {:?}", witcher);
         println!("Company: {}", company_id);
 
-        let company_request =
-            company_client
-                .request()
-                .all_fields()
-                .add_where("id", Equality::Equal, company_id);
+        let mut company_request = IGDBClient::create_request();
+        company_request
+            .all_fields()
+            .add_where("id", Equality::Equal, company_id);
 
         let companies = company_client.get(&company_request).await.unwrap();
         let company = companies.first().unwrap();
         println!("{:?}", company);
 
         let website_client = igdb_client.websites();
-        let website_req = website_client.request().all_fields().add_where(
-            "game",
-            Equality::Equal,
-            witcher.id.to_string(),
-        );
+        let mut website_req = IGDBClient::create_request();
+
+        website_req
+            .all_fields()
+            .add_where("game", Equality::Equal, witcher.id.to_string());
 
         let websites = website_client.get(&website_req).await.unwrap();
 

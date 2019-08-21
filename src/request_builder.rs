@@ -7,11 +7,15 @@ use url::Url;
 const ALL_FIELDS: &'static str = "*";
 const HEADER_KEY_NAME: &'static str = "user-key";
 
+struct Filter {
+    key: String,
+    symbol: String,
+    value: String,
+}
+
 pub struct RequestBuilder {
-    url: String,
-    api_key: String,
     fields: Vec<String>,
-    where_clauses: BTreeMap<String, (Equality, String)>,
+    filters: Vec<Filter>,
     sort: (String, String),
     limit: usize,
     search: String,
@@ -50,29 +54,27 @@ impl ToString for Equality {
 }
 
 impl RequestBuilder {
-    pub fn new<S: Into<String>>(api_key: S, url: S) -> RequestBuilder {
+    pub fn new() -> RequestBuilder {
         RequestBuilder {
-            api_key: api_key.into(),
-            url: url.into(),
             fields: Vec::new(),
-            where_clauses: BTreeMap::new(),
+            filters: vec![],
             sort: (String::new(), String::new()),
             limit: 50,
             search: String::new(),
         }
     }
-    pub fn all_fields(mut self) -> Self {
+    pub fn all_fields(&mut self) -> &mut Self {
         self.fields.clear();
         self.fields.push(ALL_FIELDS.into());
         self
     }
 
-    pub fn add_field<S: Into<String>>(mut self, field: S) -> Self {
+    pub fn add_field<S: Into<String>>(&mut self, field: S) -> &mut Self {
         self.fields.push(field.into());
         self
     }
 
-    pub fn add_fields<I, T>(mut self, iter: I) -> Self
+    pub fn add_fields<I, T>(&mut self, iter: I) -> &mut Self
     where
         I: IntoIterator<Item = T>,
         T: Into<String>,
@@ -82,38 +84,52 @@ impl RequestBuilder {
         self
     }
 
-    pub fn add_where<L: Into<String>, R: Into<String>>(
-        mut self,
-        field: L,
-        equality: Equality,
-        clause: R,
-    ) -> Self {
-        self.where_clauses
-            .insert(field.into(), (equality, clause.into()));
+    pub fn add_where_in(&mut self, field: String, values: Vec<String>) -> &mut Self {
+        self.filters.push(Filter {
+            key: field,
+            symbol: String::new(),
+            value : format!("= ({})", values.join(",")),
+        });
+
         self
     }
 
-    pub fn limit(mut self, limit: usize) -> Self {
+    pub fn add_where<L: Into<String>, R: Into<String>>(
+        &mut self,
+        field: L,
+        equality: Equality,
+        clause: R,
+    ) -> &mut Self {
+        self.filters.push(Filter {
+            key: field.into(),
+            symbol: equality.to_string(),
+            value: clause.into(),
+        });
+        self
+    }
+
+    pub fn limit(&mut self, limit: usize) -> &mut Self {
         self.limit = limit;
         self
     }
 
-    pub fn search<S: Into<String>>(mut self, search: S) -> Self {
+    pub fn search<S: Into<String>>(&mut self, search: S) -> &mut Self {
         self.search = search.into();
         self
     }
 
-    pub fn sort_by<S: Into<String>>(&mut self, field: S, order: OrderBy) {
+    pub fn sort_by<S: Into<String>>(&mut self, field: S, order: OrderBy) -> &mut Self {
         self.sort = (field.into(), order.to_string());
+        self
     }
 
-    pub(crate) fn build(&self) -> surf::Request<impl HttpClient> {
+    pub(crate) fn build(&self, api_key: &str, url: &str) -> surf::Request<impl HttpClient> {
         let body = &self.build_body();
 
-        let mut req = surf::Request::new(http::Method::GET, Url::from_str(&self.url).unwrap())
-            .body_bytes(body);
+        let mut req =
+            surf::Request::new(http::Method::GET, Url::from_str(url).unwrap()).body_bytes(body);
 
-        req.headers().insert(HEADER_KEY_NAME, &self.api_key);
+        req.headers().insert(HEADER_KEY_NAME, api_key);
         req.headers().insert("content-type", "application/text");
 
         req
@@ -134,11 +150,11 @@ impl RequestBuilder {
                 acc
             });
 
-        let where_clause =
-            self.where_clauses
+        let filter_clause =
+            self.filters
                 .iter()
                 .enumerate()
-                .fold(String::new(), |mut acc, (i, (k, v))| {
+                .fold(String::new(), |mut acc, (i, filter)| {
                     if i == 0 {
                         acc.push_str("where ")
                     }
@@ -146,20 +162,25 @@ impl RequestBuilder {
                         acc.push_str(" & ")
                     };
 
-                    acc.push_str(&format!("{} {} {}", k, v.0.to_string(), v.1));
+                    acc.push_str(&format!(
+                        "{} {} {}",
+                        filter.key,
+                        filter.symbol,
+                        filter.value
+                    ));
 
-                    if i == (self.where_clauses.len() - 1) {
+                    if i == (self.filters.len() - 1) {
                         acc.push_str(";");
                     }
                     acc
                 });
 
-        self.format_body_parts(fields, where_clause)
+        self.format_body_parts(fields, filter_clause)
             .as_bytes()
             .to_vec()
     }
 
-    fn format_body_parts(&self, fields: String, where_clauses: String) -> String {
+    fn format_body_parts(&self, fields: String, filters: String) -> String {
         let mut order = String::new();
 
         let mut body = format!("fields {}", fields);
@@ -168,8 +189,8 @@ impl RequestBuilder {
             body = format!("{} search \"{}\";", body, self.search);
         }
 
-        if self.where_clauses.len() > 0 {
-            body = format!("{} {}", body, where_clauses);
+        if self.filters.len() > 0 {
+            body = format!("{} {}", body, filters);
         }
 
         if !str::is_empty(&self.sort.0) {
@@ -185,7 +206,7 @@ impl RequestBuilder {
 
 #[test]
 fn request_builder_with_all_fields() {
-    let mut builder = RequestBuilder::new("", "");
+    let mut builder = RequestBuilder::new();
 
     builder.all_fields();
 
@@ -196,7 +217,7 @@ fn request_builder_with_all_fields() {
 
 #[test]
 fn request_builder_with_fields_and_where_clause_body_build() {
-    let mut builder = RequestBuilder::new("", "");
+    let mut builder = RequestBuilder::new();
 
     builder
         .add_field("name")
@@ -214,7 +235,7 @@ fn request_builder_with_fields_and_where_clause_body_build() {
 
 #[test]
 fn request_builder_with_fields__where_clause_and_sort_asc_body_build() {
-    let mut builder = RequestBuilder::new("", "");
+    let mut builder = RequestBuilder::new();
 
     builder
         .add_field("name")

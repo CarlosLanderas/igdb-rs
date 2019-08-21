@@ -5,13 +5,6 @@ macro_rules! create_client {
         }
 
         impl $i {
-            pub fn request(&self) -> RequestBuilder {
-                RequestBuilder::new(
-                    self.endpoint_client.api_key.clone().into(),
-                    get_endpoint_url(&self.endpoint_client.endpoint),
-                )
-            }
-
             pub async fn get(
                 &self,
                 request_builder: &RequestBuilder,
