@@ -1,12 +1,13 @@
+use crate::request_filters::Filter;
 use std::str::FromStr;
 use std::string::ToString;
 use surf::middleware::HttpClient;
 use url::Url;
-use crate::request_filters::Filter;
 
 const ALL_FIELDS: &'static str = "*";
 const HEADER_KEY_NAME: &'static str = "user-key";
 
+#[derive(Clone)]
 pub struct RequestBuilder {
     pub(crate) fields: Vec<String>,
     pub(crate) filters: Vec<Filter>,
@@ -99,9 +100,7 @@ impl RequestBuilder {
 
                     acc.push_str(&format!(
                         "{} {} {}",
-                        filter.key,
-                        filter.symbol,
-                        filter.value
+                        filter.key, filter.symbol, filter.value
                     ));
 
                     if i == (self.filters.len() - 1) {
@@ -147,7 +146,10 @@ fn request_builder_with_all_fields() {
 
     let body = builder.build_body();
 
-    assert_eq!("fields *; limit 10;", String::from_utf8_lossy(&body).to_owned());
+    assert_eq!(
+        "fields *; limit 10;",
+        String::from_utf8_lossy(&body).to_owned()
+    );
 }
 
 #[test]

@@ -7,9 +7,9 @@ macro_rules! create_client {
         impl $i {
             pub async fn get(
                 &self,
-                request_builder: &RequestBuilder,
+                request_builder: RequestBuilder,
             ) -> Result<Vec<$j>, Exception> {
-                self.endpoint_client.get::<$j>(&request_builder).await
+                self.endpoint_client.get::<$j>(request_builder).await
             }
         }
 
@@ -23,28 +23,21 @@ macro_rules! create_client {
     };
 }
 
-#[allow(dead_code)]
+#[allow(unused_macros)]
 macro_rules! request {
     () => {
         IGDBClient::create_request()
-    }
+    };
 }
 
 macro_rules! use_client_imports {
     () => {
         use crate::{
-            endpoint_client::EndpointClient,
-            endpoints::Endpoint,
-            model::artwork::Artwork,
-            model::character::Character,
-            model::company::Company,
-            model::cover::Cover,
-            model::game_mode::GameMode,
-            model::games::Game,
-            model::multiplayer_mode::MultiplayerMode,
-            model::release_date::ReleaseDate,
-            model::screenshot::Screenshot,
-            model::website::Website,
+            endpoint_client::EndpointClient, endpoints::Endpoint, model::artwork::Artwork,
+            model::character::Character, model::company::Company, model::cover::Cover,
+            model::game_mode::GameMode, model::games::Game,
+            model::multiplayer_mode::MultiplayerMode, model::release_date::ReleaseDate,
+            model::screenshot::Screenshot, model::website::Website,
             request_builder::RequestBuilder,
         };
     };

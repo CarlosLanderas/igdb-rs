@@ -1,6 +1,5 @@
 use_client_imports!();
 use surf::Exception;
-
 //create_client! macro automatically generates clients
 //for different endpoints and extends IGDBClient struct
 

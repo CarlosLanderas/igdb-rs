@@ -15,7 +15,7 @@ impl EndpointClient {
 
     pub async fn get<T: DeserializeOwned>(
         &self,
-        request_builder: &RequestBuilder,
+        request_builder: RequestBuilder,
     ) -> Result<Vec<T>, Exception> {
         let request = request_builder.build(&self.api_key, &get_endpoint_url(&self.endpoint));
         let mut response = request.await;

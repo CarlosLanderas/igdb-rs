@@ -25,7 +25,7 @@ fn main() {
             .search("Witcher")
             .limit(3);
 
-        let result = games_client.get(&witcher_request).await.unwrap();
+        let result = games_client.get(witcher_request).await.unwrap();
         //show_games(&result);
 
         let witcher = result.first().unwrap();
@@ -41,7 +41,7 @@ fn main() {
             .all_fields()
             .add_where("id", Equality::Equal, company_id);
 
-        let companies = company_client.get(&company_request).await.unwrap();
+        let companies = company_client.get(company_request).await.unwrap();
         let company = companies.first().unwrap();
         println!("{:?}", company);
 
@@ -52,7 +52,7 @@ fn main() {
             .all_fields()
             .add_where("game", Equality::Equal, witcher.id.to_string());
 
-        let websites = website_client.get(&website_req).await.unwrap();
+        let websites = website_client.get(website_req).await.unwrap();
 
         println!("Website for witcher is: {:?}", websites.first().unwrap());
     })

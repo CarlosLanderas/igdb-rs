@@ -27,7 +27,7 @@ fn main() {
         let mut game_req = IGDBClient::create_request();
         game_req.add_field("id").search("Heavy Rain");
 
-        let game = games_client.get(&game_req).await.unwrap();
+        let game = games_client.get(game_req).await.unwrap();
 
         let game_id = &game.first().unwrap().id.to_string();
 
@@ -44,8 +44,8 @@ fn main() {
             .all_fields()
             .add_where("game", Equality::Equal, game_id);
 
-        let covers = &screenshots_client.get(&scr_request).await.unwrap();
-        let screens = &covers_client.get(&cover_request).await.unwrap();
+        let covers = &screenshots_client.get(scr_request).await.unwrap();
+        let screens = &covers_client.get(cover_request).await.unwrap();
 
         download_resource("cover.jpg", &covers.first().unwrap().url).await;
         download_resource("screen.jpg", &screens.first().unwrap().url).await;

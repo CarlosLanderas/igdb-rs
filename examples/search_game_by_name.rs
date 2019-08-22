@@ -11,7 +11,7 @@ fn main() {
             .add_field("summary")
             .search("Witcher 3");
 
-        let results = games_client.get(&game_request).await.unwrap();
+        let results = games_client.get(game_request).await.unwrap();
         let game = results.first().unwrap();
 
         println!("Name: {}", game.name);

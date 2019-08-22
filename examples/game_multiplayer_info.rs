@@ -26,10 +26,7 @@ fn main() {
 
         let mut mul_request = IGDBClient::create_request();
 
-        mul_request
-            .all_fields()
-            .add_where_in("id".to_owned(), ids);
-
+        mul_request.all_fields().add_where_in("id".to_owned(), ids);
 
         let results = multiplayer_client.get(&mul_request).await.unwrap();
 

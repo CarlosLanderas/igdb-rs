@@ -2,14 +2,14 @@ use crate::request_builder::{Equality, OrderBy, RequestBuilder};
 
 const ALL_FIELDS: &'static str = "*";
 
+#[derive(Clone)]
 pub(crate) struct Filter {
-    pub(crate)  key: String,
+    pub(crate) key: String,
     pub(crate) symbol: String,
     pub(crate) value: String,
 }
 
 impl RequestBuilder {
-
     pub fn all_fields(&mut self) -> &mut Self {
         self.fields.clear();
         self.fields.push(ALL_FIELDS.into());

@@ -1,6 +1,6 @@
 use serde_repr::Deserialize_repr;
 
-#[derive(Deserialize_repr, Debug)]
+#[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Category {
     MainGame = 0,
@@ -80,7 +80,7 @@ impl Default for Species {
     }
 }
 
-#[derive(Deserialize_repr, Debug)]
+#[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Status {
     Released = 0,

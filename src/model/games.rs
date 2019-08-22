@@ -1,7 +1,7 @@
 use crate::model::enums::{Category, Status};
 use std::vec::Vec;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Game {
     #[serde(default)]
     pub age_ratings: Vec<usize>,
