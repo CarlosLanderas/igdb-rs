@@ -1,8 +1,6 @@
 #![feature(async_await)]
 use async_std::task;
 use igdb_client::client::IGDBClient;
-use igdb_client::request_builder::Equality;
-use std::collections::HashMap;
 
 fn main() {
     task::block_on(async {
@@ -17,7 +15,7 @@ fn main() {
             .search("Borderlands 2")
             .limit(3);
 
-        let result = games_client.get(&games_req).await.unwrap();
+        let result = games_client.get(games_req).await.unwrap();
 
         let ids: Vec<String> = result.iter().map(|g| g.id.to_string()).collect();
         let names: Vec<String> = result.iter().map(|g| g.name.clone()).collect();
@@ -28,7 +26,7 @@ fn main() {
 
         mul_request.all_fields().add_where_in("id".to_owned(), ids);
 
-        let results = multiplayer_client.get(&mul_request).await.unwrap();
+        let results = multiplayer_client.get(mul_request).await.unwrap();
 
         for (i, m) in results.iter().enumerate() {
             println!("{} has online coop: {}", names[i], m.onlinecoop);

@@ -165,7 +165,7 @@ fn request_builder_with_fields_and_where_clause_body_build() {
         .add_field("name")
         .add_field("involved_companies")
         .add_where("name", Equality::Equal, "Conan")
-        .add_where("id", Equality::Lower, 39047.to_string());
+        .add_where("id", Equality::Less, 39047.to_string());
 
     let body = builder.build_body();
 

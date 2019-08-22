@@ -3,7 +3,6 @@ use crate::request_builder::{RequestBuilder, Equality};
 use crate::model::artwork::Artwork;
 use crate::model::screenshot::Screenshot;
 use crate::media_quality::MediaQuality;
-use crate::endpoints::Endpoint::artworks;
 use async_std::fs::File;
 use async_std::io::{Result, Write};
 use crate::model::cover::Cover;
