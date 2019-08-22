@@ -15,11 +15,16 @@ fn main() {
         let games_client = igdb_client.games();
         let witcher = games_client.get_by_name("Witcher 3").await.unwrap();
 
-        let artwork_client = igdb_client.artworks();
+        let covers_client = igdb_client.covers();
 
-        let artworks_response = artwork_client.get_by_game_id(witcher.id).await.unwrap();
-        let first_art = artworks_response.first().unwrap();
+        let covers_response = covers_client.get_by_game_id(witcher.id).await.unwrap();
+        let first_cover = covers_response.first().unwrap();
 
-        artwork_client.download_by_id(first_art.id.to_string(), "artwork.jpg", MediaQuality::HD).await;
+        let screenshots_client = igdb_client.screenshots();
+        let screenshots_response = screenshots_client.get_by_game_id(witcher.id).await.unwrap();
+        let first_screenshot = screenshots_response.first().unwrap();
+
+        covers_client.download_by_id(first_cover.id.to_string(), "cover.jpg", MediaQuality::ScreenshotHuge).await;
+        screenshots_client.download_by_id(first_screenshot.id.to_string(), "screenshot.jpg", MediaQuality::ScreenshotHuge).await;
     })
 }

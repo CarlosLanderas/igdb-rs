@@ -1,6 +1,8 @@
 #[derive(Deserialize, Debug)]
 pub struct Cover {
     #[serde(default)]
+    pub id: usize,
+    #[serde(default)]
     pub alpha_channel: bool,
     #[serde(default)]
     pub animated: bool,
