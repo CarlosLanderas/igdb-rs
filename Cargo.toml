@@ -8,7 +8,7 @@ edition = "2018"
 
 [dependencies]
 async-std = "0.99.3"
-surf = ""
+surf = "1.0.1"
 serde_derive = "1.0.99"
 serde_json = "1.0.40"
 serde = "1.0.99"

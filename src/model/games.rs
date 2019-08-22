@@ -72,7 +72,7 @@ pub struct Game {
     #[serde(default)]
     pub screenshots: Vec<u32>,
     #[serde(default)]
-    pub similar_games: u32,
+    pub similar_games: Vec<u32>,
     #[serde(default)]
     pub slug: String,
     #[serde(default)]
@@ -102,7 +102,7 @@ pub struct Game {
     #[serde(default)]
     pub version_title: String,
     #[serde(default)]
-    pub videos: u32,
+    pub videos: Vec<u32>,
     #[serde(default)]
     pub websites: Vec<u32>,
 }

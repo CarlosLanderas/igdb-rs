@@ -60,6 +60,15 @@ impl RequestBuilder {
         self
     }
 
+    pub fn contains<S : Into<String>>(&mut self, field: S, value: S) -> &mut Self {
+        self.filters.push(Filter {
+            key: field.into(),
+            symbol: String::new(),
+            value: format!("~ *\"{}\"*",value.into()),
+        });
+        self
+    }
+
     pub fn search<S: Into<String>>(&mut self, search: S) -> &mut Self {
         self.search = search.into();
         self

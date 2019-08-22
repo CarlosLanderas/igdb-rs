@@ -4,7 +4,6 @@ use std::string::ToString;
 use surf::middleware::HttpClient;
 use url::Url;
 
-const ALL_FIELDS: &'static str = "*";
 const HEADER_KEY_NAME: &'static str = "user-key";
 
 #[derive(Clone)]
@@ -32,17 +31,23 @@ impl ToString for OrderBy {
 }
 
 pub enum Equality {
-    Lower,
+    Less,
+    LessOrEqual,
     Greater,
+    GreaterOrEqual,
     Equal,
+    NotEqual
 }
 
 impl ToString for Equality {
     fn to_string(&self) -> String {
         match self {
             Equality::Equal => "=",
+            Equality::NotEqual => "!=",
             Equality::Greater => ">",
-            Equality::Lower => "<",
+            Equality::Less => "<",
+            Equality::GreaterOrEqual => ">=",
+            Equality::LessOrEqual => "<=",
         }
         .into()
     }
