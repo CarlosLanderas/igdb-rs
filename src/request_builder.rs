@@ -53,7 +53,7 @@ impl RequestBuilder {
             fields: Vec::new(),
             filters: vec![],
             sort: (String::new(), String::new()),
-            limit: 50,
+            limit: 10,
             search: String::new(),
         }
     }
@@ -130,7 +130,7 @@ impl RequestBuilder {
 
         if !str::is_empty(&self.sort.0) {
             order.push_str(&format!("sort {} {}", self.sort.0, self.sort.1));
-            body = format!("{} {}", body, order);
+            body = format!("{} {};", body, order);
         }
 
         body = format!("{} limit {};", body, self.limit);
@@ -147,7 +147,7 @@ fn request_builder_with_all_fields() {
 
     let body = builder.build_body();
 
-    assert_eq!("fields *;", String::from_utf8_lossy(&body).to_owned());
+    assert_eq!("fields *; limit 10;", String::from_utf8_lossy(&body).to_owned());
 }
 
 #[test]
@@ -163,7 +163,7 @@ fn request_builder_with_fields_and_where_clause_body_build() {
     let body = builder.build_body();
 
     assert_eq!(
-        "fields name,involved_companies; where id < 39047 & name = Conan;",
+        "fields name,involved_companies; where name = Conan & id < 39047; limit 10;",
         String::from_utf8_lossy(&body).to_owned()
     );
 }
@@ -175,14 +175,15 @@ fn request_builder_with_fields__where_clause_and_sort_asc_body_build() {
     builder
         .add_field("name")
         .add_field("involved_companies")
-        .add_where("name", Equality::Equal, "Conan")
         .add_where("id", Equality::Equal, 39047.to_string())
-        .sort_by("name", OrderBy::Ascending);
+        .add_where("name", Equality::Equal, "Conan")
+        .sort_by("name", OrderBy::Ascending)
+        .limit(2);
 
     let body = builder.build_body();
 
     assert_eq!(
-        "fields name,involved_companies; where id = 39047 & name = Conan; sort name asc",
+        "fields name,involved_companies; where id = 39047 & name = Conan; sort name asc; limit 2;",
         String::from_utf8_lossy(&body).to_owned()
     );
 }
