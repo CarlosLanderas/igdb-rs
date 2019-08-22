@@ -23,6 +23,7 @@ macro_rules! create_client {
     };
 }
 
+#[allow(dead_code)]
 macro_rules! request {
     () => {
         IGDBClient::create_request()
@@ -33,7 +34,7 @@ macro_rules! use_client_imports {
     () => {
         use crate::{
             endpoint_client::EndpointClient,
-            endpoints::{get_endpoint_url, Endpoint},
+            endpoints::Endpoint,
             model::artwork::Artwork,
             model::character::Character,
             model::company::Company,

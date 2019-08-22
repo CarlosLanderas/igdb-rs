@@ -11,3 +11,4 @@ mod macros;
 pub mod client;
 pub mod model;
 pub mod request_builder;
+pub mod request_filters;
