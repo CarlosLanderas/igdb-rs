@@ -1,0 +1,26 @@
+language: rust
+
+env:
+  - RUSTFLAGS="-D warnings"
+
+before_script:
+  - rustup component add rustfmt
+
+matrix:
+  fast_finish: true
+  include:
+    - rust: nightly
+      os: linux
+      env: BUILD_DOCS=1
+    - rust: nightly
+      os: osx
+      osx_image: xcode9.2
+      env: BUILD_DOCS=1
+    - rust: nightly-x86_64-pc-windows-msvc
+      os: windows
+
+script:
+  - cargo check --all --benches --bins --examples --tests
+  - cargo test --all
+  - cargo fmt --all -- --check
+  - if [[ -n "$BUILD_DOCS" ]]; then cargo doc --features docs; fi
