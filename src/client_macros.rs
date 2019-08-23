@@ -18,9 +18,9 @@ macro_rules! create_client {
                 self.get(request).await
             }
             pub async fn get_first_by_id(&self, id: usize) -> Option<$j> {
-                match self.get_by_id(id, 1).await  {
+                match self.get_by_id(id, 1).await {
                     Ok(d) => Some(d[0].clone()),
-                    Err(_) => None
+                    Err(_) => None,
                 }
             }
         }
@@ -68,10 +68,9 @@ macro_rules! use_client_imports {
             model::artwork::Artwork, model::character::Character, model::company::Company,
             model::cover::Cover, model::engine::Engine, model::game_mode::GameMode,
             model::game_video::GameVideo, model::games::Game,
-            model::multiplayer_mode::MultiplayerMode, model::release_date::ReleaseDate,
-            model::screenshot::Screenshot, model::website::Website, request_builder::Equality,
-            model::platform::Platform,
-            request_builder::RequestBuilder,
+            model::multiplayer_mode::MultiplayerMode, model::platform::Platform,
+            model::release_date::ReleaseDate, model::screenshot::Screenshot,
+            model::website::Website, request_builder::Equality, request_builder::RequestBuilder,
         };
     };
 }

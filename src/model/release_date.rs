@@ -1,4 +1,4 @@
-use crate::model::enums::{Platform, Region};
+use crate::model::enums::Region;
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct ReleaseDate {
@@ -17,7 +17,7 @@ pub struct ReleaseDate {
     #[serde(default)]
     pub m: usize,
     #[serde(default)]
-    pub platform: Platform,
+    pub platform: usize,
     #[serde(default)]
     pub region: Region,
     #[serde(default)]

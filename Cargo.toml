@@ -19,6 +19,7 @@ isahc = "0.7"
 
 [dev-dependencies]
 futures-preview = { version = "=0.3.0-alpha.17", features = ["async-await", "nightly","compat"] }
+
 [[example]]
 name = "search-game-by-name"
 path = "examples/search_game_by_name.rs"
@@ -37,3 +38,6 @@ path = "examples/game_video_urls.rs"
 [[example]]
 name = "game-platforms"
 path = "examples/game_platforms.rs"
+[[example]]
+name = "game-release-date"
+path = "examples/game_release_date.rs"

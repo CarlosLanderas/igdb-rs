@@ -4,26 +4,45 @@ use crate::request_builder::RequestBuilder;
 use std::future::Future;
 
 impl GameClient {
-    pub async fn get_by_name<S: Into<String>>(&self, name: S) -> Option<Game> {
+    pub async fn get_by_name<S: Into<String>>(
+        &self,
+        name: S,
+        limit: usize,
+    ) -> Result<Vec<Game>, surf::Exception> {
         let mut request = RequestBuilder::new();
-        request.all_fields().contains("name", &name.into());
+        request
+            .all_fields()
+            .contains("name", &name.into())
+            .limit(limit);
 
-        get_game_result(self.get(request)).await
-
+        self.get(request).await
     }
 
-    pub async fn contains<S: Into<String>>(&mut self, field: S, value: S) -> Option<Game> {
-        let mut request = RequestBuilder::new();
-        request.all_fields().contains(field, value).limit(1);
-
-        get_game_result(self.get(request)).await
+    pub async fn get_first_by_name<S: Into<String>>(&self, name: S) -> Option<Game> {
+        get_game_result(self.get_by_name(name, 1)).await
     }
 
-    pub async fn search<S: Into<String>>(&self, name: S, limit: usize) -> Option<Game> {
+    pub async fn contains<S: Into<String>>(
+        &mut self,
+        field: S,
+        value: S,
+        limit: usize,
+    ) -> Result<Vec<Game>, surf::Exception> {
+        let mut request = RequestBuilder::new();
+        request.all_fields().contains(field, value).limit(limit);
+
+        self.get(request).await
+    }
+
+    pub async fn search<S: Into<String>>(
+        &self,
+        name: S,
+        limit: usize,
+    ) -> Result<Vec<Game>, surf::Exception> {
         let mut request = RequestBuilder::new();
         request.all_fields().search(name).limit(limit);
 
-        get_game_result(self.get(request)).await
+        self.get(request).await
     }
 }
 

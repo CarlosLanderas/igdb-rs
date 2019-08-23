@@ -67,6 +67,8 @@ impl RequestBuilder {
     pub(crate) fn build(&self, api_key: &str, url: &str) -> surf::Request<impl HttpClient> {
         let body = &self.build_body();
 
+        println!("url: {}, body: {}", url, String::from_utf8_lossy(body));
+
         let mut req =
             surf::Request::new(http::Method::GET, Url::from_str(url).unwrap()).body_bytes(body);
 
@@ -138,7 +140,6 @@ impl RequestBuilder {
         }
 
         body = format!("{} limit {};", body, self.limit);
-        println!("{}", body);
         body
     }
 }
