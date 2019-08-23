@@ -34,22 +34,21 @@ macro_rules! create_client {
 
 macro_rules! expand_get_by_game_id {
     ($i: ident, $j: ident) => {
-      impl $i {
-          pub async fn get_by_game_id(&self, game_id: usize, limit : usize) -> Option<Vec<$j>> {
-            let mut request = RequestBuilder::new();
+        impl $i {
+            pub async fn get_by_game_id(&self, game_id: usize, limit: usize) -> Option<Vec<$j>> {
+                let mut request = RequestBuilder::new();
                 request
-                .all_fields()
-                .add_where("game", Equality::Equal, game_id.to_string())
-                .limit(limit);
+                    .all_fields()
+                    .add_where("game", Equality::Equal, game_id.to_string())
+                    .limit(limit);
 
-            match self.get(request).await {
-              Ok(d) => Some(d),
-              Err(_) => None,
+                match self.get(request).await {
+                    Ok(d) => Some(d),
+                    Err(_) => None,
+                }
             }
-
-         }
-      }
-   };
+        }
+    };
 }
 
 #[allow(unused_macros)]
