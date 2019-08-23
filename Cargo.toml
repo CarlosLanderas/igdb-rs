@@ -44,3 +44,6 @@ path = "examples/game_platforms.rs"
 [[example]]
 name = "game-release-date"
 path = "examples/game_release_date.rs"
+[[example]]
+name = "game-characters"
+path = "examples/game_characters.rs"

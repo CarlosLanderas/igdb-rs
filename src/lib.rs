@@ -9,7 +9,7 @@ mod client_macros;
 mod media_macros;
 
 pub mod client;
-pub mod game_extensions;
+pub mod extensions;
 pub mod media_quality;
 pub mod model;
 pub mod request_builder;
