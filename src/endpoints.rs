@@ -14,6 +14,7 @@ pub enum Endpoint {
     screenshots,
     release_dates,
     game_videos,
+    platforms,
 }
 
 pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
@@ -30,5 +31,6 @@ pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
         Endpoint::release_dates => format!("{}/release_dates", BASE_URL),
         Endpoint::game_engines => format!("{}/game_engines", BASE_URL),
         Endpoint::game_videos => format!("{}/game_videos", BASE_URL),
+        Endpoint::platforms => format!("{}/platforms", BASE_URL),
     }
 }

@@ -17,6 +17,7 @@ create_client!(MultiPlayerModeClient, MultiplayerMode, multiplayer_modes);
 create_client!(ReleaseDateClient, ReleaseDate, release_dates);
 create_client!(ScreenshotsClient, Screenshot, screenshots);
 create_client!(WebsitesClient, Website, websites);
+create_client!(PlatformsClient, Platform, platforms);
 
 expand_media_download!(ArtworksClient);
 expand_media_download!(CoversClient);

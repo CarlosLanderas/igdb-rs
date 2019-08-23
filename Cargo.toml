@@ -34,3 +34,6 @@ path = "examples/game_engine_info.rs"
 [[example]]
 name = "game-video-urls"
 path = "examples/game_video_urls.rs"
+[[example]]
+name = "game-platforms"
+path = "examples/game_platforms.rs"

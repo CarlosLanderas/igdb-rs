@@ -9,6 +9,7 @@ impl GameClient {
         request.all_fields().contains("name", &name.into());
 
         get_game_result(self.get(request)).await
+
     }
 
     pub async fn contains<S: Into<String>>(&mut self, field: S, value: S) -> Option<Game> {
