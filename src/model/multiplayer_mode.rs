@@ -1,5 +1,7 @@
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct MultiplayerMode {
+    #[serde(default)]
+    pub id: usize,
     #[serde(default)]
     pub campaingcoop: bool,
     #[serde(default)]

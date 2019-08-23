@@ -1,4 +1,4 @@
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Company {
     #[serde(default)]
     pub id: usize,

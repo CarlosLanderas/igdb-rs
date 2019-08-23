@@ -10,7 +10,7 @@ fn main() {
             .unwrap();
 
         println!("Name: {}", game.name);
-        println!("Summary: {} ...", &game.summary[..100]);
+        println!("Summary: {} ...", &game.summary[..150]);
 
     })
 }

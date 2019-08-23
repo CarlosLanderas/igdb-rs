@@ -16,7 +16,7 @@ impl Default for Category {
     }
 }
 
-#[derive(Deserialize_repr, Debug)]
+#[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Gender {
     Male = 1,
@@ -30,7 +30,7 @@ impl Default for Gender {
     }
 }
 
-#[derive(Deserialize_repr, Debug)]
+#[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Platform {
     Console = 1,
@@ -64,7 +64,7 @@ pub enum Rating {
     AO = 12,
 }
 
-#[derive(Deserialize_repr, Debug)]
+#[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Species {
     Human = 1,
@@ -97,7 +97,7 @@ impl Default for Status {
     }
 }
 
-#[derive(Deserialize_repr, Debug)]
+#[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Region {
     Europe = 1,

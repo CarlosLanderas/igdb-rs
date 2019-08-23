@@ -6,6 +6,7 @@ use crate::media_quality::MediaQuality;
 use async_std::fs::File;
 use async_std::io::{Result, Write};
 use crate::model::cover::Cover;
+use std::string::ToString;
 
 impl ArtworksClient {
     pub async fn get_by_game_id(&self, game_id: usize) -> Option<Vec<Artwork>> {
@@ -32,9 +33,7 @@ impl ArtworksClient {
         let artworks_response = self.get(request).await.unwrap();
         let artwork = artworks_response.first().unwrap();
 
-        let quality = media_quality.get_value();
-
-        download_resource(path.into(), artwork.url.clone()).await
+        download_resource(path.into(), artwork.url.clone(), media_quality).await
     }
 }
 
@@ -63,10 +62,7 @@ impl ScreenshotsClient {
         let screen_response = self.get(request).await.unwrap();
         let screenshot = screen_response.first().unwrap();
 
-        let quality = media_quality.get_value();
-
-
-        download_resource(path.into(), screenshot.url.clone()).await
+        download_resource(path.into(), screenshot.url.clone(), media_quality).await
     }
 }
 
@@ -96,20 +92,18 @@ impl CoversClient {
         let covers_response = self.get(request).await.unwrap();
         let cover = covers_response.first().unwrap();
 
-        let quality = media_quality.get_value();
-
-        download_resource(path.into(), cover.url.clone()).await
+        download_resource(path.into(), cover.url.clone(), media_quality).await
     }
 }
 
-async fn download_resource(path: String, url: String) -> Result<()> {
+async fn download_resource(path: String, url: String, quality: MediaQuality) -> Result<()> {
 
     let mut parsed_url = match url {
         _ if !url.starts_with("http") => format!("{}{}", "http://", url),
         _ => url.to_owned(),
     };
 
-    parsed_url = parsed_url.replace("thumb", "screenshot_med");
+    parsed_url = parsed_url.replace("thumb", &quality.get_value());
 
     let content = surf::get(parsed_url).recv_bytes().await.unwrap();
     let mut file = File::create(path).await?;

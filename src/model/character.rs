@@ -1,7 +1,9 @@
 use crate::model::enums::{Gender, Species};
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Character {
+    #[serde(default)]
+    pub id: usize,
     #[serde(default)]
     pub akas: Vec<String>,
     #[serde(default)]

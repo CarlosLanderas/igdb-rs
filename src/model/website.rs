@@ -1,5 +1,7 @@
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Website {
+    #[serde(default)]
+    pub id: usize,
     #[serde(default)]
     pub category: usize,
     #[serde(default)]

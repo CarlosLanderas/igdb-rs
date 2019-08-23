@@ -1,19 +1,9 @@
 use crate::client::GameClient;
 use crate::model::games::Game;
-use crate::request_builder::Equality;
 use crate::request_builder::RequestBuilder;
 use std::future::Future;
 
 impl GameClient {
-    pub async fn get_by_id(&self, id: usize) -> Option<Game> {
-        let mut request = RequestBuilder::new();
-        request
-            .all_fields()
-            .add_where("id", Equality::Equal, id.to_string())
-            .limit(1);
-
-        get_game_result(self.get(request)).await
-    }
 
     pub async fn get_by_name<S: Into<String>>(&self, name: S) -> Option<Game> {
         let mut request = RequestBuilder::new();

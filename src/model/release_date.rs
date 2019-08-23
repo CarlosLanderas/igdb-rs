@@ -1,7 +1,9 @@
 use crate::model::enums::{Platform, Region};
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct ReleaseDate {
+    #[serde(default)]
+    pub id: usize,
     #[serde(default)]
     pub category: usize,
     #[serde(default)]

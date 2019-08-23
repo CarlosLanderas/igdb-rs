@@ -1,4 +1,4 @@
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Debug, Clone)]
 pub struct Screenshot {
     #[serde(default)]
     pub id: usize,
