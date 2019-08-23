@@ -23,9 +23,9 @@ fn main() {
             println!("name: {}, url: {}", platform.name, platform.url);
         }
 
-        //name: PC (Microsoft Windows), url: https://www.igdb.com/platforms/win
-        // name: PlayStation Network, url: https://www.igdb.com/platforms/psn
-        //name: PlayStation 4, url: https://www.igdb.com/platforms/ps4--1
-        //name: Xbox One, url: https://www.igdb.com/platforms/xboxone
+        //  name: PC (Microsoft Windows), url: https://www.igdb.com/platforms/win
+        //  name: PlayStation Network, url: https://www.igdb.com/platforms/psn
+        //  name: PlayStation 4, url: https://www.igdb.com/platforms/ps4--1
+        //  name: Xbox One, url: https://www.igdb.com/platforms/xboxone
     })
 }

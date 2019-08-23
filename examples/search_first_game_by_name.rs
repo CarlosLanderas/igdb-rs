@@ -10,9 +10,9 @@ fn main() {
         println!("Story line: {}", game.storyline);
         println!("Url: {}", game.url);
 
-        //Name: The Witcher 3: Wild Hunt - Hearts of Stone
-        //Summary: Hired by the Merchant of Mirrors, Geralt is tasked with overcoming Olgierd von Everec -- a ruthless bandit captain enchanted with the power of immorta ...
-        //Story line: Professional monster slayer is hired to deal with a ruthless bandit captain who possesses the power of immortality.
-        //Url: https://www.igdb.com/games/the-witcher-3-wild-hunt-hearts-of-stone
+        //  Name: The Witcher 3: Wild Hunt - Hearts of Stone
+        //  Summary: Hired by the Merchant of Mirrors, Geralt is tasked with overcoming Olgierd von Everec -- a ruthless bandit captain enchanted with the power of immorta ...
+        //  Story line: Professional monster slayer is hired to deal with a ruthless bandit captain who possesses the power of immortality.
+        //  Url: https://www.igdb.com/games/the-witcher-3-wild-hunt-hearts-of-stone
     })
 }

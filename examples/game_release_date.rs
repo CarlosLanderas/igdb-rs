@@ -24,11 +24,9 @@ fn main() {
             );
         }
 
-
-//            platform: Xbox One release date: 2019-Sep-13
-//            platform: PC (Microsoft Windows) release date: 2019-Sep-13
-//            platform: PlayStation 4 release date: 2019-Sep-13
-//            platform: Google Stadia release date: 2019-Sep-13
-
+        //  platform: Xbox One release date: 2019-Sep-13
+        //  platform: PC (Microsoft Windows) release date: 2019-Sep-13
+        //  platform: PlayStation 4 release date: 2019-Sep-13
+        //  platform: Google Stadia release date: 2019-Sep-13
     })
 }
