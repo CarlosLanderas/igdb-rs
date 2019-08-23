@@ -3,8 +3,14 @@ name = "igdb-client"
 version = "0.0.1"
 authors = ["Carlos Landeras"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "Apache-2.0/MIT"
+repository = "https://github.com/CarlosLanderas/igdb-client"
+homepage = "https://github.com/CarlosLanderas/igdb-client"
+documentation = "https://docs.rs/igdb-client"
+description = "IGDB - Video Game Database Api"
+keywords = ["igdb", "video game database", "video games", "video", "async", "playstation", "xbox", "pc", "database", "api", "client"]
+categories = ["videogame", "api", "asynchronous"]
+readme = "README.md"
 
 [dependencies]
 async-std = "0.99.4"
