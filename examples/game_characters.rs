@@ -3,7 +3,6 @@ use igdb_client::client::IGDBClient;
 
 fn main() {
     task::block_on(async {
-
         let igdb_client = IGDBClient::new("user-key");
         let characters_client = igdb_client.characters();
 

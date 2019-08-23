@@ -35,18 +35,43 @@ pub struct IGDBClient {
     api_key: String,
 }
 
+// The IGDB client.
 impl IGDBClient {
+    /// Creates a new instance of the IGDB Client
+    /// To create a new instance you need to provide the user-key your are provided with
+    /// when you register in the API Website
+    /// # Examples
+    /// ```
+    /// use igdb_client::client::IGDBClient;
+    /// let igdb = IGDBClient::new("user-key");
+    /// ```
     pub fn new<S: Into<String>>(api_key: S) -> IGDBClient {
         IGDBClient {
             api_key: api_key.into(),
         }
     }
+    /// Creates a new instance of a Request builder
+    /// you can use it's methods to create custom queries
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use igdb_client::client::IGDBClient;
+    /// use igdb_client::request_builder::Equality;
+    /// let mut request = IGDBClient::create_request();
+    /// request
+    /// .all_fields()
+    /// .add_where("id", Equality::Greater, "340")
+    /// .limit(10);
+    /// ```
     pub fn create_request() -> RequestBuilder {
         RequestBuilder::new()
     }
 }
 
 #[allow(dead_code)]
+///This function receives a path, an IGDB provided url and it normalices the path and downloads
+/// the resource to the specified path file using the specified MediaQuality"
 async fn download_resource(
     path: String,
     url: String,

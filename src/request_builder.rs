@@ -7,6 +7,7 @@ use url::Url;
 const HEADER_KEY_NAME: &'static str = "user-key";
 
 #[derive(Clone)]
+/// Request Builder struct
 pub struct RequestBuilder {
     pub(crate) fields: Vec<String>,
     pub(crate) filters: Vec<Filter>,
@@ -54,6 +55,17 @@ impl ToString for Equality {
 }
 
 impl RequestBuilder {
+    /// Creates a new Request Builder
+    ///It can also be created using IGDBClient::create_request();
+    /// # Examples
+    /// ```
+    ///use igdb_client::request_builder::RequestBuilder;
+    /// let mut request = RequestBuilder::new();
+    /// ```
+    /// ```
+    ///use igdb_client::client::IGDBClient;
+    ///let mut request = IGDBClient::create_request();
+    /// ```
     pub fn new() -> RequestBuilder {
         RequestBuilder {
             fields: Vec::new(),

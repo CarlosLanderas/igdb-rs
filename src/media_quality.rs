@@ -9,8 +9,15 @@ pub enum MediaQuality {
     HD,
     FullHD,
 }
-
+///Represents the quality of the resource
 impl MediaQuality {
+    /// Returns the MediaQuality String representation to download resources from internet
+    /// # Examples
+    /// ```
+    /// use igdb_client::media_quality::MediaQuality;
+    /// assert_eq!(MediaQuality::ScreenshotHuge.get_value(), "screenshot_huge");
+    /// assert_eq!(MediaQuality::FullHD.get_value(), "1080p");
+    /// ```
     pub fn get_value(&self) -> &str {
         match self {
             MediaQuality::CoverSmall => "cover_small",

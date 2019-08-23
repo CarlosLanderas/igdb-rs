@@ -5,9 +5,11 @@ macro_rules! create_client {
         }
 
         impl $i {
+            ///Receives a configured RequestBuilder an returns a result containing a collection
             pub async fn get(&self, request_builder: RequestBuilder) -> Result<Vec<$j>, Exception> {
                 self.endpoint_client.get::<$j>(request_builder).await
             }
+            ///Returns a collection filtered by id and limits the retrieved registries using limit parameter value.
             pub async fn get_by_id(&self, id: usize, limit: usize) -> Result<Vec<$j>, Exception> {
                 let mut request = RequestBuilder::new();
                 request
@@ -17,6 +19,7 @@ macro_rules! create_client {
 
                 self.get(request).await
             }
+            /// Returns the element by Id for this client in Option<T> format.
             pub async fn get_first_by_id(&self, id: usize) -> Option<$j> {
                 match self.get_by_id(id, 1).await {
                     Ok(d) => Some(d[0].clone()),
@@ -26,6 +29,7 @@ macro_rules! create_client {
         }
 
         impl IGDBClient {
+            /// Returns a reference to the client
             pub fn $k(&self) -> $i {
                 $i {
                     endpoint_client: EndpointClient::new(self.api_key.clone(), Endpoint::$k),
@@ -38,6 +42,7 @@ macro_rules! create_client {
 macro_rules! expand_get_by_game_id {
     ($i: ident, $j: ident) => {
         impl $i {
+            ///Receives a game_id and a limit of registries and returns an Option<Vec> of elements
             pub async fn get_by_game_id(&self, game_id: usize, limit: usize) -> Option<Vec<$j>> {
                 let mut request = RequestBuilder::new();
                 request
