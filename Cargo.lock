@@ -2,7 +2,7 @@
 # It is not intended for manual editing.
 [[package]]
 name = "async-std"
-version = "0.99.3"
+version = "0.99.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "async-task 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -355,7 +355,7 @@ dependencies = [
 name = "igdb-client"
 version = "0.0.1"
 dependencies = [
- "async-std 0.99.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "async-std 0.99.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "futures-preview 0.3.0-alpha.17 (registry+https://github.com/rust-lang/crates.io-index)",
  "http 0.1.18 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.99 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1043,7 +1043,7 @@ dependencies = [
 ]
 
 [metadata]
-"checksum async-std 0.99.3 (registry+https://github.com/rust-lang/crates.io-index)" = "62bc8c04a81d8e67efd155bc6e2df06f3358f6ef672bfa35eaa801f15bed183f"
+"checksum async-std 0.99.4 (registry+https://github.com/rust-lang/crates.io-index)" = "95dbe66a9f8c59a70277214f98d39f25fe1f36f20f6e8412a8b33af0272a2c79"
 "checksum async-task 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "de6bd58f7b9cc49032559422595c81cbfcf04db2f2133592f70af19e258a1ced"
 "checksum autocfg 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)" = "b671c8fb71b457dd4ae18c4ba1e59aa81793daacc361d82fcd410cef0d491875"
 "checksum backtrace 0.3.35 (registry+https://github.com/rust-lang/crates.io-index)" = "1371048253fa3bac6704bfd6bbfc922ee9bdcee8881330d40f308b81cc5adc55"

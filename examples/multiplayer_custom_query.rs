@@ -1,4 +1,3 @@
-#![feature(async_await)]
 use async_std::task;
 use igdb_client::client::IGDBClient;
 

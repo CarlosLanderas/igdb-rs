@@ -8,7 +8,7 @@ macro_rules! create_client {
             pub async fn get(&self, request_builder: RequestBuilder) -> Result<Vec<$j>, Exception> {
                 self.endpoint_client.get::<$j>(request_builder).await
             }
-            pub async fn get_by_id(&self, id: usize, limit : usize) -> Option<$j> {
+            pub async fn get_by_id(&self, id: usize) -> Option<$j> {
                 let mut request = RequestBuilder::new();
                 request
                     .all_fields()

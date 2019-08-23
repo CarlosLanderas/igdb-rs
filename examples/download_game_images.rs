@@ -1,4 +1,3 @@
-#![feature(async_await)]
 use async_std::task;
 use igdb_client::client::IGDBClient;
 use igdb_client::media_quality::MediaQuality;
@@ -10,12 +9,12 @@ fn main() {
         let witcher = games_client.get_by_name("Minecraft").await.unwrap();
 
         let covers_client = igdb_client.covers();
-        let covers_response = covers_client.get_by_game_id(witcher.id).await.unwrap();
+        let covers_response = covers_client.get_by_game_id(witcher.id, 1).await.unwrap();
 
         let cover = covers_response.first().unwrap();
 
         let screenshots_client = igdb_client.screenshots();
-        let screenshots_response = screenshots_client.get_by_game_id(witcher.id).await.unwrap();
+        let screenshots_response = screenshots_client.get_by_game_id(witcher.id, 1).await.unwrap();
 
         let screenshot = screenshots_response.first().unwrap();
 

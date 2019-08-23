@@ -1,5 +1,3 @@
-#![feature(async_await)]
-
 use igdb_client::client::IGDBClient;
 use igdb_client::model::games::Game;
 use igdb_client::request_builder::Equality;
