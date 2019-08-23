@@ -15,10 +15,10 @@ serde = "1.0.99"
 serde_repr = "0.1.5"
 http = "0.1.18"
 url = "2.1.0"
+isahc = "0.7"
 
 [dev-dependencies]
 futures-preview = { version = "=0.3.0-alpha.17", features = ["async-await", "nightly","compat"] }
-
 [[example]]
 name = "search-game-by-name"
 path = "examples/search_game_by_name.rs"
