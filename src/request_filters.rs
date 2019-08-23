@@ -60,11 +60,11 @@ impl RequestBuilder {
         self
     }
 
-    pub fn contains<S : Into<String>>(&mut self, field: S, value: S) -> &mut Self {
+    pub fn contains<S: Into<String>>(&mut self, field: S, value: S) -> &mut Self {
         self.filters.push(Filter {
             key: field.into(),
             symbol: String::new(),
-            value: format!("~ *\"{}\"*",value.into()),
+            value: format!("~ *\"{}\"*", value.into()),
         });
         self
     }

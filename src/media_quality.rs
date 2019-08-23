@@ -1,4 +1,3 @@
-
 pub enum MediaQuality {
     CoverSmall,
     ScreenshotMedium,
@@ -8,7 +7,7 @@ pub enum MediaQuality {
     Thumb,
     Micro,
     HD,
-    FullHD
+    FullHD,
 }
 
 impl MediaQuality {
@@ -22,7 +21,7 @@ impl MediaQuality {
             MediaQuality::Thumb => "thumb",
             MediaQuality::Micro => "micro",
             MediaQuality::HD => "720p",
-            MediaQuality::FullHD => "1080p"
+            MediaQuality::FullHD => "1080p",
         }
     }
 }

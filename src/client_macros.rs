@@ -1,4 +1,3 @@
-
 macro_rules! create_client {
     ($i: ident, $j: ident, $k: ident) => {
         pub struct $i {
@@ -6,20 +5,17 @@ macro_rules! create_client {
         }
 
         impl $i {
-            pub async fn get(
-                &self,
-                request_builder: RequestBuilder,
-            ) -> Result<Vec<$j>, Exception> {
+            pub async fn get(&self, request_builder: RequestBuilder) -> Result<Vec<$j>, Exception> {
                 self.endpoint_client.get::<$j>(request_builder).await
             }
             pub async fn get_by_id(&self, id: usize) -> Option<$j> {
-                 let mut request = RequestBuilder::new();
-                    request
+                let mut request = RequestBuilder::new();
+                request
                     .all_fields()
                     .add_where("id", Equality::Equal, id.to_string())
                     .limit(1);
 
-                 match self.get(request).await {
+                match self.get(request).await {
                     Ok(res) => Some(res[0].clone()),
                     Err(_) => None,
                 }
@@ -46,13 +42,12 @@ macro_rules! request {
 macro_rules! use_client_imports {
     () => {
         use crate::{
-            endpoint_client::EndpointClient, endpoints::Endpoint, model::artwork::Artwork,
-            model::character::Character, model::company::Company, model::cover::Cover,
-            model::game_mode::GameMode, model::games::Game,
+            endpoint_client::EndpointClient, endpoints::Endpoint, media_quality::MediaQuality,
+            model::artwork::Artwork, model::character::Character, model::company::Company,
+            model::cover::Cover, model::game_mode::GameMode, model::games::Game,
             model::multiplayer_mode::MultiplayerMode, model::release_date::ReleaseDate,
-            model::screenshot::Screenshot, model::website::Website,
+            model::screenshot::Screenshot, model::website::Website, request_builder::Equality,
             request_builder::RequestBuilder,
-            request_builder::Equality,
         };
     };
 }

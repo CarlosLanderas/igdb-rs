@@ -36,7 +36,7 @@ pub enum Equality {
     Greater,
     GreaterOrEqual,
     Equal,
-    NotEqual
+    NotEqual,
 }
 
 impl ToString for Equality {
