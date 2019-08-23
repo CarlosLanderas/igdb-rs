@@ -3,6 +3,7 @@ const BASE_URL: &str = "https://api-v3.igdb.com";
 #[allow(non_camel_case_types)]
 pub enum Endpoint {
     games,
+    game_engines,
     companies,
     websites,
     artworks,
@@ -26,5 +27,6 @@ pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
         Endpoint::covers => format!("{}/covers", BASE_URL),
         Endpoint::screenshots => format!("{}/screenshots", BASE_URL),
         Endpoint::release_dates => format!("{}/release_dates", BASE_URL),
+        Endpoint::game_engines => format!("{}/game_engines", BASE_URL),
     }
 }

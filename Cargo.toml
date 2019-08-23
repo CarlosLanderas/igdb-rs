@@ -28,3 +28,6 @@ path = "examples/download_game_images.rs"
 [[example]]
 name = "game-multiplayer-info"
 path = "examples/game_multiplayer_info.rs"
+[[example]]
+name = "game-engine-info"
+path = "examples/game_engine_info.rs"

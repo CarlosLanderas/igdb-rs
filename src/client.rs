@@ -11,10 +11,12 @@ create_client!(CompanyClient, Company, companies);
 create_client!(CoversClient, Cover, covers);
 create_client!(GameClient, Game, games);
 create_client!(GameModesClient, GameMode, game_modes);
+create_client!(EnginesClient, Engine, game_engines);
 create_client!(MultiPlayerModeClient, MultiplayerMode, multiplayer_modes);
 create_client!(ReleaseDateClient, ReleaseDate, release_dates);
 create_client!(ScreenshotsClient, Screenshot, screenshots);
 create_client!(WebsitesClient, Website, websites);
+
 
 expand_media_download!(ArtworksClient);
 expand_media_download!(CoversClient);
