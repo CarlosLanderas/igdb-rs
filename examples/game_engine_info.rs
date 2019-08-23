@@ -5,7 +5,10 @@ fn main() {
         let igdb_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1");
 
         let games_client = igdb_client.games();
-        let game = games_client.get_first_by_name("Riders of Asgard").await.unwrap();
+        let game = games_client
+            .get_first_by_name("Riders of Asgard")
+            .await
+            .unwrap();
         let engine_id = game.game_engines.first().unwrap();
 
         let engines_client = igdb_client.game_engines();

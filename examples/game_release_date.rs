@@ -6,7 +6,9 @@ fn main() {
         let igdb_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1");
 
         let release_client = igdb_client.release_dates();
-        let releases = release_client.get_by_game_id(1942, 10).await.unwrap();
+
+        //Get releases for Borderlands3 with id 19164
+        let releases = release_client.get_by_game_id(19164, 10).await.unwrap();
 
         let platform_client = igdb_client.platforms();
 
@@ -17,9 +19,16 @@ fn main() {
                 .unwrap();
 
             println!(
-                "plataform: {} release date: {}",
+                "platform: {} release date: {}",
                 platform.name, release.human
             );
         }
+
+
+//            platform: Xbox One release date: 2019-Sep-13
+//            platform: PC (Microsoft Windows) release date: 2019-Sep-13
+//            platform: PlayStation 4 release date: 2019-Sep-13
+//            platform: Google Stadia release date: 2019-Sep-13
+
     })
 }

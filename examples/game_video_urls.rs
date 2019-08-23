@@ -13,5 +13,13 @@ fn main() {
         for video in response {
             println!("{:?}", video);
         }
+        //        GameVideo { id: 5993, game: 1942, video_id: "xQGam9OHSUo" }
+        //        GameVideo { id: 5989, game: 1942, video_id: "_IBAovRNCuA" }
+        //        GameVideo { id: 5995, game: 1942, video_id: "8ZLfJjlZKvc" }
+        //        GameVideo { id: 5987, game: 1942, video_id: "5nLipy-Z4yo" }
+        //        GameVideo { id: 5991, game: 1942, video_id: "6f8TbvsZ5Mk" }
+        //        GameVideo { id: 5994, game: 1942, video_id: "p14dHAwLOmo" }
+        //        GameVideo { id: 5990, game: 1942, video_id: "QrwGXAcE6ZA" }
+        //        GameVideo { id: 5996, game: 1942, video_id: "sb81f-ejNSI" }
     })
 }
