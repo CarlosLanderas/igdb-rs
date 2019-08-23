@@ -11,7 +11,6 @@ mod media_macros;
 
 pub mod client;
 pub mod game_extensions;
-pub mod media_extensions;
 pub mod media_quality;
 pub mod model;
 pub mod request_builder;

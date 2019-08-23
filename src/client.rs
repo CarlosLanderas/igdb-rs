@@ -22,6 +22,14 @@ expand_media_download!(ArtworksClient);
 expand_media_download!(CoversClient);
 expand_media_download!(ScreenshotsClient);
 
+expand_get_by_game_id!(ArtworksClient, Artwork);
+expand_get_by_game_id!(CoversClient, Cover);
+expand_get_by_game_id!(GameVideosClient, GameVideo);
+expand_get_by_game_id!(MultiPlayerModeClient, MultiplayerMode);
+expand_get_by_game_id!(ReleaseDateClient, ReleaseDate);
+expand_get_by_game_id!(ScreenshotsClient, Screenshot);
+expand_get_by_game_id!(WebsitesClient, Website);
+
 pub struct IGDBClient {
     api_key: String,
 }

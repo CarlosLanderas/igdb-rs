@@ -7,18 +7,15 @@ fn main() {
     task::block_on(async {
 
         let igdb_client = IGDBClient::new("user-key");
-
         let videos_client = igdb_client.game_videos();
 
-        let mut request = IGDBClient::create_request();
+        //Query first 8 youtube videos for Witcher 3
+        let response = videos_client
+            .get_by_game_id(1942, 8)
+            .await
+            .unwrap();
 
-        //Query all youtube videos for Witcher 3
-        let video_request = request
-                .all_fields()
-                .add_where("game", Equality::Equal, "1942")
-                .limit(10);
-
-        for video in videos_client.get(request).await.unwrap() {
+        for video in response {
             println!("{:?}", video);
         }
 

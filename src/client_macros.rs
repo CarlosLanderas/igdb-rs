@@ -8,7 +8,7 @@ macro_rules! create_client {
             pub async fn get(&self, request_builder: RequestBuilder) -> Result<Vec<$j>, Exception> {
                 self.endpoint_client.get::<$j>(request_builder).await
             }
-            pub async fn get_by_id(&self, id: usize) -> Option<$j> {
+            pub async fn get_by_id(&self, id: usize, limit : usize) -> Option<$j> {
                 let mut request = RequestBuilder::new();
                 request
                     .all_fields()
@@ -30,6 +30,26 @@ macro_rules! create_client {
             }
         }
     };
+}
+
+macro_rules! expand_get_by_game_id {
+    ($i: ident, $j: ident) => {
+      impl $i {
+          pub async fn get_by_game_id(&self, game_id: usize, limit : usize) -> Option<Vec<$j>> {
+            let mut request = RequestBuilder::new();
+                request
+                .all_fields()
+                .add_where("game", Equality::Equal, game_id.to_string())
+                .limit(limit);
+
+            match self.get(request).await {
+              Ok(d) => Some(d),
+              Err(_) => None,
+            }
+
+         }
+      }
+   };
 }
 
 #[allow(unused_macros)]
