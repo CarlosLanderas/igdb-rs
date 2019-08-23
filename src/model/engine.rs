@@ -1,13 +1,13 @@
 #[derive(Deserialize, Debug, Clone)]
 pub struct Engine {
     #[serde(default)]
-    pub id : usize,
+    pub id: usize,
     #[serde(default)]
     pub companies: Vec<usize>,
     #[serde(default)]
-    pub created_at : u64,
+    pub created_at: u64,
     #[serde(default)]
-    pub description : String,
+    pub description: String,
     #[serde(default)]
     pub logo: usize,
     #[serde(default)]
@@ -15,6 +15,5 @@ pub struct Engine {
     #[serde(default)]
     pub platforms: Vec<usize>,
     #[serde(default)]
-    pub url: String
-
+    pub url: String,
 }

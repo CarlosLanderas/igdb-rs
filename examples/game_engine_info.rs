@@ -13,6 +13,5 @@ fn main() {
         let engine = engines_client.get_by_id(*engine_id as usize).await.unwrap();
 
         println!("{:?}", engine);
-
     })
 }

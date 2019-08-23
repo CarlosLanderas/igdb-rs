@@ -1,6 +1,5 @@
 macro_rules! create_client {
     ($i: ident, $j: ident, $k: ident) => {
-
         pub struct $i {
             endpoint_client: EndpointClient,
         }
@@ -43,20 +42,12 @@ macro_rules! request {
 macro_rules! use_client_imports {
     () => {
         use crate::{
-            endpoint_client::EndpointClient,
-            endpoints::Endpoint,
-            media_quality::MediaQuality,
-            model::artwork::Artwork,
-            model::character::Character, model::company::Company,
-            model::cover::Cover,
-            model::game_mode::GameMode,
-            model::games::Game,
-            model::multiplayer_mode::MultiplayerMode,
-            model::release_date::ReleaseDate,
-            model::screenshot::Screenshot,
-            model::website::Website,
-            model::engine::Engine,
-            request_builder::Equality,
+            endpoint_client::EndpointClient, endpoints::Endpoint, media_quality::MediaQuality,
+            model::artwork::Artwork, model::character::Character, model::company::Company,
+            model::cover::Cover, model::engine::Engine, model::game_mode::GameMode,
+            model::game_video::GameVideo, model::games::Game,
+            model::multiplayer_mode::MultiplayerMode, model::release_date::ReleaseDate,
+            model::screenshot::Screenshot, model::website::Website, request_builder::Equality,
             request_builder::RequestBuilder,
         };
     };
