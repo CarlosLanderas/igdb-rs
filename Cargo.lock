@@ -353,7 +353,7 @@ dependencies = [
 
 [[package]]
 name = "igdb-client"
-version = "0.1.0"
+version = "0.0.1"
 dependencies = [
  "async-std 0.99.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "futures-preview 0.3.0-alpha.17 (registry+https://github.com/rust-lang/crates.io-index)",
