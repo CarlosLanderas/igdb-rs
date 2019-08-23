@@ -191,7 +191,7 @@ fn request_builder_with_fields_and_where_clause_body_build() {
 }
 
 #[test]
-fn request_builder_with_fields__where_clause_and_sort_asc_body_build() {
+fn request_builder_with_fields_where_clause_and_sort_asc_body_build() {
     let mut builder = RequestBuilder::new();
 
     builder
