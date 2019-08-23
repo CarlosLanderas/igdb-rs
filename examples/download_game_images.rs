@@ -22,7 +22,7 @@ fn main() {
         for (i, cover) in covers_response.iter().enumerate() {
             covers_client
                 .download_by_id(
-                    cover.id.to_string(),
+                    cover.id,
                     format!("cover{}.jpg", i),
                     MediaQuality::ScreenshotHuge,
                 )
@@ -33,7 +33,7 @@ fn main() {
         for (i, screenshot) in screenshots_response.iter().enumerate() {
             screenshots_client
                 .download_by_id(
-                    screenshot.id.to_string(),
+                    screenshot.id,
                     format!("screenshot{}.jpg", i),
                     MediaQuality::ScreenshotHuge,
                 )

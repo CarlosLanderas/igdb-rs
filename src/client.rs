@@ -43,6 +43,7 @@ impl IGDBClient {
     /// # Examples
     /// ```
     /// use igdb_client::client::IGDBClient;
+    ///
     /// let igdb = IGDBClient::new("user-key");
     /// ```
     pub fn new<S: Into<String>>(api_key: S) -> IGDBClient {
@@ -58,6 +59,7 @@ impl IGDBClient {
     /// ```
     /// use igdb_client::client::IGDBClient;
     /// use igdb_client::request_builder::Equality;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .all_fields()

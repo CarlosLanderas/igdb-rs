@@ -4,7 +4,6 @@ use crate::request_builder::RequestBuilder;
 
 impl CharacterClient {
     ///Retrieves the characters for a given game id
-
     pub async fn get_by_game_id(
         &self,
         game_id: usize,

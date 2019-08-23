@@ -1,9 +1,20 @@
 macro_rules! expand_media_download {
     ($i: ident) => {
         impl $i {
+            ///Download to the given path the resource specified in the Id
+            /// MediaQuality is an enum that specifies different image sizes
+            /// # Examples
+            /// ```no_run
+            /// use igdb_client::client::IGDBClient;
+            /// use igdb_client::media_quality::MediaQuality;
+            /// let client = IGDBClient::new("key");
+            /// let screenshot_client = client.screenshots();
+            /// screenshot_client.download_by_id(12400, "screen.jpg".to_string(), MediaQuality::ScreenshotHuge,);
+            /// ```
+            ///
             pub async fn download_by_id<S: Into<String>>(
                 &self,
-                id: String,
+                id: usize,
                 path: S,
                 media_quality: MediaQuality,
             ) -> async_std::io::Result<()> {

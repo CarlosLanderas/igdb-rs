@@ -4,6 +4,7 @@ use crate::request_builder::RequestBuilder;
 use std::future::Future;
 
 impl GameClient {
+    ///Returns a games collection containing the given name
     pub async fn get_by_name<S: Into<String>>(
         &self,
         name: S,
@@ -17,11 +18,11 @@ impl GameClient {
 
         self.get(request).await
     }
-
+    ///Returns the first game found inside a collection for a given name
     pub async fn get_first_by_name<S: Into<String>>(&self, name: S) -> Option<Game> {
         get_game_result(self.get_by_name(name, 1)).await
     }
-
+    /// Returns a games collection containing the specified field value
     pub async fn contains<S: Into<String>>(
         &mut self,
         field: S,
@@ -34,6 +35,7 @@ impl GameClient {
         self.get(request).await
     }
 
+    ///Returns a games collection searching by the given name
     pub async fn search<S: Into<String>>(
         &self,
         name: S,

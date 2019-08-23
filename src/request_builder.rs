@@ -60,10 +60,12 @@ impl RequestBuilder {
     /// # Examples
     /// ```
     ///use igdb_client::request_builder::RequestBuilder;
+    ///
     /// let mut request = RequestBuilder::new();
     /// ```
     /// ```
     ///use igdb_client::client::IGDBClient;
+    ///
     ///let mut request = IGDBClient::create_request();
     /// ```
     pub fn new() -> RequestBuilder {

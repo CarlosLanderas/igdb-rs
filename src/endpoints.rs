@@ -1,7 +1,8 @@
 const BASE_URL: &str = "https://api-v3.igdb.com";
 
 #[allow(non_camel_case_types)]
-pub enum Endpoint {
+///Enum containing the implement IGDB api endpoints
+pub(crate) enum Endpoint {
     games,
     game_engines,
     companies,

@@ -9,11 +9,11 @@ pub(crate) struct EndpointClient {
 }
 
 impl EndpointClient {
-    pub fn new(api_key: String, endpoint: Endpoint) -> EndpointClient {
+    pub(crate) fn new(api_key: String, endpoint: Endpoint) -> EndpointClient {
         EndpointClient { api_key, endpoint }
     }
 
-    pub async fn get<T: DeserializeOwned>(
+    pub(crate) async fn get<T: DeserializeOwned>(
         &self,
         request_builder: RequestBuilder,
     ) -> Result<Vec<T>, Exception> {

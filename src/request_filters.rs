@@ -18,6 +18,7 @@ impl RequestBuilder {
     /// # Examples
     /// ```
     /// use igdb_client::client::IGDBClient;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .all_fields()
@@ -34,6 +35,7 @@ impl RequestBuilder {
     /// # Examples
     /// ```
     /// use igdb_client::client::IGDBClient;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .add_field("description")
@@ -49,6 +51,7 @@ impl RequestBuilder {
     /// # Examples
     /// ```
     /// use igdb_client::client::IGDBClient;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .add_fields(vec!["description", "name", "summary"])
@@ -68,6 +71,7 @@ impl RequestBuilder {
     /// # Examples
     /// ```
     /// use igdb_client::client::IGDBClient;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .all_fields()
@@ -89,6 +93,7 @@ impl RequestBuilder {
     /// ```
     /// use igdb_client::client::IGDBClient;
     /// use igdb_client::request_builder::Equality;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .add_where("id", Equality::GreaterOrEqual, "20")
@@ -114,6 +119,7 @@ impl RequestBuilder {
     /// ```
     /// use igdb_client::client::IGDBClient;
     /// use igdb_client::request_builder::Equality;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .all_fields()
@@ -130,6 +136,7 @@ impl RequestBuilder {
     /// ```
     /// use igdb_client::client::IGDBClient;
     /// use igdb_client::request_builder::Equality;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .all_fields()
@@ -150,6 +157,7 @@ impl RequestBuilder {
     /// ```
     /// use igdb_client::client::IGDBClient;
     /// use igdb_client::request_builder::Equality;
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .search("Zelda")
@@ -165,6 +173,7 @@ impl RequestBuilder {
     /// ```
     /// use igdb_client::client::IGDBClient;
     /// use igdb_client::request_builder::{Equality, OrderBy};
+    ///
     /// let mut request = IGDBClient::create_request();
     /// request
     /// .add_field("name")
