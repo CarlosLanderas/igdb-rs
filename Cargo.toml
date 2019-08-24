@@ -1,5 +1,5 @@
 [package]
-name = "igdb-client"
+name = "igdb-rs"
 version = "0.0.1"
 authors = ["Carlos Landeras"]
 edition = "2018"
