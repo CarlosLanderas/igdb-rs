@@ -7,7 +7,7 @@ impl CharacterClient {
     ///
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
+    /// use igdb_rs::client::IGDBClient;
     ///
     /// let igdb_client = IGDBClient::new("api-key");
     /// let characters_client = igdb_client.characters();

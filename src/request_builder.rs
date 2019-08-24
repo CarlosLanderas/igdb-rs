@@ -59,12 +59,12 @@ impl RequestBuilder {
     ///It can also be created using IGDBClient::create_request();
     /// # Examples
     /// ```
-    ///use igdb_client::request_builder::RequestBuilder;
+    ///use igdb_rs::request_builder::RequestBuilder;
     ///
     /// let mut request = RequestBuilder::new();
     /// ```
     /// ```
-    ///use igdb_client::client::IGDBClient;
+    ///use igdb_rs::client::IGDBClient;
     ///
     ///let mut request = IGDBClient::create_request();
     /// ```

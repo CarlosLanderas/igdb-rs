@@ -17,7 +17,7 @@ impl RequestBuilder {
     ///Requests all field for the given query
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
+    /// use igdb_rs::client::IGDBClient;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -34,7 +34,7 @@ impl RequestBuilder {
     ///Requests all field for the given query
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
+    /// use igdb_rs::client::IGDBClient;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -50,7 +50,7 @@ impl RequestBuilder {
     /// Adds several fields for this request by using an Iterator object
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
+    /// use igdb_rs::client::IGDBClient;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -70,7 +70,7 @@ impl RequestBuilder {
     /// Adds a filter representing a group of elements like WHERE IN statement in SQL
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
+    /// use igdb_rs::client::IGDBClient;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -91,8 +91,8 @@ impl RequestBuilder {
     /// Adds a filter under using given condition
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
-    /// use igdb_client::request_builder::Equality;
+    /// use igdb_rs::client::IGDBClient;
+    /// use igdb_rs::request_builder::Equality;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -117,8 +117,8 @@ impl RequestBuilder {
     /// Limits the registries obtained from the server
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
-    /// use igdb_client::request_builder::Equality;
+    /// use igdb_rs::client::IGDBClient;
+    /// use igdb_rs::request_builder::Equality;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -134,8 +134,8 @@ impl RequestBuilder {
     /// Can start and end with anything
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
-    /// use igdb_client::request_builder::Equality;
+    /// use igdb_rs::client::IGDBClient;
+    /// use igdb_rs::request_builder::Equality;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -155,8 +155,8 @@ impl RequestBuilder {
     /// Searchable endpoints: - Characters - Collections - Games - People - Platforms - Themes
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
-    /// use igdb_client::request_builder::Equality;
+    /// use igdb_rs::client::IGDBClient;
+    /// use igdb_rs::request_builder::Equality;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request
@@ -171,8 +171,8 @@ impl RequestBuilder {
     /// Sorts the query by the given field
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
-    /// use igdb_client::request_builder::{Equality, OrderBy};
+    /// use igdb_rs::client::IGDBClient;
+    /// use igdb_rs::request_builder::{Equality, OrderBy};
     ///
     /// let mut request = IGDBClient::create_request();
     /// request

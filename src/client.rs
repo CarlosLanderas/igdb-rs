@@ -42,7 +42,7 @@ impl IGDBClient {
     /// when you register in the API Website
     /// # Examples
     /// ```
-    /// use igdb_client::client::IGDBClient;
+    /// use igdb_rs::client::IGDBClient;
     ///
     /// let igdb = IGDBClient::new("user-key");
     /// ```
@@ -57,8 +57,8 @@ impl IGDBClient {
     /// # Examples
     ///
     /// ```
-    /// use igdb_client::client::IGDBClient;
-    /// use igdb_client::request_builder::Equality;
+    /// use igdb_rs::client::IGDBClient;
+    /// use igdb_rs::request_builder::Equality;
     ///
     /// let mut request = IGDBClient::create_request();
     /// request

@@ -14,7 +14,7 @@ impl MediaQuality {
     /// Returns the MediaQuality String representation to download resources from internet
     /// # Examples
     /// ```
-    /// use igdb_client::media_quality::MediaQuality;
+    /// use igdb_rs::media_quality::MediaQuality;
     /// assert_eq!(MediaQuality::ScreenshotHuge.get_value(), "screenshot_huge");
     /// assert_eq!(MediaQuality::FullHD.get_value(), "1080p");
     /// ```

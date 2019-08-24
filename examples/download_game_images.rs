@@ -1,6 +1,6 @@
 use async_std::task;
-use igdb_client::client::IGDBClient;
-use igdb_client::media_quality::MediaQuality;
+use igdb_rs::client::IGDBClient;
+use igdb_rs::media_quality::MediaQuality;
 
 fn main() {
     task::block_on(async {
