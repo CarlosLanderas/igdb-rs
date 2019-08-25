@@ -51,7 +51,7 @@ Add the following lines to you `Cargo.toml`:
 
 ```toml
 [dependencies]
-igdb-rs = "0.0.1"
+igdb-rs = "*"
 ```
 
 Or use [cargo add][cargo-add] if you have it installed:
