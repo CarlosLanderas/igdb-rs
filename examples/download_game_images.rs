@@ -21,11 +21,7 @@ fn main() {
 
         for (i, cover) in covers_response.iter().enumerate() {
             covers_client
-                .download_by_id(
-                    cover.id,
-                    format!("cover{}.jpg", i),
-                    MediaQuality::CoverBig,
-                )
+                .download_by_id(cover.id, format!("cover{}.jpg", i), MediaQuality::CoverBig)
                 .await
                 .unwrap();
         }

@@ -1,12 +1,12 @@
 [package]
 name = "igdb-rs"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Carlos Landeras"]
 edition = "2018"
 license = "Apache-2.0/MIT"
-repository = "https://github.com/CarlosLanderas/igdb-client"
-homepage = "https://github.com/CarlosLanderas/igdb-client"
-documentation = "https://docs.rs/igdb-client"
+repository = "https://github.com/CarlosLanderas/igdb-rs"
+homepage = "https://github.com/CarlosLanderas/igdb-rs"
+documentation = "https://docs.rs/igdb-rs"
 description = "IGDB - Video Game Database Api"
 keywords = ["igdb", "games", "database", "api-bindings", "client"]
 categories = ["videogame", "api", "asynchronous"]
