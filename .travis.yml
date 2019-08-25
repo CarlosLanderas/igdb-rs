@@ -5,8 +5,6 @@ matrix:
   include:
     - rust: nightly
       os: linux
-    - rust: nightly
-      os: osx
     - rust: nightly-x86_64-pc-windows-msvc
       os: windows
 
@@ -15,10 +13,11 @@ before_script: |
   rustup component add clippy-preview &&
 
 script: |
-  cargo fmt -- --check &&
-  cargo clippy &&
-  cargo build --verbose &&
-  cargo test  --verbose
+  cargo check --all --benches --bins --examples --tests
+  cargo fmt --all -- --check
+  cargo clippy -- -D clippy::all
+  cargo test --all  --verbose
+  cargo build --verbose
 
 cache: cargo
 
