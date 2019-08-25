@@ -10,7 +10,7 @@
 <img src="https://pbs.twimg.com/media/DfcmJi4X4AAIiM8?format=jpg" width="50%" height="50%">
 
 
-With igdb-rs you can easily retrieve video game related information such as:
+With **igdb-rs** you can easily retrieve video game related information such as:
 
 - Games
 - Game Engines,
