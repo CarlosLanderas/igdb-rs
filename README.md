@@ -1,6 +1,6 @@
-# IGDB Rust  <img src="https://cdn-images-1.medium.com/max/1200/1*8KkfyqgM4LCruOS5DGUeCA.jpeg" alt="idgb" width="10%" height="10%"/>
+# IGDB Rust  <img src="https://cdn-images-1.medium.com/max/1200/1*8KkfyqgM4LCruOS5DGUeCA.jpeg" alt="idgb" width="8%" height="8%"/>
 
-## Internet Game Database Api Client written in Rust
+## Non-Official Internet Game Database Api Client written in Rust
 
 ## Documentation
 Check the documentation here : [docs](https://docs.rs/igdb-rs)
@@ -30,7 +30,9 @@ $ cargo add igdb-rs
 
 With igdb-rs you can easily query the Internet Game Database.
 
-You just need to create an IGDBClient object with your api key:
+You just need to create an IGDBClient object with your api key, you can sign and get one here:
+https://api.igdb.com/
+
 
 ```rust
 let igdb_client = IGDBClient::new("user-key");
@@ -66,18 +68,18 @@ println!("Url: {}", game.url);
             println!("Url: {}", game.url);
         }
 
-        //        Name: Borderlands: The Pre-Sequel - Lady Hammerlock The Baroness
-        //        Story line:
-        //            Url: https://www.igdb.com/games/borderlands-the-pre-sequel-lady-hammerlock-the-baroness
-        //            Name: Borderlands Legends
-        //        Story line:
-        //            Url: https://www.igdb.com/games/borderlands-legends
-        //            Name: Tales from the Borderlands: Episode 3 - Catch a Ride
-        //        Story line:
-        //            Url: https://www.igdb.com/games/tales-from-the-borderlands-episode-3-catch-a-ride
-        //            Name: Borderlands 2: Game of the Year Edition
-        //        Story line:
-        //            Url: https://www.igdb.com/games/borderlands-2-game-of-the-year-edition
+        //  Name: Borderlands: The Pre-Sequel - Lady Hammerlock The Baroness
+        //  Story line:
+        //  Url: https://www.igdb.com/games/borderlands-the-pre-sequel-lady-hammerlock-the-baroness
+        //  Name: Borderlands Legends
+        //  Story line:
+        //  Url: https://www.igdb.com/games/borderlands-legends
+        //  Name: Tales from the Borderlands: Episode 3 - Catch a Ride
+        //  Story line:
+        //  Url: https://www.igdb.com/games/tales-from-the-borderlands-episode-3-catch-a-ride
+        //  Name: Borderlands 2: Game of the Year Edition
+        //  Story line:
+        //  Url: https://www.igdb.com/games/borderlands-2-game-of-the-year-edition
 
         //Omitted for brevity...
     })
@@ -92,15 +94,72 @@ let characters_client = igdb_client.characters();
    println!("name: {}, slug: {}, url: {}", ch.name, ch.slug, ch.url);
  }
 
-//name: Dandelion, slug: dandelion, url: https://www.igdb.com/characters/dandelion
-//name: Jaskier, slug: jaskier, url: https://www.igdb.com/characters/jaskier
-//name: Emhyr Var Empreis, slug: emhyr-var-empreis, url: https://www.igdb.com/characters/emhyr-var-empreis
-//name: Ciri, slug: ciri, url: https://www.igdb.com/characters/ciri
-//name: Avallac'h, slug: avallach, url: https://www.igdb.com/characters/avallach
+//  name: Dandelion, slug: dandelion, url: https://www.igdb.com/characters/dandelion
+//  name: Jaskier, slug: jaskier, url: https://www.igdb.com/characters/jaskier
+//  name: Emhyr Var Empreis, slug: emhyr-var-empreis, url: https://www.igdb.com/characters/emhyr-var-empreis
+//  name: Ciri, slug: ciri, url: https://www.igdb.com/characters/ciri
+//  name: Avallac'h, slug: avallach, url: https://www.igdb.com/characters/avallach
 
 //Omitted for brevity...
 ```
 
+
+
+### Game engine info
+```rust
+  let igdb_client = IGDBClient::new("user-key");
+
+  let games_client = igdb_client.games();
+  let game = games_client
+     .get_first_by_name("Riders of Asgard")
+     .await
+     .unwrap();
+
+ let engine_id = game.game_engines.first().unwrap();
+
+ let engines_client = igdb_client.game_engines();
+ let engine = engines_client
+     .get_first_by_id(*engine_id as usize)
+     .await
+     .unwrap();
+
+ println!(
+         "name: {}, url: {}, companies: {:?}",
+         engine.name, engine.url, engine.companies
+        );
+
+    // name: Unreal Engine 4, url: https://www.igdb.com/game_engines/unreal-engine-4--1,
+    // companies: [168, 11060]
+```
+
+### Game release data
+```rust
+  let igdb_client = IGDBClient::new("user-key");
+
+  let release_client = igdb_client.release_dates();
+
+  //Get releases for Borderlands3 with id 19164
+  let releases = release_client.get_by_game_id(19164, 10).await.unwrap();
+
+  let platform_client = igdb_client.platforms();
+
+  for release in releases {
+    let platform = platform_client
+        .get_first_by_id(release.platform as usize)
+        .await
+        .unwrap();
+
+    println!(
+            "platform: {} release date: {}",
+            platform.name, release.human
+            );
+    }
+
+    //  platform: Xbox One release date: 2019-Sep-13
+    //  platform: PC (Microsoft Windows) release date: 2019-Sep-13
+    //  platform: PlayStation 4 release date: 2019-Sep-13
+    //  platform: Google Stadia release date: 2019-Sep-13
+```
 
 
 
