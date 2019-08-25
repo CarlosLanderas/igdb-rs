@@ -330,7 +330,17 @@ Get Borderlands 2 multiplayer information building a custom query
     //  Borderlands 2 has online coop: true
     //  Borderlands 2 has local coop: false
 ```
+### Game rating and votes
+```rust
+    let igdb_client = IGDBClient::new("1eae0733abe6ba3968c011073ff24458");
+    let games_client = igdb_client.games();
 
+    let game = games_client.get_first_by_name("Modern Warfare 3").await.unwrap();
+
+    println!("Game: {}, rating: {}, total votes: {}", game.name, game.total_rating as usize, game.total_rating_count);
+
+    //Game: Call of Duty: Modern Warfare 3, rating: 80, total votes: 442
+```
 
 
 

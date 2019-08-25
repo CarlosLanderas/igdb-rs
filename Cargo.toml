@@ -8,7 +8,7 @@ repository = "https://github.com/CarlosLanderas/igdb-client"
 homepage = "https://github.com/CarlosLanderas/igdb-client"
 documentation = "https://docs.rs/igdb-client"
 description = "IGDB - Video Game Database Api"
-keywords = ["igdb", "videogames", "database", "api", "client"]
+keywords = ["igdb", "games", "database", "api-bindings", "client"]
 categories = ["videogame", "api", "asynchronous"]
 readme = "README.md"
 
@@ -58,3 +58,6 @@ path = "examples/game_characters.rs"
 [[example]]
 name = "logging"
 path = "examples/logging.rs"
+[[example]]
+name = "game-rating"
+path = "examples/game_rating.rs"
