@@ -64,6 +64,7 @@
 //!
 //!   task::block_on(async {
 //!        let games_client = IGDBClient::new("user-key").games();
+//!        // Get ten first games containing word Borderlands
 //!        let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
 //!
 //!        for game in games_results {
@@ -123,7 +124,7 @@
 //!    })
 //!```
 //!
-//!
+//! **You can read more samples here: [examples]**
 
 
 #[macro_use]
