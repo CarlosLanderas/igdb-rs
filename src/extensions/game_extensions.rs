@@ -56,6 +56,6 @@ async fn get_game_result(
         Err(e) => {
             log::error!("{}", e);
             None
-        },
+        }
     }
 }

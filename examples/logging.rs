@@ -4,7 +4,6 @@ use log::LevelFilter;
 
 fn main() {
     task::block_on(async {
-
         //Set default level to debug using femme crate
         femme::start(LevelFilter::Debug).unwrap();
 
