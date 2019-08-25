@@ -2,7 +2,7 @@ use async_std::task;
 use igdb_rs::client::IGDBClient;
 fn main() {
     task::block_on(async {
-        let games_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1").games();
+        let games_client = IGDBClient::new("user-key").games();
         let game = games_client.get_first_by_name("Witcher 3").await.unwrap();
 
         println!("Name: {}", game.name);

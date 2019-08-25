@@ -3,7 +3,7 @@ use igdb_rs::client::IGDBClient;
 
 fn main() {
     task::block_on(async {
-        let igdb_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1");
+        let igdb_client = IGDBClient::new("user-key");
 
         let release_client = igdb_client.release_dates();
 

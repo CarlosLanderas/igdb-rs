@@ -3,7 +3,7 @@ use igdb_rs::client::IGDBClient;
 
 fn main() {
     task::block_on(async {
-        let idbg_client = IGDBClient::new("586677e082e930d4c44a59962420e9d1");
+        let idbg_client = IGDBClient::new("user-key");
 
         let games_client = idbg_client.games();
 
