@@ -159,7 +159,7 @@
 //!                .download_by_id(
 //!                    screenshot.id,
 //!                    format!("screenshot{}.jpg", i),
-//!                    MediaQuality::ScreenshotHuge,
+//!                    MediaQuality::CoverBig,
 //!                )
 //!                .await
 //!                .unwrap();

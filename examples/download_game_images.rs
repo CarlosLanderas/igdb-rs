@@ -24,7 +24,7 @@ fn main() {
                 .download_by_id(
                     cover.id,
                     format!("cover{}.jpg", i),
-                    MediaQuality::ScreenshotHuge,
+                    MediaQuality::CoverBig,
                 )
                 .await
                 .unwrap();
