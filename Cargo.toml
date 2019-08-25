@@ -8,7 +8,7 @@ repository = "https://github.com/CarlosLanderas/igdb-client"
 homepage = "https://github.com/CarlosLanderas/igdb-client"
 documentation = "https://docs.rs/igdb-client"
 description = "IGDB - Video Game Database Api"
-keywords = ["igdb", "videogame", "videogames", "database", "video", "async", "playstation", "xbox", "pc", "database", "api", "client"]
+keywords = ["igdb", "videogames", "database", "api", "client"]
 categories = ["videogame", "api", "asynchronous"]
 readme = "README.md"
 
