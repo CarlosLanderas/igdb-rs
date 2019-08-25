@@ -8,8 +8,8 @@ repository = "https://github.com/CarlosLanderas/igdb-rs"
 homepage = "https://github.com/CarlosLanderas/igdb-rs"
 documentation = "https://docs.rs/igdb-rs"
 description = "IGDB - Video Game Database Api"
-keywords = ["igdb", "games", "database", "api-bindings", "client"]
-categories = ["videogame", "api", "asynchronous"]
+keywords = ["igdb", "videogames", "database", "api", "client"]
+categories = ["games", "api-bindings", "asynchronous"]
 readme = "README.md"
 
 [dependencies]
