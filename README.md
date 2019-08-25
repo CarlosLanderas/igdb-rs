@@ -1,5 +1,10 @@
 # IGDB Rust  <img src="https://cdn-images-1.medium.com/max/1200/1*8KkfyqgM4LCruOS5DGUeCA.jpeg" alt="idgb" width="5%" height="5%"/>
 
+![[Build Status]](https://travis-ci.org/CarlosLanderas/igdb-rs.svg?branch=master)
+[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](https://github.com/CarlosLanderas/igdb-rs)
+[![Cargo](https://img.shields.io/crates/v/igdb-rs.svg)](https://crates.io/crates/igdb-rs)
+[![Documentation](https://docs.rs/igdb-rs/badge.svg)](https://docs.rs/igdb-rs)
+
 ## Non-Official Internet Game Database Api Client written in Rust
 
 With igdb-rs you can easily retrieve video game related information such as:
