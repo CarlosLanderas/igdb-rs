@@ -15,10 +15,10 @@ before_script: |
   rustup component add clippy-preview &&
 
 script: |
-  cargo fmt -- --check &&
-  cargo clippy &&
-  cargo build --verbose &&
-  cargo test  --verbose
+  cargo fmt -- --check
+  cargo clippy
+  cargo build --verbose
+  cargo test --all --verbose
 
 cache: cargo
 
