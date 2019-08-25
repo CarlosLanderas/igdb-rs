@@ -1,4 +1,4 @@
-# IGDB Rust  <img src="https://cdn-images-1.medium.com/max/1200/1*8KkfyqgM4LCruOS5DGUeCA.jpeg" alt="idgb" width="5%" height="5%"/>
+# IGDB Rust Client  <img src="https://cdn-images-1.medium.com/max/1200/1*8KkfyqgM4LCruOS5DGUeCA.jpeg" alt="idgb" width="5%" height="5%"/>
 
 [![Build Status](https://travis-ci.org/CarlosLanderas/igdb-rs.svg?branch=master)](https://travis-ci.org/CarlosLanderas/igdb-rs)
 [![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](https://github.com/CarlosLanderas/igdb-rs)

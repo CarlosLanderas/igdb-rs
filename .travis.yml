@@ -3,10 +3,11 @@ language: rust
 matrix:
   fast_finish: true
   include:
-    - rust: nightly
-      os: linux
     - rust: nightly-x86_64-pc-windows-msvc
       os: windows
+    - rust: nightly
+      os: linux
+
 
 before_script: |
   rustup component add rustfmt-preview
