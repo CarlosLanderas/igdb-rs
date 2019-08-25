@@ -1,3 +1,131 @@
+
+//! # Non-Official Internet Game Database Api Client written in Rust
+//!
+//! With igdb-rs you can easily retrieve video game related information such as:
+//!
+//! Games, Videos, Artworks, Covers, Screenshots, Release Dates, Multiplayer Options, Game Engines, Websites and much more!.
+//!
+//! Use out of the box client methods or build your own queries to retrieve the exact data that you are looking for.
+//!
+//!
+//! ## Links
+//!  [Repository]
+//!
+//!  [README]
+//!
+//!  [IGDB Site]
+//!
+//!  [IGDB Api]
+//!
+//! [Repository]: https://github.com/CarlosLanderas/igdb-rs
+//! [IGDB Site]: https://github.com/TyOverby/bincode
+//! [IGDB Api]: https://api-docs.igdb.com/#endpoints
+//! [examples]: https://github.com/CarlosLanderas/igdb-rs/tree/master/examples
+//! [README]: https://github.com/CarlosLanderas/igdb-rs/blob/develop/README.md
+//!
+//! ## Code Examples
+//! You can check some code samples here: [examples]
+//!
+//! ## Examples
+//!
+//!
+//!
+//!
+//! **Get game by name**
+//!
+//! ```no_run
+//!use async_std::task;
+//!use igdb_rs::IGDBClient;
+//!
+//!task::block_on(async {
+//!    let games_client = IGDBClient::new("user-key").games();
+//!    let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
+//!
+//!    for game in games_results {
+//!        println!("Name: {}", game.name);
+//!        println!("Story line: {}", game.storyline);
+//!        println!("Url: {}", game.url);
+//!    }
+//!
+//!   //  Name: The Witcher 3: Wild Hunt - Hearts of Stone
+//!   //  Summary: Hired by the Merchant of Mirrors, Geralt is tasked with overcoming Olgierd von Everec -- a ruthless bandit captain enchanted with the power of immorta ...
+//!   //  Story line: Professional monster slayer is hired to deal with a ruthless bandit captain who possesses the power of immortality.
+//!   //  Url: https://www.igdb.com/games/the-witcher-3-wild-hunt-hearts-of-stone
+//!
+//!})
+//!```
+//!
+//!
+//! **Get games by name**
+//!
+//!```no_run
+//!use async_std::task;
+//!use igdb_rs::IGDBClient;
+//!
+//!   task::block_on(async {
+//!        let games_client = IGDBClient::new("user-key").games();
+//!        let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
+//!
+//!        for game in games_results {
+//!            println!("Name: {}", game.name);
+//!            println!("Story line: {}", game.storyline);
+//!            println!("Url: {}", game.url);
+//!        }
+//!
+//!        //        Name: Borderlands: The Pre-Sequel - Lady Hammerlock The Baroness
+//!        //        Story line:
+//!        //            Url: https://www.igdb.com/games/borderlands-the-pre-sequel-lady-hammerlock-the-baroness
+//!        //            Name: Borderlands Legends
+//!        //        Story line:
+//!        //            Url: https://www.igdb.com/games/borderlands-legends
+//!        //            Name: Tales from the Borderlands: Episode 3 - Catch a Ride
+//!        //        Story line:
+//!        //            Url: https://www.igdb.com/games/tales-from-the-borderlands-episode-3-catch-a-ride
+//!        //            Name: Borderlands 2: Game of the Year Edition
+//!
+//!        // Omitted for brevity...
+//!    })
+//!```
+//!
+//!
+//! **Game release date**
+//!
+//!```no_run
+//!use async_std::task;
+//!use igdb_rs::IGDBClient;
+//!
+//!   task::block_on(async {
+//!        let igdb_client = IGDBClient::new("user-key");
+//!
+//!        let release_client = igdb_client.release_dates();
+//!
+//!       //Get releases for Borderlands3 with id 19164
+//!        let releases = release_client.get_by_game_id(19164, 10).await.unwrap();
+//!
+//!        let platform_client = igdb_client.platforms();
+//!
+//!        for release in releases {
+//!            let platform = platform_client
+//!                .get_first_by_id(release.platform as usize)
+//!                .await
+//!                .unwrap();
+//!
+//!            println!(
+//!                "platform: {} release date: {}",
+//!                platform.name, release.human
+//!            );
+//!        }
+//!
+//!        //  platform: Xbox One release date: 2019-Sep-13
+//!        //  platform: PC (Microsoft Windows) release date: 2019-Sep-13
+//!        //  platform: PlayStation 4 release date: 2019-Sep-13
+//!        //  platform: Google Stadia release date: 2019-Sep-13
+//!    })
+//!```
+//!
+//!
+
+
 #[macro_use]
 extern crate serde_derive;
 mod endpoint_client;
