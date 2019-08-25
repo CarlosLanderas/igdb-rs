@@ -1,11 +1,5 @@
 language: rust
 
-env:
-  - RUSTFLAGS="-D warnings"
-
-before_script:
-  - rustup component add rustfmt
-
 matrix:
   fast_finish: true
   include:
@@ -19,8 +13,11 @@ matrix:
     - rust: nightly-x86_64-pc-windows-msvc
       os: windows
 
-script:
-  - cargo check --all --examples --tests
-  - cargo test --all
-  - cargo fmt --all -- --check
-  - if [[ -n "$BUILD_DOCS" ]]; then cargo doc --features docs; fi
+deploy:
+  - provider: cargo
+    skip_cleanup: true
+    on:
+      tags: true
+      branch: master
+    token:
+      secure: FBWdMTR3XdK5LI9YUFD2RuEYYvWvSYpAVuyTLv0rNb6MYj5rM+F5Nry10M0J/xZH/cLFxjYIao7yqypa46si6hUv+/hdac+W43ULJnktd3OLAdZUZ0PaAOE0wQkZwKcTP2rfrHbgsbYbQ83fIfS7oR3ofa/DgPXurtdriou12DapV7yfxfhRoYGlevSFflhqUaCeruS5FTKrC24pD3FSAE8oRok0ZN9iK5yyvr6EyxjUL5YQtf8fxD1ZGzaDMLpdG6EK2aCYfPDysP/BAbiwc1KmdXvy/K9B5+XMDG07Hyk8nrxCJak4KY5194vXvS/0f3E2uevYBhYHDVgTYR56ZIVNDCTolu16EYQ9AsZEBQZrrPDr+zjKuenlOZBncupPbtJ4YXfkEUKsodmggGPR4YvuKg1fBiZurNdvZlxHXcAbTRP+bxxtLAqEGdtWLQkMwW21AB+ZtoJJnJrWBkP0acvkJ8mQpiHQ7Owb4++Dli9aEFemucDrwi2hZttrCV9PYj4+aak7L2shC6Nmmc32EiW8/cFXyp3T6HidQEAUy157L7xn0wH4iKZHvBRMFrLB0MDtpM0bSILdHsdxR94FZutg6quvgsDXPIO/UW7tMoYiT21Y1YHskMXlthXU4gZcSfuTWBslnGhLcogLq/VOrYNppQf1C3F/iaIYvKtCbuQ=
