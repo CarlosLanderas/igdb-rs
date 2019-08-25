@@ -1,16 +1,30 @@
 # IGDB Rust  <img src="https://cdn-images-1.medium.com/max/1200/1*8KkfyqgM4LCruOS5DGUeCA.jpeg" alt="idgb" width="5%" height="5%"/>
 
-![[Build Status]](https://travis-ci.org/CarlosLanderas/igdb-rs.svg?branch=master)
+[![Build Status](https://travis-ci.org/CarlosLanderas/igdb-rs.svg?branch=master)](https://travis-ci.org/CarlosLanderas/igdb-rs)
 [![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg)](https://github.com/CarlosLanderas/igdb-rs)
 [![Cargo](https://img.shields.io/crates/v/igdb-rs.svg)](https://crates.io/crates/igdb-rs)
 [![Documentation](https://docs.rs/igdb-rs/badge.svg)](https://docs.rs/igdb-rs)
 
 ## Non-Official Internet Game Database Api Client written in Rust
 
+<img src="https://pbs.twimg.com/media/DfcmJi4X4AAIiM8?format=jpg" width="30%" height="30%">
+
+
 With igdb-rs you can easily retrieve video game related information such as:
 
-Games, Videos, Artworks, Covers, Screenshots, Release Dates, Multiplayer Options, Game Engines, Websites
+- Games
+- Game Engines,
+- Release Dates,
+- Multiplayer information
+- Videos
+- Artworks
+- Covers,
+- Screenshots
+- Websites
+
 and much more!.
+
+
 
 Use out of the box client methods or build your own queries to retrieve the exact data that you are looking for.
 
