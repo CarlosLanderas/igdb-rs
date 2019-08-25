@@ -7,7 +7,7 @@
 
 ## Non-Official Internet Game Database Api Client written in Rust
 
-<img src="https://pbs.twimg.com/media/DfcmJi4X4AAIiM8?format=jpg" width="30%" height="30%">
+<img src="https://pbs.twimg.com/media/DfcmJi4X4AAIiM8?format=jpg" width="50%" height="50%">
 
 
 With igdb-rs you can easily retrieve video game related information such as:
@@ -26,7 +26,7 @@ and much more!.
 
 
 
-Use out of the box client methods or build your own queries to retrieve the exact data that you are looking for.
+Use out of the box **clients methods** or build your **own queries** with RequestBuilder to retrieve the exact data that you are looking for.
 
 You have a [Code Samples](#code-samples) section below to check some samples
 
