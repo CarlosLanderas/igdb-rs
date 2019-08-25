@@ -19,7 +19,8 @@ impl EndpointClient {
     ) -> Result<Vec<T>, Exception> {
         let request = request_builder.build(&self.api_key, &get_endpoint_url(&self.endpoint));
         let mut response = request.await;
-        let result = match response {
+
+        match response {
             Ok(ref mut resp) => {
                 let response_str: String = resp.body_string().await.unwrap();
                 Ok(serde_json::from_str::<Vec<T>>(&response_str).unwrap())
@@ -28,8 +29,6 @@ impl EndpointClient {
                 eprintln!("{}", e);
                 Err(e)
             }
-        };
-
-        result
+        }
     }
 }

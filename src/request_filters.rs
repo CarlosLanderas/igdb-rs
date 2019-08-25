@@ -1,6 +1,6 @@
 use crate::request_builder::{Equality, OrderBy, RequestBuilder};
 
-const ALL_FIELDS: &'static str = "*";
+const ALL_FIELDS: &str = "*";
 
 #[derive(Clone)]
 ///Filter struct

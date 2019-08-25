@@ -1,4 +1,3 @@
-
 //! # Non-Official Internet Game Database Api Client written in Rust
 //!
 //! With igdb-rs you can easily retrieve video game related information such as:
@@ -35,7 +34,7 @@
 //!
 //! ```no_run
 //!use async_std::task;
-//!use igdb_rs::IGDBClient;
+//!use igdb_rs::client::IGDBClient;
 //!
 //!task::block_on(async {
 //!    let games_client = IGDBClient::new("user-key").games();
@@ -60,7 +59,7 @@
 //!
 //!```no_run
 //!use async_std::task;
-//!use igdb_rs::IGDBClient;
+//!use igdb_rs::client::IGDBClient;
 //!
 //!   task::block_on(async {
 //!        let games_client = IGDBClient::new("user-key").games();
@@ -93,7 +92,7 @@
 //!
 //!```no_run
 //!use async_std::task;
-//!use igdb_rs::IGDBClient;
+//!use igdb_rs::client::IGDBClient;
 //!
 //!   task::block_on(async {
 //!        let igdb_client = IGDBClient::new("user-key");
@@ -125,8 +124,6 @@
 //!```
 //!
 //! **You can read more samples here: [examples]**
-
-
 #[macro_use]
 extern crate serde_derive;
 mod endpoint_client;

@@ -10,6 +10,18 @@ matrix:
     - rust: nightly-x86_64-pc-windows-msvc
       os: windows
 
+before_script: |
+  rustup component add rustfmt-preview &&
+  rustup component add clippy-preview &&
+
+script: |
+  cargo fmt -- --check &&
+  cargo clippy -- -D clippy::all &&
+  cargo build --verbose &&
+  cargo test  --verbose
+
+cache: cargo
+
 deploy:
   - provider: cargo
     skip_cleanup: true

@@ -4,7 +4,7 @@ use std::string::ToString;
 use surf::middleware::HttpClient;
 use url::Url;
 
-const HEADER_KEY_NAME: &'static str = "user-key";
+const HEADER_KEY_NAME: &str = "user-key";
 
 #[derive(Clone)]
 /// Request Builder struct
@@ -15,6 +15,19 @@ pub struct RequestBuilder {
     pub(crate) limit: usize,
     pub(crate) search: String,
 }
+
+impl Default for RequestBuilder {
+    fn default() -> Self {
+        RequestBuilder {
+            fields: Vec::new(),
+            filters: vec![],
+            sort: (String::new(), String::new()),
+            limit: 10,
+            search: String::new(),
+        }
+    }
+}
+
 
 pub enum OrderBy {
     Descending,
@@ -69,13 +82,7 @@ impl RequestBuilder {
     ///let mut request = IGDBClient::create_request();
     /// ```
     pub fn new() -> RequestBuilder {
-        RequestBuilder {
-            fields: Vec::new(),
-            filters: vec![],
-            sort: (String::new(), String::new()),
-            limit: 10,
-            search: String::new(),
-        }
+        RequestBuilder::default()
     }
 
     pub(crate) fn build(&self, api_key: &str, url: &str) -> surf::Request<impl HttpClient> {
@@ -144,7 +151,7 @@ impl RequestBuilder {
             body = format!("{} search \"{}\";", body, self.search);
         }
 
-        if self.filters.len() > 0 {
+        if !self.filters.is_empty() {
             body = format!("{} {}", body, filters);
         }
 
