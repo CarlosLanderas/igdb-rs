@@ -16,7 +16,7 @@ before_script: |
 
 script: |
   cargo fmt -- --check &&
-  cargo clippy -- -D clippy::all &&
+  cargo clippy &&
   cargo build --verbose &&
   cargo test  --verbose
 

@@ -28,7 +28,6 @@ impl Default for RequestBuilder {
     }
 }
 
-
 pub enum OrderBy {
     Descending,
     Ascending,
