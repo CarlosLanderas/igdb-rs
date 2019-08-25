@@ -26,7 +26,7 @@ impl EndpointClient {
                 Ok(serde_json::from_str::<Vec<T>>(&response_str).unwrap())
             }
             Err(e) => {
-                eprintln!("{}", e);
+                log::error!("{}", e);
                 Err(e)
             }
         }

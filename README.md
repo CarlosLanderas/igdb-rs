@@ -43,7 +43,7 @@ https://api-docs.igdb.com/#endpoints
 Check the documentation here : [docs](https://docs.rs/igdb-rs)
 
 ## Examples
-You can find some code samples snippets here: [examples](https://github.com/CarlosLanderas/igdb-rs/tree/master/examples)
+You can find some sample code snippets here: [examples](https://github.com/CarlosLanderas/igdb-rs/tree/master/examples)
 
 ## Quickstart
 

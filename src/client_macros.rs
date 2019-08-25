@@ -23,7 +23,10 @@ macro_rules! create_client {
             pub async fn get_first_by_id(&self, id: usize) -> Option<$j> {
                 match self.get_by_id(id, 1).await {
                     Ok(d) => Some(d[0].clone()),
-                    Err(_) => None,
+                    Err(e) =>  {
+                        log::error!("{}", e);
+                        None
+                    },
                 }
             }
         }
@@ -52,7 +55,10 @@ macro_rules! expand_get_by_game_id {
 
                 match self.get(request).await {
                     Ok(d) => Some(d),
-                    Err(_) => None,
+                    Err(e) =>  {
+                        log::error!("{}", e);
+                        None
+                    },
                 }
             }
         }

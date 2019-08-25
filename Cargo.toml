@@ -22,9 +22,11 @@ serde_repr = "0.1.5"
 http = "0.1.18"
 url = "2.1.0"
 isahc = "0.7"
+log = "0.4.8"
 
 [dev-dependencies]
 futures-preview = { version = "=0.3.0-alpha.17", features = ["async-await", "nightly","compat"] }
+femme = "1.2.0"
 
 [[example]]
 name = "search-first-game-by-name"
@@ -53,3 +55,6 @@ path = "examples/game_release_date.rs"
 [[example]]
 name = "game-characters"
 path = "examples/game_characters.rs"
+[[example]]
+name = "logging"
+path = "examples/logging.rs"

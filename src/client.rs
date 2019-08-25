@@ -89,7 +89,7 @@ async fn download_resource(
 
     parsed_url = parsed_url.replace("thumb", &quality.get_value());
 
-    println!("Downloading resource: {}", parsed_url);
+    log::debug!("Downloading resource: {}", parsed_url);
 
     let content = surf::get(parsed_url).recv_bytes().await.unwrap();
     let mut file = File::create(path).await?;

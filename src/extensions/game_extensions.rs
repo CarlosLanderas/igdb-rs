@@ -53,6 +53,9 @@ async fn get_game_result(
 ) -> Option<Game> {
     match games_future.await {
         Ok(games) => Some(games[0].clone()),
-        Err(_) => None,
+        Err(e) => {
+            log::error!("{}", e);
+            None
+        },
     }
 }
