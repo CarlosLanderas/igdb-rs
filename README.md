@@ -5,7 +5,7 @@
 [![Cargo](https://img.shields.io/crates/v/igdb-rs.svg)](https://crates.io/crates/igdb-rs)
 [![Documentation](https://docs.rs/igdb-rs/badge.svg)](https://docs.rs/igdb-rs)
 
-## Non-Official Internet Game Database Api Client written in Rust
+## Non-Official Internet Game Database Api Rustb Api Client
 
 <img src="https://pbs.twimg.com/media/DfcmJi4X4AAIiM8?format=jpg" width="50%" height="50%">
 
