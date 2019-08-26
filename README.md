@@ -30,7 +30,7 @@ and much more!.
 
 
 
-Use out of the box **clients methods** or build your [**own queries with RequestBuilder**](#custom-queries-I) to retrieve the exact data that you are looking for.
+Use out of the box [**clients methods**](#code-samples) or build your [**own queries with RequestBuilder**](#custom-queries-I) to retrieve the exact data that you are looking for.
 
 You have a [Code Samples](#code-samples) section below to check some samples
 
@@ -106,6 +106,20 @@ You just need to create an IGDBClient object with your api key, you can sign and
 https://api.igdb.com/
 
 
+## Running samples
+
+You can find some sample code snippets here: [examples](https://github.com/CarlosLanderas/igdb-rs/tree/master/examples)
+```
+In order to run the samples, just replace the user-key parameter inside the code sample with your access key and execute it by using the sample name specified inside Cargo.toml file.
+
+Example:
+
+cargo run --example search-games-by-name
+cargo run --example game-video-urls
+```
+
+
+### Creating the IGDBClient with your user key
 ```rust
     let igdb_client = IGDBClient::new("user-key");
 
