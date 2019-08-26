@@ -7,7 +7,7 @@
 
 ## Non-Official Internet Game Database Rust Api Client
 
-<img src="https://pbs.twimg.com/media/DfcmJi4X4AAIiM8?format=jpg" width="50%" height="50%">
+<img src="https://pbs.twimg.com/profile_banners/291339840/1540286026/1080x360">
 
 
 With **igdb-rs** you can easily retrieve video game related information such as:
