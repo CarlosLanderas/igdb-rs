@@ -125,30 +125,30 @@ https://api.igdb.com/
 
 ### Games by name
 ```rust
- let games_client = IGDBClient::new("user-key").games();
+    let games_client = IGDBClient::new("user-key").games();
         // Get ten first results containing Borderlands in it's name
-        let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
+    let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
 
-        for game in games_results {
-            println!("Name: {}", game.name);
-            println!("Story line: {}", game.storyline);
-            println!("Url: {}", game.url);
-        }
+    for game in games_results {
+        println!("Name: {}", game.name);
+        println!("Story line: {}", game.storyline);
+        println!("Url: {}", game.url);
+    }
 
-        //  Name: Borderlands: The Pre-Sequel - Lady Hammerlock The Baroness
-        //  Story line:
-        //  Url: https://www.igdb.com/games/borderlands-the-pre-sequel-lady-hammerlock-the-baroness
-        //  Name: Borderlands Legends
-        //  Story line:
-        //  Url: https://www.igdb.com/games/borderlands-legends
-        //  Name: Tales from the Borderlands: Episode 3 - Catch a Ride
-        //  Story line:
-        //  Url: https://www.igdb.com/games/tales-from-the-borderlands-episode-3-catch-a-ride
-        //  Name: Borderlands 2: Game of the Year Edition
-        //  Story line:
-        //  Url: https://www.igdb.com/games/borderlands-2-game-of-the-year-edition
+    //  Name: Borderlands: The Pre-Sequel - Lady Hammerlock The Baroness
+    //  Story line:
+    //  Url: https://www.igdb.com/games/borderlands-the-pre-sequel-lady-hammerlock-the-baroness
+    //  Name: Borderlands Legends
+    //  Story line:
+    //  Url: https://www.igdb.com/games/borderlands-legends
+    //  Name: Tales from the Borderlands: Episode 3 - Catch a Ride
+    //  Story line:
+    //  Url: https://www.igdb.com/games/tales-from-the-borderlands-episode-3-catch-a-ride
+    //  Name: Borderlands 2: Game of the Year Edition
+    //  Story line:
+    //  Url: https://www.igdb.com/games/borderlands-2-game-of-the-year-edition
 
-        //Omitted for brevity...
+    //Omitted for brevity...
 ```
 
 ### Game characters
