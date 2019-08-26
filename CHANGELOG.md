@@ -6,7 +6,7 @@ All notable changes to igdb-rs will be documented in this file.
 
 ## Changes
 
-- Update suft external dependency to fix issue #1
+- Update surf external dependency to fix issue #1
 
 [0.0.23]: https://github.com/carloslanderas/igdb-rs/compare/0.0.22...0.0.23
 
@@ -19,3 +19,4 @@ All notable changes to igdb-rs will be documented in this file.
 - Added Player perspective endpoint, client and sample
 
 [0.0.23]: https://github.com/carloslanderas/igdb-rs/compare/0.0.22...0.0.23
+[0.0.24]: https://github.com/carloslanderas/igdb-rs/compare/0.0.23...0.0.24
