@@ -35,9 +35,10 @@ You have a [Code Samples](#code-samples) section below to check some samples
 
 https://www.igdb.com/
 
-## IGDB Api end Endpoints information site
+## IGDB Api endpoints information site
 
 https://api-docs.igdb.com/#endpoints
+
 
 ## Documentation
 Check the documentation here : [docs](https://docs.rs/igdb-rs)
