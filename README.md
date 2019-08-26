@@ -110,8 +110,8 @@ https://api.igdb.com/
 
 You can find some sample code snippets here: [examples](https://github.com/CarlosLanderas/igdb-rs/tree/master/examples)
 ```
-In order to run the samples, just replace the user-key parameter inside the code sample with your access key
-and execute it by using the sample name specified inside Cargo.toml file.
+In order to run the samples, just replace the user-key parameter inside the code sample
+with your access key and execute it by using the sample name specified inside Cargo.toml file.
 
 Example:
 
