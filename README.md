@@ -102,25 +102,25 @@ https://api.igdb.com/
 
 
 ```rust
-let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("user-key");
 
 ```
 
 
 ### Game by name
 ```rust
-let games_client = IGDBClient::new("user-key").games();
-let game = games_client.get_first_by_name("Witcher 3").await.unwrap();
+    let games_client = IGDBClient::new("user-key").games();
+    let game = games_client.get_first_by_name("Witcher 3").await.unwrap();
 
-println!("Name: {}", game.name);
-println!("Summary: {} ...", &game.summary[..150]);
-println!("Story line: {}", game.storyline);
-println!("Url: {}", game.url);
+    println!("Name: {}", game.name);
+    println!("Summary: {} ...", &game.summary[..150]);
+    println!("Story line: {}", game.storyline);
+    println!("Url: {}", game.url);
 
-//  Name: The Witcher 3: Wild Hunt - Hearts of Stone
-//  Summary: Hired by the Merchant of Mirrors, Geralt is tasked with overcoming Olgierd von Everec -- a ruthless bandit captain enchanted with the power of immorta ...
-//  Story line: Professional monster slayer is hired to deal with a ruthless bandit captain who possesses the power of immortality.
-//  Url: https://www.igdb.com/games/the-witcher-3-wild-hunt-hearts-of-stone
+    //  Name: The Witcher 3: Wild Hunt - Hearts of Stone
+    //  Summary: Hired by the Merchant of Mirrors, Geralt is tasked with overcoming Olgierd von Everec -- a ruthless bandit captain enchanted with the power of immorta ...
+    //  Story line: Professional monster slayer is hired to deal with a ruthless bandit captain who possesses the power of immortality.
+    //  Url: https://www.igdb.com/games/the-witcher-3-wild-hunt-hearts-of-stone
 ```
 
 ### Games by name
@@ -153,46 +153,46 @@ println!("Url: {}", game.url);
 
 ### Game characters
 ```rust
-let characters_client = igdb_client.characters();
+    let characters_client = igdb_client.characters();
 
- //Get Witcher 3 characters
- for ch in characters_client.get_by_game_id(1942, 10).await.unwrap() {
-   println!("name: {}, slug: {}, url: {}", ch.name, ch.slug, ch.url);
- }
+    //Get Witcher 3 characters
+    for ch in characters_client.get_by_game_id(1942, 10).await.unwrap() {
+    println!("name: {}, slug: {}, url: {}", ch.name, ch.slug, ch.url);
+    }
 
-//  name: Dandelion, slug: dandelion, url: https://www.igdb.com/characters/dandelion
-//  name: Jaskier, slug: jaskier, url: https://www.igdb.com/characters/jaskier
-//  name: Emhyr Var Empreis, slug: emhyr-var-empreis, url: https://www.igdb.com/characters/emhyr-var-empreis
-//  name: Ciri, slug: ciri, url: https://www.igdb.com/characters/ciri
-//  name: Avallac'h, slug: avallach, url: https://www.igdb.com/characters/avallach
+    //  name: Dandelion, slug: dandelion, url: https://www.igdb.com/characters/dandelion
+    //  name: Jaskier, slug: jaskier, url: https://www.igdb.com/characters/jaskier
+    //  name: Emhyr Var Empreis, slug: emhyr-var-empreis, url: https://www.igdb.com/characters/emhyr-var-empreis
+    //  name: Ciri, slug: ciri, url: https://www.igdb.com/characters/ciri
+    //  name: Avallac'h, slug: avallach, url: https://www.igdb.com/characters/avallach
 
-//Omitted for brevity...
+    //Omitted for brevity...
 ```
 
 
 
 ### Game engine info
 ```rust
-  let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("user-key");
 
-  let games_client = igdb_client.games();
-  let game = games_client
-     .get_first_by_name("Riders of Asgard")
-     .await
-     .unwrap();
+    let games_client = igdb_client.games();
+    let game = games_client
+        .get_first_by_name("Riders of Asgard")
+        .await
+        .unwrap();
 
- let engine_id = game.game_engines.first().unwrap();
+    let engine_id = game.game_engines.first().unwrap();
 
- let engines_client = igdb_client.game_engines();
- let engine = engines_client
-     .get_first_by_id(*engine_id as usize)
-     .await
-     .unwrap();
+    let engines_client = igdb_client.game_engines();
+    let engine = engines_client
+        .get_first_by_id(*engine_id as usize)
+        .await
+        .unwrap();
 
- println!(
-         "name: {}, url: {}, companies: {:?}",
-         engine.name, engine.url, engine.companies
-        );
+    println!(
+        "name: {}, url: {}, companies: {:?}",
+        engine.name, engine.url, engine.companies
+    );
 
     // name: Unreal Engine 4, url: https://www.igdb.com/game_engines/unreal-engine-4--1,
     // companies: [168, 11060]
@@ -200,6 +200,7 @@ let characters_client = igdb_client.characters();
 
 ### Game release data
 ```rust
+
   let igdb_client = IGDBClient::new("user-key");
 
   let release_client = igdb_client.release_dates();
@@ -229,26 +230,26 @@ let characters_client = igdb_client.characters();
 
 ### Game Videos Urls
 ```rust
-  let igdb_client = IGDBClient::new("user-key");
-  let videos_client = igdb_client.game_videos();
+    let igdb_client = IGDBClient::new("user-key");
+    let videos_client = igdb_client.game_videos();
 
-  //Query first 8 youtube videos for Witcher 3
-  let response = videos_client.get_by_game_id(1942, 8).await.unwrap();
+    //Query first 8 youtube videos for Witcher 3
+    let response = videos_client.get_by_game_id(1942, 8).await.unwrap();
 
-  for video in response {
+    for video in response {
     println!("{:?}", video);
- }
+    }
 
- // Youtube links for Witcher 3 Game
+    // Youtube links for Witcher 3 Game
 
- //  GameVideo { id: 5993, game: 1942, video_id: "xQGam9OHSUo" }
- //  GameVideo { id: 5989, game: 1942, video_id: "_IBAovRNCuA" }
- //  GameVideo { id: 5995, game: 1942, video_id: "8ZLfJjlZKvc" }
- //  GameVideo { id: 5987, game: 1942, video_id: "5nLipy-Z4yo" }
- //  GameVideo { id: 5991, game: 1942, video_id: "6f8TbvsZ5Mk" }
- //  GameVideo { id: 5994, game: 1942, video_id: "p14dHAwLOmo" }
- //  GameVideo { id: 5990, game: 1942, video_id: "QrwGXAcE6ZA" }
- //  GameVideo { id: 5996, game: 1942, video_id: "sb81f-ejNSI" }
+    //  GameVideo { id: 5993, game: 1942, video_id: "xQGam9OHSUo" }
+    //  GameVideo { id: 5989, game: 1942, video_id: "_IBAovRNCuA" }
+    //  GameVideo { id: 5995, game: 1942, video_id: "8ZLfJjlZKvc" }
+    //  GameVideo { id: 5987, game: 1942, video_id: "5nLipy-Z4yo" }
+    //  GameVideo { id: 5991, game: 1942, video_id: "6f8TbvsZ5Mk" }
+    //  GameVideo { id: 5994, game: 1942, video_id: "p14dHAwLOmo" }
+    //  GameVideo { id: 5990, game: 1942, video_id: "QrwGXAcE6ZA" }
+    //  GameVideo { id: 5996, game: 1942, video_id: "sb81f-ejNSI" }
 ```
 
 ### Screenshots and Covers download
@@ -301,9 +302,10 @@ let characters_client = igdb_client.characters();
 Get Borderlands 2 multiplayer information building a custom query
 
 ``` rust
-   let idbg_client = IGDBClient::new("user-key");
 
-   let games_client = idbg_client.games();
+    let idbg_client = IGDBClient::new("user-key");
+
+    let games_client = idbg_client.games();
 
     let mut games_req = IGDBClient::create_request();
     games_req
@@ -349,29 +351,29 @@ Get Borderlands 2 multiplayer information building a custom query
 ### Franchise games
 ```rust
 
-   let igdb_client = IGDBClient::new("user-key");
-        let franchises_client = igdb_client.franchises();
-        let games_client = igdb_client.games();
+    let igdb_client = IGDBClient::new("user-key");
+    let franchises_client = igdb_client.franchises();
+    let games_client = igdb_client.games();
 
-        //Get games inside franchises containing name "Lego"
-        for franchise in franchises_client
-            .get_by_name("Lego", 5)
-            .await
-            .unwrap()
-        {
-            for game in &franchise.games {
-                let game_info = games_client.get_first_by_id(*game as usize).await.unwrap();
+    //Get games inside franchises containing name "Lego"
+    for franchise in franchises_client
+        .get_by_name("Lego", 5)
+        .await
+        .unwrap()
+    {
+        for game in &franchise.games {
+            let game_info = games_client.get_first_by_id(*game as usize).await.unwrap();
 
-                println!("Name: {}", game_info.name);
-            }
+            println!("Name: {}", game_info.name);
         }
+    }
 
-        // Name: Lego Indiana Jones 2: The Adventure Continues
-        // Name: Lego Indiana Jones: The Original Adventures
-        // Name: LEGO Star Wars II: The Original Trilogy
-        // Name: Lego Racers 2
-        // Name: LEGO Racers
-        // Omitted for brevity...
+    // Name: Lego Indiana Jones 2: The Adventure Continues
+    // Name: Lego Indiana Jones: The Original Adventures
+    // Name: LEGO Star Wars II: The Original Trilogy
+    // Name: Lego Racers 2
+    // Name: LEGO Racers
+    // Omitted for brevity...
 ```
 
 
