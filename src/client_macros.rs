@@ -80,7 +80,7 @@ macro_rules! use_client_imports {
             model::cover::Cover, model::engine::Engine, model::game_mode::GameMode,
             model::game_video::GameVideo, model::games::Game,
             model::multiplayer_mode::MultiplayerMode, model::platform::Platform,
-            model::release_date::ReleaseDate, model::screenshot::Screenshot,
+            model::release_date::ReleaseDate, model::screenshot::Screenshot, model::theme::Theme,
             model::website::Website, request_builder::Equality, request_builder::RequestBuilder,
         };
     };

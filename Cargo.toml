@@ -1,6 +1,6 @@
 [package]
 name = "igdb-rs"
-version = "0.0.2"
+version = "0.0.21"
 authors = ["Carlos Landeras"]
 edition = "2018"
 license = "Apache-2.0/MIT"
@@ -61,3 +61,7 @@ path = "examples/logging.rs"
 [[example]]
 name = "game-rating"
 path = "examples/game_rating.rs"
+
+[[example]]
+name = "game-theme"
+path = "examples/game_theme.rs"

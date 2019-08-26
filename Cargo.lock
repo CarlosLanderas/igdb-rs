@@ -448,7 +448,7 @@ dependencies = [
 
 [[package]]
 name = "igdb-rs"
-version = "0.0.2"
+version = "0.0.21"
 dependencies = [
  "async-std 0.99.4 (registry+https://github.com/rust-lang/crates.io-index)",
  "femme 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",

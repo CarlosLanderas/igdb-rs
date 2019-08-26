@@ -81,6 +81,7 @@ igdb-rs supports the following endpoints at this moment:
 | Platforms |  The hardware used to run the game or game delivery network |
 | Release Dates |  A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions. |
 | Screenshots | Screenshots of games |
+| Themes | Video game themes |
 | Websites | A website url, usually associated with a game |
 
 
@@ -332,7 +333,7 @@ Get Borderlands 2 multiplayer information building a custom query
 ```
 ### Game rating and votes
 ```rust
-    let igdb_client = IGDBClient::new("1eae0733abe6ba3968c011073ff24458");
+    let igdb_client = IGDBClient::new("user-key");
     let games_client = igdb_client.games();
 
     let game = games_client.get_first_by_name("Modern Warfare 3").await.unwrap();

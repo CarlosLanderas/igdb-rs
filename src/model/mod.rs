@@ -11,4 +11,5 @@ pub mod multiplayer_mode;
 pub mod platform;
 pub mod release_date;
 pub mod screenshot;
+pub mod theme;
 pub mod website;
