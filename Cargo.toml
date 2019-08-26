@@ -37,8 +37,11 @@ path = "examples/search_games_by_name.rs"
 name = "download-game-images"
 path = "examples/download_game_images.rs"
 [[example]]
-name = "multiplayer-custom-query"
-path = "examples/multiplayer_custom_query.rs"
+name = "request-builder-multiplayer"
+path = "examples/request_builder_multiplayer.rs"
+[[example]]
+name = "request-builder-game"
+path = "examples/request_builder_game.rs"
 [[example]]
 name = "game-engine-info"
 path = "examples/game_engine_info.rs"
