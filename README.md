@@ -14,6 +14,7 @@ With **igdb-rs** you can easily retrieve video game related information such as:
 
 - Games
 - Game Engines,
+- Franchises,
 - Release Dates,
 - Multiplayer information
 - Videos
@@ -78,6 +79,7 @@ igdb-rs supports the following endpoints at this moment:
 | Game Engines | Video game engines such as unreal engine. |
 | Game Modes | Single player, Multiplayer etc |
 | Game Videos | Videos associated with games |
+| Franchises | A list of video game franchises such as Star Wars.|
 | Multiplayer Modes | Data about the supported multiplayer types|
 | Platforms |  The hardware used to run the game or game delivery network |
 | Release Dates |  A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions. |
@@ -342,6 +344,34 @@ Get Borderlands 2 multiplayer information building a custom query
     println!("Game: {}, rating: {}, total votes: {}", game.name, game.total_rating as usize, game.total_rating_count);
 
     //Game: Call of Duty: Modern Warfare 3, rating: 80, total votes: 442
+```
+
+### Franchise games
+```rust
+
+   let igdb_client = IGDBClient::new("user-key");
+        let franchises_client = igdb_client.franchises();
+        let games_client = igdb_client.games();
+
+        //Get games inside franchises containing name "Lego"
+        for franchise in franchises_client
+            .get_by_name("Lego", 5)
+            .await
+            .unwrap()
+        {
+            for game in &franchise.games {
+                let game_info = games_client.get_first_by_id(*game as usize).await.unwrap();
+
+                println!("Name: {}", game_info.name);
+            }
+        }
+
+        // Name: Lego Indiana Jones 2: The Adventure Continues
+        // Name: Lego Indiana Jones: The Original Adventures
+        // Name: LEGO Star Wars II: The Original Trilogy
+        // Name: Lego Racers 2
+        // Name: LEGO Racers
+        // Omitted for brevity...
 ```
 
 

@@ -13,6 +13,7 @@ create_client!(GameClient, Game, games);
 create_client!(GameModesClient, GameMode, game_modes);
 create_client!(GameVideosClient, GameVideo, game_videos);
 create_client!(EnginesClient, Engine, game_engines);
+create_client!(FranchisesClient, Franchise, franchises);
 create_client!(MultiPlayerModeClient, MultiplayerMode, multiplayer_modes);
 create_client!(ReleaseDateClient, ReleaseDate, release_dates);
 create_client!(ScreenshotsClient, Screenshot, screenshots);

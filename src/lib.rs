@@ -2,7 +2,7 @@
 //!
 //! With igdb-rs you can easily retrieve video game related information such as:
 //!
-//! Games, Videos, Artworks, Covers, Screenshots, Release Dates, Multiplayer Options, Game Engines, Websites and much more!.
+//! Games, Franchises, Videos, Artworks, Covers, Screenshots, Release Dates, Multiplayer Options, Game Engines, Websites and much more!.
 //!
 //! Use out of the box client methods or build your own queries to retrieve the exact data that you are looking for.
 //!

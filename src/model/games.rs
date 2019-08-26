@@ -24,7 +24,7 @@ pub struct Game {
     #[serde(default)]
     pub created_at: u64,
     #[serde(default)]
-    pub dlcs: u32,
+    pub dlcs: Vec<u32>,
     #[serde(default)]
     pub external_games: Vec<u32>,
     #[serde(default)]

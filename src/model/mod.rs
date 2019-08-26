@@ -4,6 +4,7 @@ pub mod company;
 pub mod cover;
 pub mod engine;
 pub mod enums;
+pub mod franchise;
 pub mod game_mode;
 pub mod game_video;
 pub mod games;
