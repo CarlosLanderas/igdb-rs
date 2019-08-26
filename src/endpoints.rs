@@ -18,6 +18,8 @@ pub(crate) enum Endpoint {
     platforms,
     themes,
     franchises,
+    age_ratings,
+    player_perspectives,
 }
 
 pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
@@ -37,5 +39,7 @@ pub(crate) fn get_endpoint_url(endpoint: &Endpoint) -> String {
         Endpoint::platforms => format!("{}/platforms", BASE_URL),
         Endpoint::themes => format!("{}/themes", BASE_URL),
         Endpoint::franchises => format!("{}/franchises", BASE_URL),
+        Endpoint::age_ratings => format!("{}/age_ratings", BASE_URL),
+        Endpoint::player_perspectives => format!("{}/player_perspectives", BASE_URL),
     }
 }

@@ -1,15 +1,16 @@
-use crate::client::GameClient;
+use crate::client::GamesClient;
 use crate::model::games::Game;
 use crate::request_builder::RequestBuilder;
+use crate::Error;
 use std::future::Future;
 
-impl GameClient {
+impl GamesClient {
     ///Returns a games collection containing the given name
     pub async fn get_by_name<S: Into<String>>(
         &self,
         name: S,
         limit: usize,
-    ) -> Result<Vec<Game>, surf::Exception> {
+    ) -> Result<Vec<Game>, Error> {
         let mut request = RequestBuilder::new();
         request
             .all_fields()
@@ -28,7 +29,7 @@ impl GameClient {
         field: S,
         value: S,
         limit: usize,
-    ) -> Result<Vec<Game>, surf::Exception> {
+    ) -> Result<Vec<Game>, Error> {
         let mut request = RequestBuilder::new();
         request.all_fields().contains(field, value).limit(limit);
 
@@ -36,11 +37,7 @@ impl GameClient {
     }
 
     ///Returns a games collection searching by the given name
-    pub async fn search<S: Into<String>>(
-        &self,
-        name: S,
-        limit: usize,
-    ) -> Result<Vec<Game>, surf::Exception> {
+    pub async fn search<S: Into<String>>(&self, name: S, limit: usize) -> Result<Vec<Game>, Error> {
         let mut request = RequestBuilder::new();
         request.all_fields().search(name).limit(limit);
 
@@ -49,7 +46,7 @@ impl GameClient {
 }
 
 async fn get_game_result(
-    games_future: impl Future<Output = Result<Vec<Game>, surf::Exception>>,
+    games_future: impl Future<Output = Result<Vec<Game>, Error>>,
 ) -> Option<Game> {
     match games_future.await {
         Ok(games) => Some(games[0].clone()),

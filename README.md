@@ -14,9 +14,12 @@ With **igdb-rs** you can easily retrieve video game related information such as:
 
 - Games
 - Game Engines,
+- Game Age Ratings,
 - Franchises,
 - Release Dates,
 - Multiplayer information
+- Platforms,
+- Player perspectives
 - Videos
 - Artworks
 - Covers,
@@ -71,6 +74,7 @@ igdb-rs supports the following endpoints at this moment:
 
 | Endpoint  | Description |
 | ------------- | ------------- |
+| Age Ratings | Age Rating according to various rating organisations|
 | Artworks  | Official artworks (resolution and aspect ratio may vary)  |
 | Characters  | Video game characters |
 | Companies | Video game companies. Both publishers & developers |
@@ -82,6 +86,7 @@ igdb-rs supports the following endpoints at this moment:
 | Franchises | A list of video game franchises such as Star Wars.|
 | Multiplayer Modes | Data about the supported multiplayer types|
 | Platforms |  The hardware used to run the game or game delivery network |
+| Player Perspectives | Player perspectives describe the view/perspective of the player in a video game|
 | Release Dates |  A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions. |
 | Screenshots | Screenshots of games |
 | Themes | Video game themes |
@@ -375,7 +380,36 @@ Get Borderlands 2 multiplayer information building a custom query
     // Name: LEGO Racers
     // Omitted for brevity...
 ```
+### Game Age Rating
+```rust
+    let igdb_client = IGDBClient::new("user-key");
+    let games_client = igdb_client.games();
+    let age_rating_client = igdb_client.age_ratings();
 
+    let game = games_client
+        .get_first_by_name("Call of Duty: Modern Warfare 3")
+        .await
+        .unwrap();
+
+    for age_rating in game.age_ratings {
+
+        //Get a maximum of 3 age ratings for Modern Warfare 3
+
+        let ratings = age_rating_client
+            .get_by_id(age_rating as usize, 3)
+            .await
+            .unwrap();
+
+        for rating in ratings {
+            println!(
+                "Game: {}, Category: {:?}, Rating: {:?}",
+                game.name, rating.category, rating.rating
+            );
+        }
+
+    // Game: Call of Duty: Modern Warfare 3, Category: PEGI, Rating: Eighteen
+    }
+```
 
 
 

@@ -1,7 +1,7 @@
 use crate::endpoints::{get_endpoint_url, Endpoint};
 use crate::request_builder::RequestBuilder;
+use crate::Error;
 use serde::de::DeserializeOwned;
-use surf::Exception;
 
 pub(crate) struct EndpointClient {
     pub(crate) api_key: String,
@@ -16,7 +16,7 @@ impl EndpointClient {
     pub(crate) async fn get<T: DeserializeOwned>(
         &self,
         request_builder: RequestBuilder,
-    ) -> Result<Vec<T>, Exception> {
+    ) -> Result<Vec<T>, Error> {
         let request = request_builder.build(&self.api_key, &get_endpoint_url(&self.endpoint));
         let mut response = request.await;
 

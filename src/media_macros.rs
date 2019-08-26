@@ -17,7 +17,7 @@ macro_rules! expand_media_download {
                 id: usize,
                 path: S,
                 media_quality: MediaQuality,
-            ) -> async_std::io::Result<()> {
+            ) -> Result<(), std::io::Error> {
                 let mut request = RequestBuilder::new();
                 request
                     .all_fields()

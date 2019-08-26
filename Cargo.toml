@@ -1,6 +1,6 @@
 [package]
 name = "igdb-rs"
-version = "0.0.22"
+version = "0.0.23"
 authors = ["Carlos Landeras"]
 edition = "2018"
 license = "Apache-2.0/MIT"
@@ -21,7 +21,6 @@ serde = "1.0.99"
 serde_repr = "0.1.5"
 http = "0.1.18"
 url = "2.1.0"
-isahc = "0.7"
 log = "0.4.8"
 
 [dev-dependencies]
@@ -67,3 +66,9 @@ path = "examples/game_theme.rs"
 [[example]]
 name = "franchise-games"
 path = "examples/franchise_games.rs"
+[[example]]
+name = "game-age-rating"
+path = "examples/game_age_rating.rs"
+[[example]]
+name = "player-perspectives"
+path = "examples/player_perspectives.rs"

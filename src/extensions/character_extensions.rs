@@ -1,8 +1,9 @@
-use crate::client::CharacterClient;
+use crate::client::CharactersClient;
 use crate::model::character::Character;
 use crate::request_builder::RequestBuilder;
+use crate::Error;
 
-impl CharacterClient {
+impl CharactersClient {
     ///Retrieves the characters for a given game id
     ///
     /// # Examples
@@ -18,7 +19,7 @@ impl CharacterClient {
         &self,
         game_id: usize,
         limit: usize,
-    ) -> Result<Vec<Character>, surf::Exception> {
+    ) -> Result<Vec<Character>, Error> {
         let mut request = RequestBuilder::new();
         request
             .all_fields()

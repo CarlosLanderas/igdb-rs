@@ -6,11 +6,11 @@ macro_rules! create_client {
 
         impl $i {
             ///Receives a configured RequestBuilder an returns a result containing a collection
-            pub async fn get(&self, request_builder: RequestBuilder) -> Result<Vec<$j>, Exception> {
+            pub async fn get(&self, request_builder: RequestBuilder) -> Result<Vec<$j>, Error> {
                 self.endpoint_client.get::<$j>(request_builder).await
             }
             ///Returns a collection filtered by id and limits the retrieved registries using limit parameter value.
-            pub async fn get_by_id(&self, id: usize, limit: usize) -> Result<Vec<$j>, Exception> {
+            pub async fn get_by_id(&self, id: usize, limit: usize) -> Result<Vec<$j>, Error> {
                 let mut request = RequestBuilder::new();
                 request
                     .all_fields()
@@ -76,12 +76,15 @@ macro_rules! use_client_imports {
     () => {
         use crate::{
             endpoint_client::EndpointClient, endpoints::Endpoint, media_quality::MediaQuality,
-            model::artwork::Artwork, model::character::Character, model::company::Company,
-            model::cover::Cover, model::engine::Engine, model::franchise::Franchise,
-            model::game_mode::GameMode, model::game_video::GameVideo, model::games::Game,
-            model::multiplayer_mode::MultiplayerMode, model::platform::Platform,
+            model::age_rating::AgeRating, model::artwork::Artwork, model::character::Character,
+            model::company::Company, model::cover::Cover, model::engine::Engine,
+            model::franchise::Franchise, model::game_mode::GameMode, model::game_video::GameVideo,
+            model::games::Game, model::multiplayer_mode::MultiplayerMode,
+            model::platform::Platform, model::player_perspective::PlayerPerspective,
             model::release_date::ReleaseDate, model::screenshot::Screenshot, model::theme::Theme,
             model::website::Website, request_builder::Equality, request_builder::RequestBuilder,
         };
+
+        use crate::Error;
     };
 }

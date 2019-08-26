@@ -170,6 +170,9 @@
 //! **You can read more samples here: [examples]**
 #[macro_use]
 extern crate serde_derive;
+
+type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
+
 mod endpoint_client;
 mod endpoints;
 

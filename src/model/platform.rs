@@ -1,4 +1,4 @@
-use crate::model::enums::Category;
+use crate::model::enums::PlatformCategory;
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct Platform {
@@ -9,7 +9,7 @@ pub struct Platform {
     #[serde(default)]
     pub alternative_name: String,
     #[serde(default)]
-    pub category: Category,
+    pub category: PlatformCategory,
     #[serde(default)]
     pub created_at: u64,
     #[serde(default)]

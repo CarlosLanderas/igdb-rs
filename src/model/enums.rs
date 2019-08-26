@@ -2,7 +2,7 @@ use serde_repr::Deserialize_repr;
 
 #[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
-pub enum Category {
+pub enum GameCategory {
     MainGame = 0,
     DlcAddon = 1,
     Expansion = 2,
@@ -10,9 +10,26 @@ pub enum Category {
     StandaloneExpansion = 4,
 }
 
-impl Default for Category {
+impl Default for GameCategory {
     fn default() -> Self {
-        Category::MainGame
+        GameCategory::MainGame
+    }
+}
+
+#[derive(Deserialize_repr, Debug, Clone)]
+#[repr(u8)]
+pub enum PlatformCategory {
+    Console = 1,
+    Arcade = 2,
+    Platform = 3,
+    OperativeSystem = 4,
+    PortableConsole = 5,
+    Computer = 6,
+}
+
+impl Default for PlatformCategory {
+    fn default() -> Self {
+        PlatformCategory::Console
     }
 }
 
@@ -47,7 +64,7 @@ impl Default for Platform {
     }
 }
 
-#[derive(Deserialize_repr, Debug)]
+#[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Rating {
     Three = 1,
@@ -62,6 +79,25 @@ pub enum Rating {
     T = 10,
     M = 11,
     AO = 12,
+}
+
+#[derive(Deserialize_repr, Debug, Clone)]
+#[repr(u8)]
+pub enum RatingCategory {
+    ESRB = 1,
+    PEGI = 2,
+}
+
+impl Default for RatingCategory {
+    fn default() -> Self {
+        RatingCategory::ESRB
+    }
+}
+
+impl Default for Rating {
+    fn default() -> Self {
+        Rating::Eighteen
+    }
 }
 
 #[derive(Deserialize_repr, Debug, Clone)]

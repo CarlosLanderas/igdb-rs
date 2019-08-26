@@ -1,3 +1,4 @@
+pub mod age_rating;
 pub mod artwork;
 pub mod character;
 pub mod company;
@@ -10,6 +11,7 @@ pub mod game_video;
 pub mod games;
 pub mod multiplayer_mode;
 pub mod platform;
+pub mod player_perspective;
 pub mod release_date;
 pub mod screenshot;
 pub mod theme;
