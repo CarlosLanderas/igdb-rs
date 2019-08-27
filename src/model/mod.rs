@@ -1,6 +1,7 @@
 pub mod age_rating;
 pub mod artwork;
 pub mod character;
+pub mod character_mug_shot;
 pub mod company;
 pub mod cover;
 pub mod engine;

@@ -1,6 +1,6 @@
 [package]
 name = "igdb-rs"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Carlos Landeras"]
 edition = "2018"
 license = "Apache-2.0/MIT"
@@ -80,3 +80,6 @@ path = "examples/game_age_rating.rs"
 [[example]]
 name = "player-perspectives"
 path = "examples/player_perspectives.rs"
+[[example]]
+name = "game-characters-mugshot"
+path = "examples/game_characters_mugshot.rs"
