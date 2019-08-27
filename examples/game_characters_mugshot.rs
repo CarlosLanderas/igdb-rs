@@ -2,7 +2,6 @@ use async_std::task;
 use igdb_rs::client::IGDBClient;
 use igdb_rs::media_quality::MediaQuality;
 use igdb_rs::request_builder::Equality;
-use std::cmp::Ordering::Equal;
 
 fn main() {
     task::block_on(async {
