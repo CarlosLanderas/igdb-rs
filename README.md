@@ -76,7 +76,8 @@ igdb-rs supports the following endpoints at this moment:
 | ------------- | ------------- |
 | Age Ratings | Age Rating according to various rating organisations|
 | Artworks  | Official artworks (resolution and aspect ratio may vary)  |
-| Characters  | Video game characters |
+| Characters  | Video game characters ||
+| Character Mug Shots | Images depicting game characters|
 | Companies | Video game companies. Both publishers & developers |
 | Covers | The cover art of games |
 | Games | Video Games! |

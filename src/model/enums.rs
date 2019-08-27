@@ -36,6 +36,7 @@ impl Default for PlatformCategory {
 #[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Gender {
+    Unknown = 0,
     Male = 1,
     Female = 2,
     Other = 3,
@@ -43,7 +44,7 @@ pub enum Gender {
 
 impl Default for Gender {
     fn default() -> Self {
-        Gender::Male
+        Gender::Unknown
     }
 }
 

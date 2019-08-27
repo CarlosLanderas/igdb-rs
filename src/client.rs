@@ -6,6 +6,11 @@ use_client_imports!();
 
 create_client!(AgeRatingsClient, AgeRating, age_ratings);
 create_client!(ArtworksClient, Artwork, artworks);
+create_client!(
+    CharacterMugshotsClient,
+    CharacterMugshot,
+    character_mug_shots
+);
 create_client!(CharactersClient, Character, characters);
 create_client!(CompaniesClient, Company, companies);
 create_client!(CoversClient, Cover, covers);
@@ -31,6 +36,7 @@ expand_media_download!(ArtworksClient);
 expand_media_download!(CoversClient);
 expand_media_download!(ScreenshotsClient);
 expand_media_download!(PlatformLogosClient);
+expand_media_download!(CharacterMugshotsClient);
 
 expand_get_by_game_id!(ArtworksClient, Artwork);
 expand_get_by_game_id!(CoversClient, Cover);
