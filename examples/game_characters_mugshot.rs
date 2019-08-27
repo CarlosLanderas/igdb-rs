@@ -1,11 +1,10 @@
 use async_std::task;
 use igdb_rs::client::IGDBClient;
 use igdb_rs::media_quality::MediaQuality;
-use std::cmp::Ordering::Equal;
 use igdb_rs::request_builder::Equality;
+use std::cmp::Ordering::Equal;
 
 fn main() {
-
     task::block_on(async {
         let igdb_client = IGDBClient::new("user-key");
         let characters_client = igdb_client.characters();
