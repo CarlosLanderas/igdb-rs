@@ -9,7 +9,10 @@ fn main() {
         let igdb_client = IGDBClient::new("user-key");
 
         let games_client = igdb_client.games();
-        let game = games_client.get_first_by_name("Borderlands 2").await.unwrap();
+        let game = games_client
+            .get_first_by_name("Borderlands 2")
+            .await
+            .unwrap();
 
         let platforms_client = igdb_client.platforms();
         let platform_logos_client = igdb_client.platform_logos();
