@@ -17,17 +17,32 @@ macro_rules! expand_media_download {
                 id: usize,
                 path: S,
                 media_quality: MediaQuality,
-            ) -> Result<(), std::io::Error> {
-                let mut request = RequestBuilder::new();
-                request
-                    .all_fields()
-                    .add_where("id", Equality::Equal, id.to_string());
+            ) -> Result<(), Error> {
+                use crate::media_helpers::download_resource;
 
-                //TODO -> Implement std::ops::Try trait in macro clients
-                let covers_response = self.get(request).await.unwrap();
-                let cover = covers_response.first().unwrap();
+                let media = self.get_first_by_id(id).await?;
+                download_resource(path.into(), media.url.clone(), media_quality).await
+            }
+            ///Retrieves content in bytes for the given media resource
+            /// MediaQuality is an enum that specifies different image sizes
+            /// # Examples
+            /// ```no_run
+            /// use igdb_rs::client::IGDBClient;
+            /// use igdb_rs::media_quality::MediaQuality;
+            /// let client = IGDBClient::new("key");
+            /// let screenshot_client = client.screenshots();
+            /// screenshot_client.get_resource_by_id(12400, MediaQuality::ScreenshotHuge,);
+            /// ```
+            ///
+            pub async fn get_resource_by_id(
+                &self,
+                id: usize,
+                media_quality: MediaQuality,
+            ) -> Result<Vec<u8>, Error> {
+                use crate::media_helpers::get_resource;
 
-                download_resource(path.into(), cover.url.clone(), media_quality).await
+                let media = self.get_first_by_id(id).await?;
+                get_resource(media.url.clone(), media_quality).await
             }
         }
     };

@@ -2,6 +2,15 @@
 
 All notable changes to igdb-rs will be documented in this file.
 
+# [0.1.0] - 2019-08-26
+
+## Changes
+
+- Refactor internal error handling
+- Add platform logos client
+- Add get_resource_by_id in media macros to retrieve media as bytes buffers
+- Add read media and platform logos download samples
+
 # [0.0.24] - 2019-08-26
 
 ## Changes
@@ -20,3 +29,4 @@ All notable changes to igdb-rs will be documented in this file.
 
 [0.0.23]: https://github.com/carloslanderas/igdb-rs/compare/0.0.22...0.0.23
 [0.0.24]: https://github.com/carloslanderas/igdb-rs/compare/0.0.23...0.0.24
+[0.1.0]: https://github.com/carloslanderas/igdb-rs/compare/0.0.24...0.1.0

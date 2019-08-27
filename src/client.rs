@@ -16,6 +16,7 @@ create_client!(EnginesClient, Engine, game_engines);
 create_client!(FranchisesClient, Franchise, franchises);
 create_client!(MultiPlayerModesClient, MultiplayerMode, multiplayer_modes);
 create_client!(PlatformsClient, Platform, platforms);
+create_client!(PlatformLogosClient, PlatformLogo, platform_logos);
 create_client!(
     PlayerPerpectivesClient,
     PlayerPerspective,
@@ -29,6 +30,7 @@ create_client!(WebsitesClient, Website, websites);
 expand_media_download!(ArtworksClient);
 expand_media_download!(CoversClient);
 expand_media_download!(ScreenshotsClient);
+expand_media_download!(PlatformLogosClient);
 
 expand_get_by_game_id!(ArtworksClient, Artwork);
 expand_get_by_game_id!(CoversClient, Cover);
@@ -76,31 +78,4 @@ impl IGDBClient {
     pub fn create_request() -> RequestBuilder {
         RequestBuilder::new()
     }
-}
-
-#[allow(dead_code)]
-///This function receives a path, an IGDB provided url and it normalices the path and downloads
-/// the resource to the specified path file using the specified MediaQuality"
-async fn download_resource(
-    path: String,
-    url: String,
-    quality: MediaQuality,
-) -> Result<(), std::io::Error> {
-    use async_std::fs::File;
-    use async_std::io::Write;
-
-    let mut parsed_url = match url {
-        _ if !url.starts_with("http") => format!("{}{}", "http:", url),
-        _ => url.to_owned(),
-    };
-
-    parsed_url = parsed_url.replace("thumb", &quality.get_value());
-
-    log::debug!("Downloading resource: {}", parsed_url);
-
-    let content = surf::get(parsed_url).recv_bytes().await.unwrap();
-    let mut file = File::create(path).await?;
-    file.write(&content[..]).await.unwrap();
-
-    Ok(())
 }

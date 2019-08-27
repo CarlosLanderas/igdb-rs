@@ -11,6 +11,7 @@ pub mod game_video;
 pub mod games;
 pub mod multiplayer_mode;
 pub mod platform;
+pub mod platform_logo;
 pub mod player_perspective;
 pub mod release_date;
 pub mod screenshot;

@@ -1,7 +1,10 @@
 pub enum MediaQuality {
     CoverSmall,
-    ScreenshotMedium,
+    CoverMedium,
     CoverBig,
+    LogoMed,
+    Original,
+    ScreenshotMedium,
     ScreenshotBig,
     ScreenshotHuge,
     Thumb,
@@ -21,8 +24,11 @@ impl MediaQuality {
     pub fn get_value(&self) -> &str {
         match self {
             MediaQuality::CoverSmall => "cover_small",
-            MediaQuality::ScreenshotMedium => "screenshot_med",
+            MediaQuality::CoverMedium => "cover_med",
             MediaQuality::CoverBig => "cover_big",
+            MediaQuality::LogoMed => "logo_med",
+            MediaQuality::Original => "original",
+            MediaQuality::ScreenshotMedium => "screenshot_med",
             MediaQuality::ScreenshotBig => "screenshot_big",
             MediaQuality::ScreenshotHuge => "screenshot_huge",
             MediaQuality::Thumb => "thumb",

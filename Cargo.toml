@@ -1,6 +1,6 @@
 [package]
 name = "igdb-rs"
-version = "0.0.24"
+version = "0.1.0"
 authors = ["Carlos Landeras"]
 edition = "2018"
 license = "Apache-2.0/MIT"
@@ -33,8 +33,11 @@ path = "examples/search_first_game_by_name.rs"
 name = "search-games-by-name"
 path = "examples/search_games_by_name.rs"
 [[example]]
-name = "download-game-images"
-path = "examples/download_game_images.rs"
+name = "game-media-download"
+path = "examples/game_media_download.rs"
+[[example]]
+name = "game-media-read"
+path = "examples/game_media_read.rs"
 [[example]]
 name = "request-builder-multiplayer"
 path = "examples/request_builder_multiplayer.rs"
@@ -50,6 +53,9 @@ path = "examples/game_video_urls.rs"
 [[example]]
 name = "game-platforms"
 path = "examples/game_platforms.rs"
+[[example]]
+name ="game-platforms-logos"
+path = "examples/game_platforms_logos.rs"
 [[example]]
 name = "game-release-date"
 path = "examples/game_release_date.rs"
