@@ -20,12 +20,17 @@ macro_rules! create_client {
                 self.get(request).await
             }
             /// Returns the element by Id for this client in Option<T> format.
-            pub async fn get_first_by_id(&self, id: usize) -> Option<$j> {
+            pub async fn get_first_by_id(&self, id: usize) -> Result<$j, Error> {
                 match self.get_by_id(id, 1).await {
-                    Ok(d) => Some(d[0].clone()),
+                    Ok(ref d) if !d.is_empty() => Ok(d[0].clone()),
+                    Ok(_) => Err(std::io::Error::new(
+                        std::io::ErrorKind::InvalidData,
+                        format!("Empty response from server for query with id: {}", id),
+                    )
+                    .into()),
                     Err(e) => {
                         log::error!("{}", e);
-                        None
+                        Err(e)
                     }
                 }
             }
@@ -80,9 +85,10 @@ macro_rules! use_client_imports {
             model::company::Company, model::cover::Cover, model::engine::Engine,
             model::franchise::Franchise, model::game_mode::GameMode, model::game_video::GameVideo,
             model::games::Game, model::multiplayer_mode::MultiplayerMode,
-            model::platform::Platform, model::player_perspective::PlayerPerspective,
-            model::release_date::ReleaseDate, model::screenshot::Screenshot, model::theme::Theme,
-            model::website::Website, request_builder::Equality, request_builder::RequestBuilder,
+            model::platform::Platform, model::platform_logo::PlatformLogo,
+            model::player_perspective::PlayerPerspective, model::release_date::ReleaseDate,
+            model::screenshot::Screenshot, model::theme::Theme, model::website::Website,
+            request_builder::Equality, request_builder::RequestBuilder,
         };
 
         use crate::Error;

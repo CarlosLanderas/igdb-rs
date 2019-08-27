@@ -86,6 +86,7 @@ igdb-rs supports the following endpoints at this moment:
 | Franchises | A list of video game franchises such as Star Wars.|
 | Multiplayer Modes | Data about the supported multiplayer types|
 | Platforms |  The hardware used to run the game or game delivery network |
+| Platform Logo | Logo for a platform |
 | Player Perspectives | Player perspectives describe the view/perspective of the player in a video game|
 | Release Dates |  A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions. |
 | Screenshots | Screenshots of games |

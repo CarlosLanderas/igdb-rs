@@ -183,6 +183,7 @@ mod media_macros;
 
 pub mod client;
 pub mod extensions;
+pub mod media_helpers;
 pub mod media_quality;
 pub mod model;
 pub mod request_builder;

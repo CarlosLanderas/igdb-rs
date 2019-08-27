@@ -22,8 +22,8 @@ impl EndpointClient {
 
         match response {
             Ok(ref mut resp) => {
-                let response_str: String = resp.body_string().await.unwrap();
-                Ok(serde_json::from_str::<Vec<T>>(&response_str).unwrap())
+                let response_str: String = resp.body_string().await?;
+                Ok(serde_json::from_str::<Vec<T>>(&response_str)?)
             }
             Err(e) => {
                 log::error!("{}", e);
