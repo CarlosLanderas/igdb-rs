@@ -54,13 +54,14 @@ pub struct IGDBClient {
 // The IGDB client.
 impl IGDBClient {
     /// Creates a new instance of the IGDB Client
-    /// To create a new instance you need to provide the user-key your are provided with
-    /// when you register in the API Website
+    /// To create a new instance you need to provide the client_id
+    /// and the token your generated using your client_id and secret
+    /// provided when you register in the API Website
     /// # Examples
     /// ```
     /// use igdb_rs::client::IGDBClient;
     ///
-    /// let igdb = IGDBClient::new("user-key");
+    /// let igdb = IGDBClient::new("client_id", "token");
     /// ```
     pub fn new<S: Into<String>>(client_id: S, token: S) -> IGDBClient {
         IGDBClient {

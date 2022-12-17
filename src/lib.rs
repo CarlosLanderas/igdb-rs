@@ -34,7 +34,7 @@
 //!use igdb_rs::client::IGDBClient;
 //!
 //!task::block_on(async {
-//!    let games_client = IGDBClient::new("user-key").games();
+//!    let games_client = IGDBClient::new("client_id", "token").games();
 //!    let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
 //!
 //!    for game in games_results {
@@ -58,7 +58,7 @@
 //!use igdb_rs::client::IGDBClient;
 //!
 //!   task::block_on(async {
-//!        let games_client = IGDBClient::new("user-key").games();
+//!        let games_client = IGDBClient::new("client_id", "token").games();
 //!        // Get ten first games containing word Borderlands
 //!        let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
 //!
@@ -90,7 +90,7 @@
 //!use igdb_rs::client::IGDBClient;
 //!
 //!   task::block_on(async {
-//!        let igdb_client = IGDBClient::new("user-key");
+//!        let igdb_client = IGDBClient::new("client_id", "token");
 //!
 //!        let release_client = igdb_client.release_dates();
 //!
@@ -128,7 +128,7 @@
 //!
 //!
 //! task::block_on(async {
-//!        let igdb_client = IGDBClient::new("user-key");
+//!        let igdb_client = IGDBClient::new("client_id", "token");
 //!        let games_client = igdb_client.games();
 //!        let witcher = games_client.get_first_by_name("Witcher 3").await.unwrap();
 //!
