@@ -5,9 +5,9 @@ use log::LevelFilter;
 fn main() {
     task::block_on(async {
         //Set default level to debug using femme crate
-        femme::start(LevelFilter::Debug).unwrap();
+        femme::with_level(LevelFilter::Debug);
 
-        let games_client = IGDBClient::new("user-key").games();
+        let games_client = IGDBClient::new("client_id", "token").games();
         let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
 
         for game in games_results {

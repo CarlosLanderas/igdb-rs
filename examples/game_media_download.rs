@@ -8,7 +8,7 @@ fn main() {
         // by using download_by_id method
         // Yoy can also read them as a bytes buffer, (game_media_read sample)
 
-        let igdb_client = IGDBClient::new("user-key");
+        let igdb_client = IGDBClient::new("client_id", "token");
         let games_client = igdb_client.games();
         let witcher = games_client.get_first_by_name("Witcher 3").await.unwrap();
 

@@ -3,10 +3,10 @@ use igdb_rs::client::IGDBClient;
 use igdb_rs::media_quality::MediaQuality;
 
 fn main() {
-    femme::start(log::LevelFilter::Debug).unwrap();
+    femme::with_level(log::LevelFilter::Debug);
 
     task::block_on(async {
-        let igdb_client = IGDBClient::new("user-key");
+        let igdb_client = IGDBClient::new("client_id", "token");
 
         let games_client = igdb_client.games();
         let game = games_client

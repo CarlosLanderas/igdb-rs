@@ -47,7 +47,8 @@ expand_get_by_game_id!(ScreenshotsClient, Screenshot);
 expand_get_by_game_id!(WebsitesClient, Website);
 
 pub struct IGDBClient {
-    api_key: String,
+    client_id: String,
+    token: String,
 }
 
 // The IGDB client.
@@ -61,9 +62,10 @@ impl IGDBClient {
     ///
     /// let igdb = IGDBClient::new("user-key");
     /// ```
-    pub fn new<S: Into<String>>(api_key: S) -> IGDBClient {
+    pub fn new<S: Into<String>>(client_id: S, token: S) -> IGDBClient {
         IGDBClient {
-            api_key: api_key.into(),
+            client_id: client_id.into(),
+            token: token.into(),
         }
     }
     /// Creates a new instance of a Request builder

@@ -5,7 +5,7 @@ use igdb_rs::request_builder::Equality;
 
 fn main() {
     task::block_on(async {
-        let igdb_client = IGDBClient::new("user-key");
+        let igdb_client = IGDBClient::new("client_id", "token");
         let characters_client = igdb_client.characters();
 
         //Get characters for God of War: Ghost of Sparta and download mugshots

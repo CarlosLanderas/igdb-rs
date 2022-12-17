@@ -5,9 +5,9 @@ use igdb_rs::request_builder::{Equality, OrderBy};
 fn main() {
     task::block_on(async {
         //Enable logging
-        femme::start(log::LevelFilter::Debug).unwrap();
+        femme::with_level(log::LevelFilter::Debug);
 
-        let igdb_client = IGDBClient::new("user-key");
+        let igdb_client = IGDBClient::new("client_id", "token");
 
         let mut game_request = IGDBClient::create_request();
         game_request
