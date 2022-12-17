@@ -1,4 +1,4 @@
-const BASE_URL: &str = "https://api-v3.igdb.com";
+const BASE_URL: &str = "https://api.igdb.com/v4";
 
 #[allow(non_camel_case_types)]
 ///Enum containing the implement IGDB api endpoints

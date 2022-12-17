@@ -60,10 +60,6 @@ pub struct Game {
     #[serde(default)]
     pub player_perspectives: Vec<usize>,
     #[serde(default)]
-    pub popularity: f32,
-    #[serde(default)]
-    pub pulse_count: usize,
-    #[serde(default)]
     pub rating: f32,
     #[serde(default)]
     pub rating_count: usize,
@@ -87,8 +83,6 @@ pub struct Game {
     pub tags: Vec<usize>,
     #[serde(default)]
     pub themes: Vec<usize>,
-    #[serde(default)]
-    pub time_to_beat: usize,
     #[serde(default)]
     pub total_rating: f32,
     #[serde(default)]

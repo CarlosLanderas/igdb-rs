@@ -19,8 +19,6 @@ pub struct Platform {
     #[serde(default)]
     pub platform_logo: usize,
     #[serde(default)]
-    pub product_faimily: usize,
-    #[serde(default)]
     pub slug: String,
     #[serde(default)]
     pub summary: String,
