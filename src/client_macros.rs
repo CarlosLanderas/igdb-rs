@@ -40,7 +40,11 @@ macro_rules! create_client {
             /// Returns a reference to the client
             pub fn $k(&self) -> $i {
                 $i {
-                    endpoint_client: EndpointClient::new(self.client_id.clone(), self.token.clone(), Endpoint::$k),
+                    endpoint_client: EndpointClient::new(
+                        self.client_id.clone(),
+                        self.token.clone(),
+                        Endpoint::$k,
+                    ),
                 }
             }
         }

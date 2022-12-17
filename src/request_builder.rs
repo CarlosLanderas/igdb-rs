@@ -85,15 +85,21 @@ impl RequestBuilder {
         RequestBuilder::default()
     }
 
-    pub(crate) fn build(&self, client_id: &str, token: &str, url: &str) -> impl Future<Output = Result<reqwest::Response, reqwest::Error>>  {
+    pub(crate) fn build(
+        &self,
+        client_id: &str,
+        token: &str,
+        url: &str,
+    ) -> impl Future<Output = Result<reqwest::Response, reqwest::Error>> {
         let body = self.build_body();
 
         log::debug!("url: {}, body: {}", url, body);
         let client = reqwest::Client::new();
-        let req = client.post(Url::from_str(url).unwrap())
+        let req = client
+            .post(Url::from_str(url).unwrap())
             .body(body)
             .header(HEADER_CLIENT_ID, client_id)
-            .header(HEADER_AUTH,format!("Bearer {}", token))
+            .header(HEADER_AUTH, format!("Bearer {}", token))
             .header("content-type", "application/json")
             .send();
         req
@@ -171,10 +177,7 @@ fn request_builder_with_all_fields() {
 
     let body = builder.build_body();
 
-    assert_eq!(
-        "fields *; limit 10;",
-        &body
-    );
+    assert_eq!("fields *; limit 10;", &body);
 }
 
 #[test]
