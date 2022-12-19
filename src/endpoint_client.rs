@@ -30,7 +30,7 @@ impl EndpointClient {
         let response = request.await;
 
         match response {
-            Ok(resp) => Ok(resp.json().await?),
+            Ok(resp) => Ok(resp.json::<Vec<T>>().await?),
             Err(e) => {
                 log::error!("{}", e);
                 Err(Box::new(e))
