@@ -8,6 +8,16 @@ pub enum GameCategory {
     Expansion = 2,
     Bundle = 3,
     StandaloneExpansion = 4,
+    Mod = 5,
+    Episode = 6,
+    Season = 7,
+    Remake = 8,
+    Remaster = 9,
+    ExpandedGame = 10,
+    Port = 11,
+    Fork = 12,
+    Pack = 13,
+    Update = 14,
 }
 
 impl Default for GameCategory {
@@ -36,10 +46,10 @@ impl Default for PlatformCategory {
 #[derive(Deserialize_repr, Debug, Clone)]
 #[repr(u8)]
 pub enum Gender {
-    Unknown = 0,
-    Male = 1,
-    Female = 2,
-    Other = 3,
+    Male = 0,
+    Female = 1,
+    Other = 2,
+    Unknown = 3,
 }
 
 impl Default for Gender {
@@ -80,6 +90,32 @@ pub enum Rating {
     T = 10,
     M = 11,
     AO = 12,
+    CeroA = 13,
+    CeroB = 14,
+    CeroC = 15,
+    CeroD = 16,
+    CeroZ = 17,
+    Usk0 = 18,
+    Usk6 = 19,
+    Usk12 = 20,
+    Usk18 = 21,
+    GracAll = 22,
+    GracTwelve = 23,
+    GracFifteen = 24,
+    GracEighteen = 25,
+    GracTesting = 26,
+    ClassIndL = 27,
+    ClassIndTen = 28,
+    ClassIndTwelve = 29,
+    ClassIndFourteen = 30,
+    ClassIndSixteen = 31,
+    ClassIndEighteen = 32,
+    AcbG = 33,
+    AcbPg = 34,
+    AcbM = 35,
+    AcbMa15 = 36,
+    AcbR18 = 37,
+    AcbRc = 38,
 }
 
 #[derive(Deserialize_repr, Debug, Clone)]
@@ -87,6 +123,11 @@ pub enum Rating {
 pub enum RatingCategory {
     ESRB = 1,
     PEGI = 2,
+    CERO = 3,
+    USK = 4,
+    GRAC = 5,
+    ClassInd = 6,
+    ACB = 7,
 }
 
 impl Default for RatingCategory {
@@ -126,6 +167,8 @@ pub enum Status {
     EarlyAccess = 4,
     Offline = 5,
     Cancelled = 6,
+    Rumored = 7,
+    Delisted = 8,
 }
 
 impl Default for Status {
@@ -145,6 +188,8 @@ pub enum Region {
     China = 6,
     Asia = 7,
     WorldWide = 8,
+    Korea = 9,
+    Brazil = 10,
 }
 
 impl Default for Region {
