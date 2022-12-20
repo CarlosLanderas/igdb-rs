@@ -6,7 +6,10 @@ fn main() {
     femme::with_level(LevelFilter::Debug);
 
     task::block_on(async {
-        let igdb_client = IGDBClient::new("client_id", "token");
+        use std::env;
+        let client_id = env::var("IGDB_CLIENT_ID").expect("You nee to set the IGDB_CLIENT_ID variable");
+        let token = env::var("IGDB_TOKEN").expect("You nee to set the IGDB_TOKEN variable");
+        let igdb_client = IGDBClient::new(&client_id, &token);
         let games_client = igdb_client.games();
         let age_rating_client = igdb_client.age_ratings();
 

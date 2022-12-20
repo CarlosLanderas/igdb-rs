@@ -7,8 +7,11 @@ fn main() {
         // All media clients like screenshots, covers, artworks, etc can be downloaded to disk
         // by using download_by_id method
         // Yoy can also read them as a bytes buffer, (game_media_read sample)
+        use std::env;
+        let client_id = env::var("IGDB_CLIENT_ID").expect("You nee to set the IGDB_CLIENT_ID variable");
+        let token = env::var("IGDB_TOKEN").expect("You nee to set the IGDB_TOKEN variable");
+        let igdb_client = IGDBClient::new(&client_id, &token);
 
-        let igdb_client = IGDBClient::new("client_id", "token");
         let games_client = igdb_client.games();
         let witcher = games_client.get_first_by_name("Witcher 3").await.unwrap();
 

@@ -3,9 +3,12 @@ use igdb_rs::client::IGDBClient;
 
 fn main() {
     task::block_on(async {
-        let idbg_client = IGDBClient::new("client_id", "token");
+        use std::env;
+        let client_id = env::var("IGDB_CLIENT_ID").expect("You nee to set the IGDB_CLIENT_ID variable");
+        let token = env::var("IGDB_TOKEN").expect("You nee to set the IGDB_TOKEN variable");
+        let igdb_client = IGDBClient::new(&client_id, &token);
 
-        let games_client = idbg_client.games();
+        let games_client = igdb_client.games();
 
         let mut games_req = IGDBClient::create_request();
         games_req
@@ -19,7 +22,7 @@ fn main() {
         let ids: Vec<String> = result.iter().map(|g| g.id.to_string()).collect();
         let names: Vec<String> = result.iter().map(|g| g.name.clone()).collect();
 
-        let multiplayer_client = idbg_client.multiplayer_modes();
+        let multiplayer_client = igdb_client.multiplayer_modes();
 
         let mut mul_request = IGDBClient::create_request();
 
