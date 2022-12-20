@@ -104,16 +104,17 @@ igdb-rs supports the following endpoints at this moment:
 
 With igdb-rs you can easily query the Internet Game Database.
 
-You just need to create an IGDBClient object with your api key, you can sign and get one here:
-https://api.igdb.com/
+You just need to create an IGDBClient object with your client_id
+and your token. You can sign in and generate one as explained here:
+https://api-docs.igdb.com/#account-creation
 
 
 ## Running samples
 
 You can find some sample code snippets here: [examples](https://github.com/CarlosLanderas/igdb-rs/tree/master/examples)
 ```
-In order to run the samples, just replace the client_id and token parameters
-inside the code sample with your client_id and token key and execute it by
+In order to run the samples, just set the `IGDB_CLIENT_ID` and `IGDB_TOKEN`
+environment variable with your client_id and token key and execute it by
 using the sample name specified inside Cargo.toml file.
 
 Example:
@@ -202,7 +203,7 @@ cargo run --example game-video-urls
 
     let games_client = igdb_client.games();
     let game = games_client
-        .get_first_by_name("Riders of Asgard")
+        .get_first_by_name("Always Sometimes Monsters")
         .await
         .unwrap();
 
@@ -219,8 +220,7 @@ cargo run --example game-video-urls
         engine.name, engine.url, engine.companies
     );
 
-    // name: Unreal Engine 4, url: https://www.igdb.com/game_engines/unreal-engine-4--1,
-    // companies: [168, 11060]
+    // name: RPG Maker VX Ace, url: https://www.igdb.com/game_engines/rpg-maker-vx-ace, companies: []
 ```
 
 ### Game release data
