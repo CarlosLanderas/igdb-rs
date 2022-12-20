@@ -113,8 +113,8 @@ https://api-docs.igdb.com/#account-creation
 
 You can find some sample code snippets here: [examples](https://github.com/CarlosLanderas/igdb-rs/tree/master/examples)
 ```
-In order to run the samples, just set the `IGDB_CLIENT_ID` and `IGDB_TOKEN`
-environment variable with your client_id and token key and execute it by
+In order to run the samples, just set the IGDB_CLIENT_ID and IGDB_TOKEN
+environment variables with your client_id and token key and execute it by
 using the sample name specified inside Cargo.toml file.
 
 Example:
