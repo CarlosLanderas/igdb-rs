@@ -13,7 +13,7 @@ categories = ["games", "api-bindings", "asynchronous"]
 readme = "README.md"
 
 [dependencies]
-async-std = "1.12.0"
+async-std = { version = "1.12.0", features = ["tokio1"] }
 reqwest = { version = "0.11.13", features = ["json"] }
 serde_derive = "1.0.151"
 serde_json = "1.0.89"
