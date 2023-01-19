@@ -4,7 +4,8 @@ use igdb_rs::client::IGDBClient;
 fn main() {
     task::block_on(async {
         use std::{env, thread, time};
-        let client_id = env::var("IGDB_CLIENT_ID").expect("You need to set the IGDB_CLIENT_ID variable");
+        let client_id =
+            env::var("IGDB_CLIENT_ID").expect("You need to set the IGDB_CLIENT_ID variable");
         let token = env::var("IGDB_TOKEN").expect("You need to set the IGDB_TOKEN variable");
         let igdb_client = IGDBClient::new(&client_id, &token);
         let franchises_client = igdb_client.franchises();
