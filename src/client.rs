@@ -14,6 +14,7 @@ create_client!(
 create_client!(CharactersClient, Character, characters);
 create_client!(CompaniesClient, Company, companies);
 create_client!(CoversClient, Cover, covers);
+create_client!(ExternalGameClient, ExternalGame, external_games);
 create_client!(GamesClient, Game, games);
 create_client!(GameModesClient, GameMode, game_modes);
 create_client!(GameVideosClient, GameVideo, game_videos);
@@ -40,6 +41,7 @@ expand_media_download!(CharacterMugshotsClient);
 
 expand_get_by_game_id!(ArtworksClient, Artwork);
 expand_get_by_game_id!(CoversClient, Cover);
+expand_get_by_game_id!(ExternalGameClient, ExternalGame);
 expand_get_by_game_id!(GameVideosClient, GameVideo);
 expand_get_by_game_id!(MultiPlayerModesClient, MultiplayerMode);
 expand_get_by_game_id!(ReleaseDatesClient, ReleaseDate);

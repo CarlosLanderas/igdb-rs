@@ -197,3 +197,47 @@ impl Default for Region {
         Region::Europe
     }
 }
+
+#[derive(Deserialize_repr, Debug, Clone)]
+#[repr(u8)]
+pub enum ExternalGameCategory {
+    Steam = 1,
+    Gog = 5,
+    Youtube = 10,
+    Microsoft = 11,
+    Apple = 13,
+    Twitch = 14,
+    Android = 15,
+    AmazonAsin = 20,
+    AmazonLuna = 22,
+    AmazonAdg = 23,
+    EpicGameStore = 26,
+    Oculus = 28,
+    Utomik = 29,
+    ItchIo = 30,
+    XboxMarketplace = 31,
+    Kartridge = 32,
+    PlaystationStoreUs = 36,
+    FocusEntertainment = 37,
+    XboxGamePassUltimateCloud = 54,
+    Gamejolt = 55,
+}
+
+impl Default for ExternalGameCategory {
+    fn default() -> Self {
+        ExternalGameCategory::Steam
+    }
+}
+
+#[derive(Deserialize_repr, Debug, Clone)]
+#[repr(u8)]
+pub enum Media {
+    Digital = 1,
+    Physical = 5,
+}
+
+impl Default for Media {
+    fn default() -> Self {
+        Media::Digital
+    }
+}
