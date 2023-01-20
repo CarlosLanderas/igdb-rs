@@ -83,3 +83,6 @@ path = "examples/player_perspectives.rs"
 [[example]]
 name = "game-characters-mugshot"
 path = "examples/game_characters_mugshot.rs"
+[[example]]
+name = "external-game"
+path = "examples/external_game.rs"
