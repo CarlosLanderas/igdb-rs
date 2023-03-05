@@ -104,16 +104,18 @@ igdb-rs supports the following endpoints at this moment:
 
 With igdb-rs you can easily query the Internet Game Database.
 
-You just need to create an IGDBClient object with your api key, you can sign and get one here:
-https://api.igdb.com/
+You just need to create an IGDBClient object with your client_id
+and your token. You can sign in and generate one as explained here:
+https://api-docs.igdb.com/#account-creation
 
 
 ## Running samples
 
 You can find some sample code snippets here: [examples](https://github.com/CarlosLanderas/igdb-rs/tree/master/examples)
 ```
-In order to run the samples, just replace the user-key parameter inside the code sample
-with your access key and execute it by using the sample name specified inside Cargo.toml file.
+In order to run the samples, just set the IGDB_CLIENT_ID and IGDB_TOKEN
+environment variables with your client_id and token key and execute it by
+using the sample name specified inside Cargo.toml file.
 
 Example:
 
@@ -124,14 +126,14 @@ cargo run --example game-video-urls
 
 ### Creating the IGDBClient with your user key
 ```rust
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
 
 ```
 
 
 ### Game by name
 ```rust
-    let games_client = IGDBClient::new("user-key").games();
+    let games_client = IGDBClient::new("client_id", "token").games();
     let game = games_client.get_first_by_name("Witcher 3").await.unwrap();
 
     println!("Name: {}", game.name);
@@ -147,7 +149,7 @@ cargo run --example game-video-urls
 
 ### Games by name
 ```rust
-    let games_client = IGDBClient::new("user-key").games();
+    let games_client = IGDBClient::new("client_id", "token").games();
         // Get ten first results containing Borderlands in it's name
     let games_results = games_client.get_by_name("Borderlands", 10).await.unwrap();
 
@@ -175,6 +177,8 @@ cargo run --example game-video-urls
 
 ### Game characters
 ```rust
+    let igdb_client = IGDBClient::new("client_id", "token");
+
     let characters_client = igdb_client.characters();
 
     //Get Witcher 3 characters
@@ -195,11 +199,11 @@ cargo run --example game-video-urls
 
 ### Game engine info
 ```rust
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
 
     let games_client = igdb_client.games();
     let game = games_client
-        .get_first_by_name("Riders of Asgard")
+        .get_first_by_name("Always Sometimes Monsters")
         .await
         .unwrap();
 
@@ -216,14 +220,13 @@ cargo run --example game-video-urls
         engine.name, engine.url, engine.companies
     );
 
-    // name: Unreal Engine 4, url: https://www.igdb.com/game_engines/unreal-engine-4--1,
-    // companies: [168, 11060]
+    // name: RPG Maker VX Ace, url: https://www.igdb.com/game_engines/rpg-maker-vx-ace, companies: []
 ```
 
 ### Game release data
 ```rust
 
-  let igdb_client = IGDBClient::new("user-key");
+  let igdb_client = IGDBClient::new("client_id", "token");
 
   let release_client = igdb_client.release_dates();
 
@@ -252,7 +255,7 @@ cargo run --example game-video-urls
 
 ### Game Videos Urls
 ```rust
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
     let videos_client = igdb_client.game_videos();
 
     //Query first 8 youtube videos for Witcher 3
@@ -279,7 +282,7 @@ cargo run --example game-video-urls
 
 ```rust
 
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
     let games_client = igdb_client.games();
     let witcher = games_client.get_first_by_name("Witcher 3").await.unwrap();
 
@@ -323,7 +326,7 @@ Find games meeting the request builder criteria
 
 ```rust
 
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
 
     let mut game_request = IGDBClient::create_request();
     game_request
@@ -356,7 +359,7 @@ Get Borderlands 2 multiplayer information building a custom query
 
 ``` rust
 
-    let idbg_client = IGDBClient::new("user-key");
+    let idbg_client = IGDBClient::new("client_id", "token");
 
     let games_client = idbg_client.games();
 
@@ -391,7 +394,7 @@ Get Borderlands 2 multiplayer information building a custom query
 ```
 ### Game rating and votes
 ```rust
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
     let games_client = igdb_client.games();
 
     let game = games_client.get_first_by_name("Modern Warfare 3").await.unwrap();
@@ -404,7 +407,7 @@ Get Borderlands 2 multiplayer information building a custom query
 ### Franchise games
 ```rust
 
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
     let franchises_client = igdb_client.franchises();
     let games_client = igdb_client.games();
 
@@ -430,7 +433,7 @@ Get Borderlands 2 multiplayer information building a custom query
 ```
 ### Game Age Rating
 ```rust
-    let igdb_client = IGDBClient::new("user-key");
+    let igdb_client = IGDBClient::new("client_id", "token");
     let games_client = igdb_client.games();
     let age_rating_client = igdb_client.age_ratings();
 
@@ -458,8 +461,3 @@ Get Borderlands 2 multiplayer information building a custom query
     // Game: Call of Duty: Modern Warfare 3, Category: PEGI, Rating: Eighteen
     }
 ```
-
-
-
-
-

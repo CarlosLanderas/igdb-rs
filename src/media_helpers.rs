@@ -10,12 +10,12 @@ pub(crate) async fn download_resource(
     quality: MediaQuality,
 ) -> Result<(), Error> {
     use async_std::fs::File;
-    use async_std::io::Write;
+    use async_std::io::WriteExt;
 
     let parsed_url = parse_url(url, quality);
     log::debug!("Downloading resource: {}", parsed_url);
 
-    let content = surf::get(parsed_url).recv_bytes().await?;
+    let content = reqwest::get(parsed_url).await?.bytes().await?;
 
     let mut file = File::create(path).await?;
     file.write(&content[..]).await?;
@@ -30,7 +30,7 @@ pub(crate) async fn get_resource<S: Into<String>>(
     quality: MediaQuality,
 ) -> Result<Vec<u8>, Error> {
     let parsed_url = parse_url(url, quality);
-    let contents = surf::get(parsed_url).recv_bytes().await?;
+    let contents = reqwest::get(parsed_url).await?.bytes().await?.to_vec();
     Ok(contents)
 }
 

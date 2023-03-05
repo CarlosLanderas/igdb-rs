@@ -1,10 +1,11 @@
 use crate::request_filters::Filter;
+use std::future::Future;
 use std::str::FromStr;
 use std::string::ToString;
-use surf::middleware::HttpClient;
 use url::Url;
 
-const HEADER_KEY_NAME: &str = "user-key";
+const HEADER_CLIENT_ID: &str = "Client-ID";
+const HEADER_AUTH: &str = "Authorization";
 
 #[derive(Clone)]
 /// Request Builder struct
@@ -84,21 +85,27 @@ impl RequestBuilder {
         RequestBuilder::default()
     }
 
-    pub(crate) fn build(&self, api_key: &str, url: &str) -> surf::Request<impl HttpClient> {
-        let body = &self.build_body();
+    pub(crate) fn build(
+        &self,
+        client_id: &str,
+        token: &str,
+        url: &str,
+    ) -> impl Future<Output = Result<reqwest::Response, reqwest::Error>> {
+        let body = self.build_body();
 
-        log::debug!("url: {}, body: {}", url, String::from_utf8_lossy(body));
-
-        let mut req =
-            surf::Request::new(http::Method::GET, Url::from_str(url).unwrap()).body_bytes(body);
-
-        req.headers().insert(HEADER_KEY_NAME, api_key);
-        req.headers().insert("content-type", "application/text");
-
+        log::debug!("url: {}, body: {}", url, body);
+        let client = reqwest::Client::new();
+        let req = client
+            .post(Url::from_str(url).unwrap())
+            .body(body)
+            .header(HEADER_CLIENT_ID, client_id)
+            .header(HEADER_AUTH, format!("Bearer {}", token))
+            .header("content-type", "application/json")
+            .send();
         req
     }
 
-    pub(crate) fn build_body(&self) -> Vec<u8> {
+    pub(crate) fn build_body(&self) -> String {
         let fields = self
             .fields
             .iter()
@@ -137,8 +144,6 @@ impl RequestBuilder {
                 });
 
         self.format_body_parts(fields, filter_clause)
-            .as_bytes()
-            .to_vec()
     }
 
     fn format_body_parts(&self, fields: String, filters: String) -> String {
@@ -172,10 +177,7 @@ fn request_builder_with_all_fields() {
 
     let body = builder.build_body();
 
-    assert_eq!(
-        "fields *; limit 10;",
-        String::from_utf8_lossy(&body).to_owned()
-    );
+    assert_eq!("fields *; limit 10;", &body);
 }
 
 #[test]
@@ -192,7 +194,7 @@ fn request_builder_with_fields_and_where_clause_body_build() {
 
     assert_eq!(
         "fields name,involved_companies; where name = Conan & id < 39047; limit 10;",
-        String::from_utf8_lossy(&body).to_owned()
+        &body
     );
 }
 
@@ -212,6 +214,6 @@ fn request_builder_with_fields_where_clause_and_sort_asc_body_build() {
 
     assert_eq!(
         "fields name,involved_companies; where id = 39047 & name = Conan; sort name asc; limit 2;",
-        String::from_utf8_lossy(&body).to_owned()
+        &body
     );
 }

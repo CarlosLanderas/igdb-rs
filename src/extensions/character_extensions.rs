@@ -10,7 +10,7 @@ impl CharactersClient {
     /// ```
     /// use igdb_rs::client::IGDBClient;
     ///
-    /// let igdb_client = IGDBClient::new("api-key");
+    /// let igdb_client = IGDBClient::new("client_id", "token");
     /// let characters_client = igdb_client.characters();
     /// ///Retrieve 8 first characters for The Witcher 3 game
     /// let characters = characters_client.get_by_game_id(1942, 8);

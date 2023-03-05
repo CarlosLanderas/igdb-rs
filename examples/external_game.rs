@@ -9,18 +9,22 @@ fn main() {
         let token = env::var("IGDB_TOKEN").expect("You nee to set the IGDB_TOKEN variable");
         let igdb_client = IGDBClient::new(&client_id, &token);
 
-        let games_client = igdb_client.games();
+        let mut game_request =IGDBClient::create_request();
+        game_request
+            .all_fields()
+            .contains("url", "https://store.steampowered.com/app/1869200");
+        
+        let external_games_client = igdb_client.external_games();
 
-        let game = games_client
-            .get_first_by_name("Modern Warfare 3")
+        let game = external_games_client.get(game_request)
             .await
             .unwrap();
 
         println!(
-            "Game: {}, rating: {}, total votes: {}",
-            game.name, game.total_rating as usize, game.total_rating_count
+            "Game: {}",
+            game[0].name
         );
 
-        //Game: Call of Duty: Modern Warfare 3, rating: 80, total votes: 442
+        //Game: The Adventures of Mr. Hat
     })
 }

@@ -40,7 +40,11 @@ macro_rules! create_client {
             /// Returns a reference to the client
             pub fn $k(&self) -> $i {
                 $i {
-                    endpoint_client: EndpointClient::new(self.api_key.clone(), Endpoint::$k),
+                    endpoint_client: EndpointClient::new(
+                        self.client_id.clone(),
+                        self.token.clone(),
+                        Endpoint::$k,
+                    ),
                 }
             }
         }
@@ -83,12 +87,13 @@ macro_rules! use_client_imports {
             endpoint_client::EndpointClient, endpoints::Endpoint, media_quality::MediaQuality,
             model::age_rating::AgeRating, model::artwork::Artwork, model::character::Character,
             model::character_mug_shot::CharacterMugshot, model::company::Company,
-            model::cover::Cover, model::engine::Engine, model::franchise::Franchise,
-            model::game_mode::GameMode, model::game_video::GameVideo, model::games::Game,
-            model::multiplayer_mode::MultiplayerMode, model::platform::Platform,
-            model::platform_logo::PlatformLogo, model::player_perspective::PlayerPerspective,
-            model::release_date::ReleaseDate, model::screenshot::Screenshot, model::theme::Theme,
-            model::website::Website, request_builder::Equality, request_builder::RequestBuilder,
+            model::cover::Cover, model::engine::Engine, model::external_game::ExternalGame,
+            model::franchise::Franchise, model::game_mode::GameMode, model::game_video::GameVideo,
+            model::games::Game, model::multiplayer_mode::MultiplayerMode,
+            model::platform::Platform, model::platform_logo::PlatformLogo,
+            model::player_perspective::PlayerPerspective, model::release_date::ReleaseDate,
+            model::screenshot::Screenshot, model::theme::Theme, model::website::Website,
+            request_builder::Equality, request_builder::RequestBuilder,
         };
 
         use crate::Error;

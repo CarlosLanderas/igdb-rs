@@ -1,6 +1,6 @@
 [package]
 name = "igdb-rs"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Carlos Landeras"]
 edition = "2018"
 license = "Apache-2.0/MIT"
@@ -13,18 +13,18 @@ categories = ["games", "api-bindings", "asynchronous"]
 readme = "README.md"
 
 [dependencies]
-async-std = "0.99.4"
-surf = "1.0.2"
-serde_derive = "1.0.99"
-serde_json = "1.0.40"
-serde = "1.0.99"
-serde_repr = "0.1.5"
-http = "0.1.18"
-url = "2.1.0"
-log = "0.4.8"
+async-std = { version = "1.12.0", features = ["tokio1"] }
+reqwest = { version = "0.11.13", features = ["json"] }
+serde_derive = "1.0.151"
+serde_json = "1.0.89"
+serde = "1.0.151"
+serde_repr = "0.1.9"
+http = "0.2.8"
+url = "2.3.1"
+log = "0.4.17"
 
 [dev-dependencies]
-femme = "1.2.0"
+femme = "2.2.1"
 
 [[example]]
 name = "search-first-game-by-name"
@@ -83,3 +83,6 @@ path = "examples/player_perspectives.rs"
 [[example]]
 name = "game-characters-mugshot"
 path = "examples/game_characters_mugshot.rs"
+[[example]]
+name = "external-game"
+path = "examples/external_game.rs"

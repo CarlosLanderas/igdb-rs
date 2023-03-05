@@ -14,6 +14,7 @@ create_client!(
 create_client!(CharactersClient, Character, characters);
 create_client!(CompaniesClient, Company, companies);
 create_client!(CoversClient, Cover, covers);
+create_client!(ExternalGameClient, ExternalGame, external_games);
 create_client!(GamesClient, Game, games);
 create_client!(GameModesClient, GameMode, game_modes);
 create_client!(GameVideosClient, GameVideo, game_videos);
@@ -40,6 +41,7 @@ expand_media_download!(CharacterMugshotsClient);
 
 expand_get_by_game_id!(ArtworksClient, Artwork);
 expand_get_by_game_id!(CoversClient, Cover);
+expand_get_by_game_id!(ExternalGameClient, ExternalGame);
 expand_get_by_game_id!(GameVideosClient, GameVideo);
 expand_get_by_game_id!(MultiPlayerModesClient, MultiplayerMode);
 expand_get_by_game_id!(ReleaseDatesClient, ReleaseDate);
@@ -47,23 +49,26 @@ expand_get_by_game_id!(ScreenshotsClient, Screenshot);
 expand_get_by_game_id!(WebsitesClient, Website);
 
 pub struct IGDBClient {
-    api_key: String,
+    client_id: String,
+    token: String,
 }
 
 // The IGDB client.
 impl IGDBClient {
     /// Creates a new instance of the IGDB Client
-    /// To create a new instance you need to provide the user-key your are provided with
-    /// when you register in the API Website
+    /// To create a new instance you need to provide the client_id
+    /// and the token your generated using your client_id and secret
+    /// provided when you register in the API Website
     /// # Examples
     /// ```
     /// use igdb_rs::client::IGDBClient;
     ///
-    /// let igdb = IGDBClient::new("user-key");
+    /// let igdb = IGDBClient::new("client_id", "token");
     /// ```
-    pub fn new<S: Into<String>>(api_key: S) -> IGDBClient {
+    pub fn new<S: Into<String>>(client_id: S, token: S) -> IGDBClient {
         IGDBClient {
-            api_key: api_key.into(),
+            client_id: client_id.into(),
+            token: token.into(),
         }
     }
     /// Creates a new instance of a Request builder
